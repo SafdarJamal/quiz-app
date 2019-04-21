@@ -2,8 +2,6 @@
 
 Quiz App Built with React Using OpenTDB API
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Building
 
 Install dependencies:
