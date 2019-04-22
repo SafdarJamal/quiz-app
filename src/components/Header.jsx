@@ -1,10 +1,11 @@
 import React from 'react';
 import { Header, Segment } from 'semantic-ui-react';
+import logo from '../assets/logo.svg';
 
 export default () => (
-  <Segment clearing>
+  <Segment clearing inverted>
     <Header as="h1" floated="left" color="grey">
-      <img src={require('../logo.svg')} alt="" />
+      <img src={logo} alt="Quiz App" />
       Quiz App
     </Header>
   </Segment>

@@ -1,31 +1,32 @@
 import React from 'react';
-import { Segment, Item, Button, Icon } from 'semantic-ui-react';
+import { Segment, Item, Button, Icon, Divider } from 'semantic-ui-react';
+import codeImg from '../assets/code.png';
 
 export default () => (
   <Segment attached>
     <Item.Group divided>
       <Item>
-        <Item.Image src={require('../assets/code.png')} />
+        <Item.Image src={codeImg} />
         <Item.Content>
-          <h1>Open Trivia Qestions</h1>
+          <Item.Header>
+            <h1>Open Trivia Qestions</h1>
+          </Item.Header>
+          <br />
+          <br />
           <Item.Meta>
-            <h5 className="cinemas">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam
-              magnam consequuntur quod odio perferendis dolores vitae
-              dignissimos enim! Vel, nobis ad. Non, quia illo. Optio ipsam
-              consequatur doloremque a iure? Lorem ipsum dolor sit, amet
-              consectetur adipisicing elit. Consequuntur doloribus praesentium
-              repellendus magnam tenetur blanditiis in mollitia magni ad!
-              Temporibus dolorem officiis tenetur at aspernatur quaerat suscipit
-              doloribus adipisci corrupti! Lorem ipsum dolor sit amet
-              consectetur, adipisicing elit. Porro, quod repellat quaerat
-              corrupti necessitatibus tempore voluptas libero ratione atque ab
-              similique sunt iste officiis obcaecati earum odit mollitia.
-              Numquam, ipsum.
-            </h5>
+            <Segment>
+              Category: <b>Computers</b>
+            </Segment>
+            <Segment>
+              No. of Questions: <b>10</b>
+            </Segment>
+            <Segment>
+              Questions Type: <b>Multiple Choice</b>
+            </Segment>
           </Item.Meta>
+          <Divider />
           <Item.Extra>
-            <Button primary>
+            <Button primary className="start">
               Start Quiz
               <Icon name="right chevron" />
             </Button>
