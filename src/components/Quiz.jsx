@@ -8,7 +8,6 @@ import {
   Icon,
   Message
 } from 'semantic-ui-react';
-import codeImg from '../assets/code.png';
 
 class Quiz extends Component {
   constructor(props) {
@@ -22,7 +21,6 @@ class Quiz extends Component {
         <Segment attached>
           <Item.Group divided>
             <Item>
-              <Item.Image src={codeImg} />
               <Item.Content>
                 <Item.Header>
                   <h1>Question No.1 of 10</h1>
@@ -31,18 +29,24 @@ class Quiz extends Component {
                 <br />
                 <br />
                 <Item.Meta>
-                  <Message size="large" floating>
+                  <Message size="huge" floating>
                     <b>{`Q. ${quizData[0].question}`}</b>
                   </Message>
                   <br />
                   <Item.Description>
-                    <b>Please choose one of the following answers:</b>
+                    <h4>Please choose one of the following answers:</h4>
                   </Item.Description>
                   <Divider />
-                  <Segment>{quizData[0].incorrect_answers[1]}</Segment>
-                  <Segment>{quizData[0].correct_answer}</Segment>
-                  <Segment>{quizData[0].incorrect_answers[2]}</Segment>
-                  <Segment>{quizData[0].incorrect_answers[0]}</Segment>
+                  <Segment size="large">
+                    {quizData[0].incorrect_answers[1]}
+                  </Segment>
+                  <Segment size="large">{quizData[0].correct_answer}</Segment>
+                  <Segment size="large">
+                    {quizData[0].incorrect_answers[2]}
+                  </Segment>
+                  <Segment size="large">
+                    {quizData[0].incorrect_answers[0]}
+                  </Segment>
                 </Item.Meta>
                 <Divider />
                 <Item.Extra>

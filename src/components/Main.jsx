@@ -21,14 +21,15 @@ export default props => (
             </Item.Header>
             <br />
             <br />
+            <Divider />
             <Item.Meta>
-              <Segment>
+              <Segment size="large">
                 Category: <b>Computers and Technology</b>
               </Segment>
-              <Segment>
+              <Segment size="large">
                 No. of Questions: <b>10</b>
               </Segment>
-              <Segment>
+              <Segment size="large">
                 Questions Type: <b>Multiple Choice</b>
               </Segment>
             </Item.Meta>
