@@ -4,6 +4,7 @@ import './App.css';
 import Header from './components/Header.jsx';
 import Main from './components/Main.jsx';
 import Loader from './components/Loader.jsx';
+import Quiz from './components/Quiz.jsx';
 
 // const API = 'https://opentdb.com/api.php?amount=10';
 const C_API =
@@ -14,10 +15,12 @@ class App extends Component {
     super(props);
 
     this.state = {
-      quizData: null
+      quizData: null,
+      isQuizStart: false
     };
 
     this.setData = this.setData.bind(this);
+    this.startQuiz = this.startQuiz.bind(this);
   }
 
   setData(result) {
@@ -31,14 +34,19 @@ class App extends Component {
       .catch(error => console.log('API error', error));
   }
 
+  startQuiz() {
+    this.setState({ isQuizStart: true });
+  }
+
   render() {
-    const { quizData } = this.state;
+    const { quizData, isQuizStart } = this.state;
     console.log(quizData);
     return (
       <React.Fragment>
         <Header />
         {!quizData && <Loader />}
-        {quizData && <Main />}
+        {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
+        {isQuizStart && <Quiz />}
       </React.Fragment>
     );
   }

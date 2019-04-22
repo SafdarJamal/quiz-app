@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment, Item, Button, Icon, Divider } from 'semantic-ui-react';
 import codeImg from '../assets/code.png';
 
-export default () => (
+export default props => (
   <Segment attached>
     <Item.Group divided>
       <Item>
@@ -26,7 +26,7 @@ export default () => (
           </Item.Meta>
           <Divider />
           <Item.Extra>
-            <Button primary className="start">
+            <Button primary onClick={props.startQuiz}>
               Start Quiz
               <Icon name="right chevron" />
             </Button>
