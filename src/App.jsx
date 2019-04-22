@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.css';
 
 import Header from './components/Header.jsx';
@@ -8,7 +8,7 @@ import Quiz from './components/Quiz.jsx';
 
 // const API = 'https://opentdb.com/api.php?amount=10';
 const C_API =
-  'https://opentdb.com/api.php?amount=10&category=18&difficulty=medium&type=multiple';
+  'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';
 
 class App extends Component {
   constructor(props) {
@@ -32,6 +32,7 @@ class App extends Component {
       .then(respone => respone.json())
       .then(result => setTimeout(() => this.setData(result), 1000))
       .catch(error => console.log('API error', error));
+    // Todo: Add a function to indicate the user the  api has problem.
   }
 
   startQuiz() {
@@ -42,12 +43,12 @@ class App extends Component {
     const { quizData, isQuizStart } = this.state;
     console.log(quizData);
     return (
-      <React.Fragment>
+      <Fragment>
         <Header />
         {!quizData && <Loader />}
         {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {isQuizStart && <Quiz />}
-      </React.Fragment>
+        {isQuizStart && <Quiz quizData={quizData} />}
+      </Fragment>
     );
   }
 }
