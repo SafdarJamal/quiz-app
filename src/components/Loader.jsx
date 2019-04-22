@@ -3,7 +3,7 @@ import { Container, Message, Icon } from 'semantic-ui-react';
 
 export default () => (
   <Container>
-    <Message icon>
+    <Message icon size="big">
       <Icon name="circle notched" loading />
       <Message.Content>
         <Message.Header>Just one second</Message.Header>
