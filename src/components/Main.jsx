@@ -15,7 +15,7 @@ export default () => (
           <br />
           <Item.Meta>
             <Segment>
-              Category: <b>Computers</b>
+              Category: <b>Computers and Technology</b>
             </Segment>
             <Segment>
               No. of Questions: <b>10</b>
