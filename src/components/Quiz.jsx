@@ -17,9 +17,12 @@ class Quiz extends Component {
     this.state = {
       quizData: props.quizData,
       isLoading: true,
-      questionIndex: 0
+      questionIndex: 0,
+      correctAnswers: 0,
+      userSlectedAns: null
     };
     this.handleItemClick = this.handleItemClick.bind(this);
+    this.handleNext = this.handleNext.bind(this);
   }
   handleItemClick(e, { name }) {
     this.setState({ userSlectedAns: name });
@@ -39,6 +42,40 @@ class Quiz extends Component {
     }, 1000);
   }
 
+  handleNext() {
+    const {
+      userSlectedAns,
+      quizData,
+      questionIndex,
+      correctAnswers
+    } = this.state;
+
+    let point = 0;
+    if (userSlectedAns === quizData[questionIndex].correct_answer) {
+      point = 1;
+    }
+
+    if (questionIndex === 9) {
+      this.setState({
+        correctAnswers: correctAnswers + point,
+        userSlectedAns: null
+      });
+      return false;
+    }
+    const min = Math.ceil(0);
+    const max = Math.floor(3);
+    const outPut = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const options = [...quizData[questionIndex + 1].incorrect_answers];
+    options.splice(outPut, 0, quizData[questionIndex + 1].correct_answer);
+    this.setState({
+      correctAnswers: correctAnswers + point,
+      questionIndex: questionIndex + 1,
+      userSlectedAns: null,
+      options,
+      outPut
+    });
+  }
   render() {
     // const { quizData } = this.props;
     const {
@@ -47,10 +84,12 @@ class Quiz extends Component {
       options,
       outPut,
       userSlectedAns,
-      isLoading
+      isLoading,
+      correctAnswers
     } = this.state;
     console.log(userSlectedAns);
     console.log(questionIndex, outPut);
+    console.log('Score ==>', correctAnswers);
     return (
       <div>
         {isLoading && <Loader />}
@@ -118,7 +157,12 @@ class Quiz extends Component {
                         </Button>
                       )}
                       {userSlectedAns && (
-                        <Button primary floated="right" size="big">
+                        <Button
+                          primary
+                          floated="right"
+                          size="big"
+                          onClick={this.handleNext}
+                        >
                           Next
                           <Icon name="right chevron" />
                         </Button>
