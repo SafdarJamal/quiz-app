@@ -89,7 +89,8 @@ class Quiz extends Component {
   }
 
   renderResult() {
-    const resultRef = <Result />;
+    const { correctAnswers } = this.state;
+    const resultRef = <Result correctAnswers={correctAnswers} />;
     setTimeout(() => {
       this.setState({ resultRef });
     }, 3000);

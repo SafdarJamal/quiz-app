@@ -4,10 +4,21 @@ import { Container, Segment, Label, Header, Button } from 'semantic-ui-react';
 class Result extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      correctAnswers: props.correctAnswers,
+      userScore: (props.correctAnswers * 100) / 10
+    };
   }
 
   render() {
+    const { correctAnswers, userScore } = this.state;
+    console.log(userScore);
+
+    let remarks = 'Sorry, YOU FAILED!';
+    if (userScore >= 60) {
+      remarks = 'Congratulations, YOU PASSED!';
+    }
+
     return (
       <div>
         <Container>
@@ -16,8 +27,7 @@ class Result extends Component {
               Result
             </Label>
             <Header as="h1" textAlign="center" block>
-              Congratulations, YOU PASSED!
-              {/* Sorry, YOU FAILED! */}
+              {remarks}
             </Header>
             <Header as="h3" textAlign="center" block>
               Passing Score: 60
@@ -26,10 +36,10 @@ class Result extends Component {
               Total Questions: 10
             </Header>
             <Header as="h3" textAlign="center" block>
-              Correct Answers: 7
+              Correct Answers: {correctAnswers}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Your Score: 70
+              Your Score: {userScore}
             </Header>
             <div style={{ marginTop: '25px', marginBottom: '8px' }}>
               <Button primary size="large">
