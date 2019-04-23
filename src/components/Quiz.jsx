@@ -15,6 +15,7 @@ class Quiz extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      quizData: props.quizData,
       isLoading: true
     };
     this.handleItemClick = this.handleItemClick.bind(this);
@@ -24,14 +25,23 @@ class Quiz extends Component {
   }
 
   componentDidMount() {
+    const min = Math.ceil(0);
+    const max = Math.floor(3);
+    const outPut = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const { quizData } = this.state;
+    const options = [...quizData[0].incorrect_answers];
+    options.splice(outPut, 0, quizData[0].correct_answer);
+
     setTimeout(() => {
-      this.setState({ isLoading: false });
+      this.setState({ isLoading: false, options, outPut });
     }, 1000);
   }
   render() {
-    const { quizData } = this.props;
-    const { userSlectedAns, isLoading } = this.state;
+    // const { quizData } = this.props;
+    const { quizData, options, outPut, userSlectedAns, isLoading } = this.state;
     console.log(userSlectedAns);
+    console.log(options, outPut);
     return (
       <div>
         {isLoading && <Loader />}
