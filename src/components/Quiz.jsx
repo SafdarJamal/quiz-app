@@ -16,7 +16,8 @@ class Quiz extends Component {
     super(props);
     this.state = {
       quizData: props.quizData,
-      isLoading: true
+      isLoading: true,
+      questionIndex: 0
     };
     this.handleItemClick = this.handleItemClick.bind(this);
   }
@@ -29,9 +30,9 @@ class Quiz extends Component {
     const max = Math.floor(3);
     const outPut = Math.floor(Math.random() * (max - min + 1)) + min;
 
-    const { quizData } = this.state;
-    const options = [...quizData[0].incorrect_answers];
-    options.splice(outPut, 0, quizData[0].correct_answer);
+    const { quizData, questionIndex } = this.state;
+    const options = [...quizData[questionIndex].incorrect_answers];
+    options.splice(outPut, 0, quizData[questionIndex].correct_answer);
 
     setTimeout(() => {
       this.setState({ isLoading: false, options, outPut });
@@ -40,9 +41,16 @@ class Quiz extends Component {
 
   render() {
     // const { quizData } = this.props;
-    const { quizData, options, outPut, userSlectedAns, isLoading } = this.state;
+    const {
+      quizData,
+      questionIndex,
+      options,
+      outPut,
+      userSlectedAns,
+      isLoading
+    } = this.state;
     console.log(userSlectedAns);
-    console.log(options, outPut);
+    console.log(questionIndex, outPut);
     return (
       <div>
         {isLoading && <Loader />}
@@ -53,14 +61,14 @@ class Quiz extends Component {
                 <Item>
                   <Item.Content>
                     <Item.Header>
-                      <h1>Question No.1 of 10</h1>
+                      <h1>Question No.{questionIndex + 1} of 10</h1>
                     </Item.Header>
                     <br />
                     <br />
                     <br />
                     <Item.Meta>
                       <Message size="huge" floating>
-                        <b>{`Q. ${quizData[0].question}`}</b>
+                        <b>{`Q. ${quizData[questionIndex].question}`}</b>
                       </Message>
                       <br />
                       <Item.Description>
