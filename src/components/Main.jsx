@@ -4,7 +4,7 @@ import codeImg from '../assets/code.png';
 
 export default props => (
   <Container>
-    <Segment attached>
+    <Segment raised>
       <Item.Group divided>
         <Item>
           <Item.Image src={codeImg} />

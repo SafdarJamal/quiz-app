@@ -3,7 +3,7 @@ import { Header, Segment } from 'semantic-ui-react';
 import logo from '../assets/logo.svg';
 
 export default () => (
-  <Segment clearing inverted>
+  <Segment clearing inverted raised>
     <Header as="h1" floated="left" color="blue">
       <img src={logo} alt="Quiz App" />
       Quiz App

@@ -123,7 +123,7 @@ class Quiz extends Component {
         {!quizIsCompleted && isLoading && <Loader />}
         {!isLoading && (
           <Container>
-            <Segment attached>
+            <Segment raised>
               <Item.Group divided>
                 <Item>
                   <Item.Content>
