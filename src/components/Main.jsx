@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  Segment,
-  Item,
-  Divider,
-  Button,
-  Icon
-} from 'semantic-ui-react';
+import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
 import codeImg from '../assets/code.png';
 
 export default props => (
@@ -30,14 +23,16 @@ export default props => (
                 No. of Questions: <b>10</b>
               </Segment>
               <Segment size="large">
+                Passing Score: <b>60 out of 100</b>
+              </Segment>
+              <Segment size="large">
                 Questions Type: <b>Multiple Choice</b>
               </Segment>
             </Item.Meta>
             <Divider />
             <Item.Extra>
-              <Button primary onClick={props.startQuiz}>
+              <Button primary size="big" onClick={props.startQuiz}>
                 Start Quiz
-                <Icon name="right chevron" />
               </Button>
             </Item.Extra>
           </Item.Content>

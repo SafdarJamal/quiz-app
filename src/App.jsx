@@ -30,7 +30,7 @@ class App extends Component {
   componentWillMount() {
     fetch(C_API)
       .then(respone => respone.json())
-      .then(result => setTimeout(() => this.setData(result), 5000))
+      .then(result => setTimeout(() => this.setData(result), 1000))
       .catch(error => console.log('API error', error));
     // Todo: Add a function to indicate the user the  api has problem.
   }

@@ -77,10 +77,18 @@ class Quiz extends Component {
                 </Item.Meta>
                 <Divider />
                 <Item.Extra>
-                  <Button primary floated="right">
-                    Next
-                    <Icon name="right chevron" />
-                  </Button>
+                  {!activeItem && (
+                    <Button primary floated="right" size="big" disabled>
+                      Next
+                      <Icon name="right chevron" />
+                    </Button>
+                  )}
+                  {activeItem && (
+                    <Button primary floated="right" size="big">
+                      Next
+                      <Icon name="right chevron" />
+                    </Button>
+                  )}
                 </Item.Extra>
               </Item.Content>
             </Item>
