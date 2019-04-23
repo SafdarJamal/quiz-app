@@ -27,7 +27,7 @@ class App extends Component {
     this.setState({ quizData: result.results });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     fetch(C_API)
       .then(respone => respone.json())
       .then(result => setTimeout(() => this.setData(result), 1000))
