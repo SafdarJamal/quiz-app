@@ -14,6 +14,7 @@ import Loader from './Loader.jsx';
 class Quiz extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       quizData: props.quizData,
       isLoading: true,
@@ -21,25 +22,31 @@ class Quiz extends Component {
       correctAnswers: 0,
       userSlectedAns: null
     };
+
     this.handleItemClick = this.handleItemClick.bind(this);
+    this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
   }
+
   handleItemClick(e, { name }) {
     this.setState({ userSlectedAns: name });
   }
 
   componentDidMount() {
-    const min = Math.ceil(0);
-    const max = Math.floor(3);
-    const outPut = Math.floor(Math.random() * (max - min + 1)) + min;
-
     const { quizData, questionIndex } = this.state;
+    const outPut = this.getRandomNumber();
     const options = [...quizData[questionIndex].incorrect_answers];
     options.splice(outPut, 0, quizData[questionIndex].correct_answer);
 
     setTimeout(() => {
       this.setState({ isLoading: false, options, outPut });
     }, 1000);
+  }
+
+  getRandomNumber() {
+    const min = Math.ceil(0);
+    const max = Math.floor(3);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   handleNext() {
@@ -62,9 +69,8 @@ class Quiz extends Component {
       });
       return false;
     }
-    const min = Math.ceil(0);
-    const max = Math.floor(3);
-    const outPut = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    const outPut = this.getRandomNumber();
 
     const options = [...quizData[questionIndex + 1].incorrect_answers];
     options.splice(outPut, 0, quizData[questionIndex + 1].correct_answer);
@@ -76,8 +82,8 @@ class Quiz extends Component {
       outPut
     });
   }
+
   render() {
-    // const { quizData } = this.props;
     const {
       quizData,
       questionIndex,
@@ -87,9 +93,11 @@ class Quiz extends Component {
       isLoading,
       correctAnswers
     } = this.state;
+
     console.log(userSlectedAns);
     console.log(questionIndex, outPut);
     console.log('Score ==>', correctAnswers);
+
     return (
       <div>
         {isLoading && <Loader />}

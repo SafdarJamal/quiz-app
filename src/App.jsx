@@ -6,8 +6,7 @@ import Main from './components/Main.jsx';
 import Loader from './components/Loader.jsx';
 import Quiz from './components/Quiz.jsx';
 
-// const API = 'https://opentdb.com/api.php?amount=10';
-const C_API =
+const API =
   'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';
 
 class App extends Component {
@@ -28,7 +27,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(C_API)
+    fetch(API)
       .then(respone => respone.json())
       .then(result => setTimeout(() => this.setData(result), 1000))
       .catch(error => console.log('API error', error));
@@ -42,6 +41,7 @@ class App extends Component {
   render() {
     const { quizData, isQuizStart } = this.state;
     console.log(quizData);
+
     return (
       <Fragment>
         <Header />
