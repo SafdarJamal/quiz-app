@@ -37,6 +37,7 @@ class Quiz extends Component {
       this.setState({ isLoading: false, options, outPut });
     }, 1000);
   }
+
   render() {
     // const { quizData } = this.props;
     const { quizData, options, outPut, userSlectedAns, isLoading } = this.state;
@@ -67,44 +68,37 @@ class Quiz extends Component {
                       </Item.Description>
                       <Divider />
                       <Menu vertical fluid size="massive">
-                        <Menu.Item
-                          name={quizData[0].incorrect_answers[1]}
-                          active={
-                            userSlectedAns === quizData[0].incorrect_answers[1]
+                        {options.map((item, i) => {
+                          let letter;
+                          switch (i) {
+                            case 0:
+                              letter = 'A.';
+                              break;
+                            case 1:
+                              letter = 'B.';
+                              break;
+                            case 2:
+                              letter = 'C.';
+                              break;
+                            case 3:
+                              letter = 'D.';
+                              break;
+                            default:
+                              letter = i;
+                              break;
                           }
-                          onClick={this.handleItemClick}
-                        >
-                          <b style={{ marginRight: '8px' }}>A.</b>
-                          {quizData[0].incorrect_answers[1]}
-                        </Menu.Item>
-                        <Menu.Item
-                          name={quizData[0].correct_answer}
-                          active={userSlectedAns === quizData[0].correct_answer}
-                          onClick={this.handleItemClick}
-                        >
-                          <b style={{ marginRight: '8px' }}>B.</b>
-                          {quizData[0].correct_answer}
-                        </Menu.Item>
-                        <Menu.Item
-                          name={quizData[0].incorrect_answers[2]}
-                          active={
-                            userSlectedAns === quizData[0].incorrect_answers[2]
-                          }
-                          onClick={this.handleItemClick}
-                        >
-                          <b style={{ marginRight: '8px' }}>C.</b>
-                          {quizData[0].incorrect_answers[2]}
-                        </Menu.Item>
-                        <Menu.Item
-                          name={quizData[0].incorrect_answers[0]}
-                          active={
-                            userSlectedAns === quizData[0].incorrect_answers[0]
-                          }
-                          onClick={this.handleItemClick}
-                        >
-                          <b style={{ marginRight: '8px' }}>D.</b>
-                          {quizData[0].incorrect_answers[0]}
-                        </Menu.Item>
+                          return (
+                            <Menu.Item
+                              key={item}
+                              name={item}
+                              active={userSlectedAns === item}
+                              onClick={this.handleItemClick}
+                            >
+                              <b style={{ marginRight: '8px' }}>{letter}</b>
+                              {item}
+                            </Menu.Item>
+                          );
+                        })}
                       </Menu>
                     </Item.Meta>
                     <Divider />
