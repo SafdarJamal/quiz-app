@@ -29,6 +29,8 @@ class Quiz extends Component {
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.renderResult = this.renderResult.bind(this);
+    this.retakeQuiz = this.retakeQuiz.bind(this);
+    this.startNewQuiz = this.startNewQuiz.bind(this);
   }
 
   handleItemClick(e, { name }) {
@@ -70,7 +72,9 @@ class Quiz extends Component {
         correctAnswers: correctAnswers + point,
         userSlectedAns: null,
         isLoading: true,
-        quizIsCompleted: true
+        quizIsCompleted: true,
+        questionIndex: 0,
+        options: null
       });
       return false;
     }
@@ -90,9 +94,33 @@ class Quiz extends Component {
 
   renderResult() {
     const { correctAnswers } = this.state;
-    const resultRef = <Result correctAnswers={correctAnswers} />;
+    const resultRef = (
+      <Result correctAnswers={correctAnswers} retakeQuiz={this.retakeQuiz} />
+    );
     setTimeout(() => {
       this.setState({ resultRef });
+    }, 3000);
+  }
+
+  retakeQuiz() {
+    console.log('dfdsfjsdfsd');
+    const { quizData, questionIndex } = this.state;
+    const outPut = this.getRandomNumber();
+    const options = [...quizData[questionIndex].incorrect_answers];
+    options.splice(outPut, 0, quizData[questionIndex].correct_answer);
+
+    this.setState({
+      correctAnswers: 0,
+      quizIsCompleted: false,
+      startNewQuiz: true,
+      options,
+      outPut
+    });
+  }
+
+  startNewQuiz() {
+    setTimeout(() => {
+      this.setState({ isLoading: false, startNewQuiz: false, resultRef: null });
     }, 3000);
   }
 
@@ -106,7 +134,8 @@ class Quiz extends Component {
       isLoading,
       correctAnswers,
       quizIsCompleted,
-      resultRef
+      resultRef,
+      startNewQuiz
     } = this.state;
 
     console.log(userSlectedAns);
@@ -116,6 +145,10 @@ class Quiz extends Component {
     if (quizIsCompleted && !resultRef) {
       this.renderResult();
       console.log('Routing to result');
+    }
+
+    if (startNewQuiz) {
+      this.startNewQuiz();
     }
 
     return (
