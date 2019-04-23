@@ -10,6 +10,7 @@ import {
   Menu
 } from 'semantic-ui-react';
 import Loader from './Loader.jsx';
+import Result from './Result.jsx';
 
 class Quiz extends Component {
   constructor(props) {
@@ -20,12 +21,14 @@ class Quiz extends Component {
       isLoading: true,
       questionIndex: 0,
       correctAnswers: 0,
-      userSlectedAns: null
+      userSlectedAns: null,
+      quizIsCompleted: false
     };
 
     this.handleItemClick = this.handleItemClick.bind(this);
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.renderResult = this.renderResult.bind(this);
   }
 
   handleItemClick(e, { name }) {
@@ -65,7 +68,9 @@ class Quiz extends Component {
     if (questionIndex === 9) {
       this.setState({
         correctAnswers: correctAnswers + point,
-        userSlectedAns: null
+        userSlectedAns: null,
+        isLoading: true,
+        quizIsCompleted: true
       });
       return false;
     }
@@ -83,6 +88,13 @@ class Quiz extends Component {
     });
   }
 
+  renderResult() {
+    const resultRef = <Result />;
+    setTimeout(() => {
+      this.setState({ resultRef });
+    }, 3000);
+  }
+
   render() {
     const {
       quizData,
@@ -91,16 +103,23 @@ class Quiz extends Component {
       outPut,
       userSlectedAns,
       isLoading,
-      correctAnswers
+      correctAnswers,
+      quizIsCompleted,
+      resultRef
     } = this.state;
 
     console.log(userSlectedAns);
     console.log(questionIndex, outPut);
     console.log('Score ==>', correctAnswers);
 
+    if (quizIsCompleted && !resultRef) {
+      this.renderResult();
+      console.log('Routing to result');
+    }
+
     return (
       <div>
-        {isLoading && <Loader />}
+        {!quizIsCompleted && isLoading && <Loader />}
         {!isLoading && (
           <Container>
             <Segment attached>
@@ -182,6 +201,10 @@ class Quiz extends Component {
             </Segment>
           </Container>
         )}
+        {quizIsCompleted && !resultRef && (
+          <Loader text="Getting your result." />
+        )}
+        {quizIsCompleted && resultRef}
       </div>
     );
   }
