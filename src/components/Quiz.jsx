@@ -26,7 +26,7 @@ class Quiz extends Component {
   componentDidMount() {
     setTimeout(() => {
       this.setState({ isLoading: false });
-    }, 3000);
+    }, 1000);
   }
   render() {
     const { quizData } = this.props;
@@ -64,6 +64,7 @@ class Quiz extends Component {
                           }
                           onClick={this.handleItemClick}
                         >
+                          <b style={{ marginRight: '8px' }}>A.</b>
                           {quizData[0].incorrect_answers[1]}
                         </Menu.Item>
                         <Menu.Item
@@ -71,6 +72,7 @@ class Quiz extends Component {
                           active={userSlectedAns === quizData[0].correct_answer}
                           onClick={this.handleItemClick}
                         >
+                          <b style={{ marginRight: '8px' }}>B.</b>
                           {quizData[0].correct_answer}
                         </Menu.Item>
                         <Menu.Item
@@ -80,6 +82,7 @@ class Quiz extends Component {
                           }
                           onClick={this.handleItemClick}
                         >
+                          <b style={{ marginRight: '8px' }}>C.</b>
                           {quizData[0].incorrect_answers[2]}
                         </Menu.Item>
                         <Menu.Item
@@ -89,6 +92,7 @@ class Quiz extends Component {
                           }
                           onClick={this.handleItemClick}
                         >
+                          <b style={{ marginRight: '8px' }}>D.</b>
                           {quizData[0].incorrect_answers[0]}
                         </Menu.Item>
                       </Menu>
