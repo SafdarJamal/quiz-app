@@ -1,5 +1,12 @@
 import React from 'react';
-import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
+import {
+  Container,
+  Segment,
+  Item,
+  Divider,
+  Button,
+  Icon
+} from 'semantic-ui-react';
 import codeImg from '../assets/code.png';
 
 export default props => (
@@ -33,6 +40,7 @@ export default props => (
             <Item.Extra>
               <Button primary size="big" onClick={props.startQuiz}>
                 Start Quiz
+                <Icon name="right play" />
               </Button>
             </Item.Extra>
           </Item.Content>
