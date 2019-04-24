@@ -17,7 +17,7 @@ export default props => (
           <Item.Image src={codeImg} />
           <Item.Content>
             <Item.Header>
-              <h1>Open Trivia Qestions</h1>
+              <h1>Open Trivia Questions</h1>
             </Item.Header>
             <br />
             <br />
