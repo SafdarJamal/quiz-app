@@ -108,7 +108,7 @@ class Quiz extends Component {
   }
 
   retakeQuiz() {
-    console.log('dfdsfjsdfsd');
+    // console.log('Retake quiz func');
     const { quizData, questionIndex } = this.state;
     const outPut = this.getRandomNumber();
     const options = [...quizData[questionIndex].incorrect_answers];
@@ -143,13 +143,13 @@ class Quiz extends Component {
       startNewQuiz
     } = this.state;
 
-    console.log(userSlectedAns);
-    console.log(questionIndex, outPut);
-    console.log('Score ==>', correctAnswers);
+    // console.log(userSlectedAns);
+    // console.log(questionIndex, outPut);
+    // console.log('Score ==>', correctAnswers);
 
     if (quizIsCompleted && !resultRef) {
       this.renderResult();
-      console.log('Routing to result');
+      // console.log('Routing to result');
     }
 
     if (startNewQuiz) {

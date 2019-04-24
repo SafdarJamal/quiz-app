@@ -55,7 +55,7 @@ class App extends Component {
 
   render() {
     const { quizData, isQuizStart } = this.state;
-    console.log(quizData);
+    // console.log(quizData);
 
     return (
       <Fragment>

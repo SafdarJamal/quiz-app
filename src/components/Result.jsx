@@ -11,6 +11,7 @@ import {
 class Result extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       correctAnswers: props.correctAnswers,
       userScore: (props.correctAnswers * 100) / 10
@@ -20,7 +21,7 @@ class Result extends Component {
   render() {
     const { correctAnswers, userScore } = this.state;
     const { retakeQuiz, backToHome } = this.props;
-    console.log(userScore);
+    // console.log(userScore);
 
     let remarks = 'Sorry, YOU FAILED!';
     if (userScore >= 60) {
