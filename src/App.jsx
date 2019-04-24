@@ -20,6 +20,8 @@ class App extends Component {
 
     this.setData = this.setData.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
+    this.backToHome = this.backToHome.bind(this);
+    this.backToHomeHelper = this.backToHomeHelper.bind(this);
   }
 
   setData(result) {
@@ -31,11 +33,24 @@ class App extends Component {
       .then(respone => respone.json())
       .then(result => setTimeout(() => this.setData(result), 1000))
       .catch(error => console.log('API error', error));
-    // Todo: Add a function to indicate the user the  api has problem.
   }
 
   startQuiz() {
     this.setState({ isQuizStart: true });
+  }
+
+  backToHome() {
+    this.setState({ quizData: null, isQuizStart: false });
+    setTimeout(() => {
+      this.backToHomeHelper();
+    }, 3000);
+  }
+
+  backToHomeHelper() {
+    fetch(API)
+      .then(respone => respone.json())
+      .then(result => setTimeout(() => this.setData(result), 1000))
+      .catch(error => console.log('API error', error));
   }
 
   render() {
@@ -47,7 +62,9 @@ class App extends Component {
         <Header />
         {!quizData && <Loader />}
         {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {isQuizStart && <Quiz quizData={quizData} />}
+        {isQuizStart && (
+          <Quiz quizData={quizData} backToHome={this.backToHome} />
+        )}
       </Fragment>
     );
   }

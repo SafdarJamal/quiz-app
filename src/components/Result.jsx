@@ -12,7 +12,7 @@ class Result extends Component {
 
   render() {
     const { correctAnswers, userScore } = this.state;
-    const { retakeQuiz } = this.props;
+    const { retakeQuiz, backToHome } = this.props;
     console.log(userScore);
 
     let remarks = 'Sorry, YOU FAILED!';
@@ -46,7 +46,7 @@ class Result extends Component {
               <Button primary size="large" onClick={retakeQuiz}>
                 Retake Quiz
               </Button>
-              <Button color="teal" size="large">
+              <Button color="teal" size="large" onClick={backToHome}>
                 Back to Home
               </Button>
             </div>
