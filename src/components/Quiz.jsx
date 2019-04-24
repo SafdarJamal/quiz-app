@@ -45,7 +45,7 @@ class Quiz extends Component {
 
     setTimeout(() => {
       this.setState({ isLoading: false, options, outPut });
-    }, 1000);
+    }, 2000);
   }
 
   getRandomNumber() {

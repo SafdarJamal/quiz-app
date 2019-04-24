@@ -20,7 +20,6 @@ export default props => (
               <h1>Open Trivia Questions</h1>
             </Item.Header>
             <br />
-            <br />
             <Divider />
             <Item.Meta>
               <Segment size="large">
