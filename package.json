@@ -2,6 +2,11 @@
   "name": "quiz-app",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Safdar Jamal",
+    "email": "cleverprogrammer.me@gmail.com",
+    "url": "https://clever-programmer.github.io"
+  },
   "dependencies": {
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

@@ -1,10 +1,11 @@
 {
   "short_name": "Quiz App",
   "name": "Quiz App",
+  "author": "Safdar Jamal",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "favicon.png",
+      "sizes": "512x512 192x192 144x144 64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
   ],
