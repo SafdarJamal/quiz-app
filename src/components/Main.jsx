@@ -39,7 +39,7 @@ export default props => (
             <Item.Extra>
               <Button primary size="big" onClick={props.startQuiz}>
                 Start Quiz
-                <Icon name="right play" />
+                <Icon corner="top right" name="play" />
               </Button>
             </Item.Extra>
           </Item.Content>

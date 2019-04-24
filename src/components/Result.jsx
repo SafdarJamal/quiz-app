@@ -53,11 +53,11 @@ class Result extends Component {
             <div style={{ marginTop: '25px', marginBottom: '8px' }}>
               <Button primary size="big" onClick={retakeQuiz}>
                 Retake Quiz
-                <Icon name="right redo" />
+                <Icon corner="top right" name="redo" />
               </Button>
               <Button color="teal" size="big" onClick={backToHome}>
                 Back to Home
-                <Icon name="right home" />
+                <Icon corner="top right" name="home" />
               </Button>
             </div>
           </Segment>
