@@ -46,5 +46,6 @@ export default props => (
         </Item>
       </Item.Group>
     </Segment>
+    <br />
   </Container>
 );

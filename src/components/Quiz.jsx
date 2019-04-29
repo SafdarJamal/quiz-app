@@ -238,6 +238,7 @@ class Quiz extends Component {
                 </Item>
               </Item.Group>
             </Segment>
+            <br />
           </Container>
         )}
         {quizIsCompleted && !resultRef && (
