@@ -2,7 +2,7 @@
 
 Quiz App Built with React Using OpenTDB API
 
-## Building
+## Development
 
 Install dependencies:
 
@@ -19,4 +19,4 @@ npm install
 
 ## License
 
-This Quiz App is an open source software [licensed as MIT](https://github.com/clever-programmer/quiz-app/blob/master/LICENSE).
+This Quiz App is an open source software [licensed as MIT](https://github.com/safdarjamal/quiz-app/blob/master/LICENSE).
