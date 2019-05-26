@@ -32,9 +32,11 @@ class Result extends Component {
       <div>
         <Container>
           <Segment raised>
-            <Label as="a" color="red" ribbon>
+            <Label attached="top" size="huge">
               Result
             </Label>
+            <br />
+            <br />
             <Header as="h1" textAlign="center" block>
               {remarks}
             </Header>
@@ -61,6 +63,7 @@ class Result extends Component {
               </Button>
             </div>
           </Segment>
+          <br />
         </Container>
       </div>
     );
