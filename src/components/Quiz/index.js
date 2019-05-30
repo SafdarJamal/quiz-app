@@ -9,8 +9,8 @@ import {
   Message,
   Menu
 } from 'semantic-ui-react';
-import Loader from './Loader.jsx';
-import Result from './Result.jsx';
+import Loader from '../Loader';
+import Result from '../Result';
 
 class Quiz extends Component {
   constructor(props) {
@@ -134,10 +134,10 @@ class Quiz extends Component {
       quizData,
       questionIndex,
       options,
-      outPut,
+      // outPut,
       userSlectedAns,
       isLoading,
-      correctAnswers,
+      // correctAnswers,
       quizIsCompleted,
       resultRef,
       startNewQuiz

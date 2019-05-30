@@ -7,7 +7,7 @@ import {
   Button,
   Icon
 } from 'semantic-ui-react';
-import codeImg from '../assets/code.png';
+import codeImg from '../../assets/images/code.png';
 
 export default props => (
   <Container>

@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
-import Header from './components/Header.jsx';
-import Main from './components/Main.jsx';
-import Loader from './components/Loader.jsx';
-import Quiz from './components/Quiz.jsx';
+import Header from '../Header';
+import Main from '../Main';
+import Loader from '../Loader';
+import Quiz from '../Quiz';
 
 const API =
   'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';

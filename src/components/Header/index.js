@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header, Segment } from 'semantic-ui-react';
-import logo from '../assets/logo.png';
+import logo from '../../assets/images/logo.png';
 
 export default () => (
   <Segment clearing inverted raised>
