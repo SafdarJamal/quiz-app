@@ -7,11 +7,13 @@ import {
   Button,
   Icon,
   Message,
-  Menu
+  Menu,
+  Header
 } from 'semantic-ui-react';
 import Loader from '../Loader';
 import Result from '../Result';
 import Countdown from '../Countdown';
+import './index.css';
 
 class Quiz extends Component {
   constructor(props) {
@@ -158,7 +160,7 @@ class Quiz extends Component {
     }
 
     return (
-      <div>
+      <Item.Header>
         {!quizIsCompleted && isLoading && <Loader />}
         {!isLoading && (
           <Container>
@@ -166,13 +168,17 @@ class Quiz extends Component {
               <Item.Group divided>
                 <Item>
                   <Item.Content>
-                    <Item.Header>
-                      <h1>Question No.{questionIndex + 1} of 10</h1>
+                    <div className="head">
+                      <Header as="h1" floated="left">
+                        <Icon name="info circle" />
+                        <Header.Content>
+                          Question No.{questionIndex + 1} of 10
+                        </Header.Content>
+                      </Header>
                       <Countdown />
-                    </Item.Header>
-                    <br />
-                    <br />
-                    <br />
+                    </div>
+                    {/* <h1>Question No.{questionIndex + 1} of 10</h1> */}
+                    {/* <Item.Header /> */}
                     <Item.Meta>
                       <Message size="huge" floating>
                         <b>{`Q. ${quizData[questionIndex].question}`}</b>
@@ -247,7 +253,7 @@ class Quiz extends Component {
           <Loader text="Getting your result." />
         )}
         {quizIsCompleted && resultRef}
-      </div>
+      </Item.Header>
     );
   }
 }
