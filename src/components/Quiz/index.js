@@ -11,6 +11,7 @@ import {
 } from 'semantic-ui-react';
 import Loader from '../Loader';
 import Result from '../Result';
+import Countdown from '../Countdown';
 
 class Quiz extends Component {
   constructor(props) {
@@ -167,7 +168,7 @@ class Quiz extends Component {
                   <Item.Content>
                     <Item.Header>
                       <h1>Question No.{questionIndex + 1} of 10</h1>
-                      {/* <h1>1 : 45: 25</h1> */}
+                      <Countdown />
                     </Item.Header>
                     <br />
                     <br />

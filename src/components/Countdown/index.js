@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button, Popup } from 'semantic-ui-react';
 import './index.css';
 
 class Countdown extends Component {
@@ -130,12 +131,29 @@ class Countdown extends Component {
     //   </div>
     // );
     return (
-      <div className="Countdown">
-        <div className="Countdown-label">Hours : Minutes : Seconds</div>
-        <div className="Countdown-time">
-          {hours} : {minutes} : {seconds}
-        </div>
-      </div>
+      // <div className="Countdown">
+      //   <div className="Countdown-label">Hours : Minutes : Seconds</div>
+      //   <div className="Countdown-time">
+      //     {hours} : {minutes} : {seconds}
+      //   </div>
+      // </div>
+      <Button.Group size="huge" floated="right" basic>
+        <Popup
+          content="Hours"
+          trigger={<Button active>{hours}</Button>}
+          position="bottom left"
+        />
+        <Popup
+          content="Minutes"
+          trigger={<Button active>{minutes}</Button>}
+          position="bottom left"
+        />
+        <Popup
+          content="Seconds"
+          trigger={<Button active>{seconds}</Button>}
+          position="bottom left"
+        />
+      </Button.Group>
     );
   }
 }
