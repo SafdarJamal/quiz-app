@@ -167,6 +167,7 @@ class Quiz extends Component {
                   <Item.Content>
                     <Item.Header>
                       <h1>Question No.{questionIndex + 1} of 10</h1>
+                      {/* <h1>1 : 45: 25</h1> */}
                     </Item.Header>
                     <br />
                     <br />
