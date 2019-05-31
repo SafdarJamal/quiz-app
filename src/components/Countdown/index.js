@@ -5,7 +5,7 @@ class Countdown extends Component {
   state = {
     timerOn: false,
     timerStart: 0,
-    timerTime: 0
+    timerTime: 600000
   };
 
   startTimer = () => {
@@ -42,6 +42,8 @@ class Countdown extends Component {
 
   adjustTimer = input => {
     const { timerTime, timerOn } = this.state;
+    // console.log(timerTime);
+
     if (!timerOn) {
       if (input === 'incHours' && timerTime + 3600000 < 216000000) {
         this.setState({ timerTime: timerTime + 3600000 });
@@ -66,54 +68,62 @@ class Countdown extends Component {
     let hours = ('0' + Math.floor((timerTime / 3600000) % 60)).slice(-2);
 
     return (
-      <div className="Countdown">
-        <div className="Countdown-header">Countdown</div>
-        <div className="Countdown-label">Hours : Minutes : Seconds</div>
-        <div className="Countdown-display">
-          <button onClick={() => this.adjustTimer('incHours')}>&#8679;</button>
-          <button onClick={() => this.adjustTimer('incMinutes')}>
-            &#8679;
-          </button>
-          <button onClick={() => this.adjustTimer('incSeconds')}>
-            &#8679;
-          </button>
+      <div className="Box">
+        <div className="Countdown">
+          <div className="Countdown-header">Countdown</div>
+          <div className="Countdown-label">Hours : Minutes : Seconds</div>
+          <div className="Countdown-display">
+            <button onClick={() => this.adjustTimer('incHours')}>
+              &#8679;
+            </button>
+            <button onClick={() => this.adjustTimer('incMinutes')}>
+              &#8679;
+            </button>
+            <button onClick={() => this.adjustTimer('incSeconds')}>
+              &#8679;
+            </button>
 
-          <div className="Countdown-time">
-            {hours} : {minutes} : {seconds}
+            <div className="Countdown-time">
+              {hours} : {minutes} : {seconds}
+            </div>
+
+            <button onClick={() => this.adjustTimer('decHours')}>
+              &#8681;
+            </button>
+            <button onClick={() => this.adjustTimer('decMinutes')}>
+              &#8681;
+            </button>
+            <button onClick={() => this.adjustTimer('decSeconds')}>
+              &#8681;
+            </button>
           </div>
 
-          <button onClick={() => this.adjustTimer('decHours')}>&#8681;</button>
-          <button onClick={() => this.adjustTimer('decMinutes')}>
-            &#8681;
-          </button>
-          <button onClick={() => this.adjustTimer('decSeconds')}>
-            &#8681;
-          </button>
-        </div>
-
-        {timerOn === false && (timerStart === 0 || timerTime === timerStart) && (
-          <button className="Button-start" onClick={this.startTimer}>
-            Start
-          </button>
-        )}
-        {timerOn === true && timerTime >= 1000 && (
-          <button className="Button-stop" onClick={this.stopTimer}>
-            Stop
-          </button>
-        )}
-        {timerOn === false &&
-          (timerStart !== 0 && timerStart !== timerTime && timerTime !== 0) && (
+          {timerOn === false && (timerStart === 0 || timerTime === timerStart) && (
             <button className="Button-start" onClick={this.startTimer}>
-              Resume
+              Start
             </button>
           )}
+          {timerOn === true && timerTime >= 1000 && (
+            <button className="Button-stop" onClick={this.stopTimer}>
+              Stop
+            </button>
+          )}
+          {timerOn === false &&
+            (timerStart !== 0 &&
+              timerStart !== timerTime &&
+              timerTime !== 0) && (
+              <button className="Button-start" onClick={this.startTimer}>
+                Resume
+              </button>
+            )}
 
-        {(timerOn === false || timerTime < 1000) &&
-          (timerStart !== timerTime && timerStart > 0) && (
-            <button className="Button-reset" onClick={this.resetTimer}>
-              Reset
-            </button>
-          )}
+          {(timerOn === false || timerTime < 1000) &&
+            (timerStart !== timerTime && timerStart > 0) && (
+              <button className="Button-reset" onClick={this.resetTimer}>
+                Reset
+              </button>
+            )}
+        </div>
       </div>
     );
   }
