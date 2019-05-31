@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button, Popup } from 'semantic-ui-react';
-import './index.css';
 
 class Countdown extends Component {
   state = {
@@ -65,79 +64,17 @@ class Countdown extends Component {
   componentDidMount() {
     this.startTimer();
   }
+
   render() {
     const { timerTime, timerStart, timerOn } = this.state;
-    let seconds = ('0' + (Math.floor((timerTime / 1000) % 60) % 60)).slice(-2);
-    let minutes = ('0' + Math.floor((timerTime / 60000) % 60)).slice(-2);
-    let hours = ('0' + Math.floor((timerTime / 3600000) % 60)).slice(-2);
+    const hours = ('0' + Math.floor((timerTime / 3600000) % 60)).slice(-2);
+    const minutes = ('0' + Math.floor((timerTime / 60000) % 60)).slice(-2);
+    const seconds = ('0' + (Math.floor((timerTime / 1000) % 60) % 60)).slice(
+      -2
+    );
 
-    // return (
-    //   <div className="Box">
-    //     <div className="Countdown">
-    //       <div className="Countdown-header">Countdown</div>
-    //       <div className="Countdown-label">Hours : Minutes : Seconds</div>
-    //       <div className="Countdown-display">
-    //         <button onClick={() => this.adjustTimer('incHours')}>
-    //           &#8679;
-    //         </button>
-    //         <button onClick={() => this.adjustTimer('incMinutes')}>
-    //           &#8679;
-    //         </button>
-    //         <button onClick={() => this.adjustTimer('incSeconds')}>
-    //           &#8679;
-    //         </button>
-
-    //         <div className="Countdown-time">
-    //           {hours} : {minutes} : {seconds}
-    //         </div>
-
-    //         <button onClick={() => this.adjustTimer('decHours')}>
-    //           &#8681;
-    //         </button>
-    //         <button onClick={() => this.adjustTimer('decMinutes')}>
-    //           &#8681;
-    //         </button>
-    //         <button onClick={() => this.adjustTimer('decSeconds')}>
-    //           &#8681;
-    //         </button>
-    //       </div>
-
-    //       {timerOn === false && (timerStart === 0 || timerTime === timerStart) && (
-    //         <button className="Button-start" onClick={this.startTimer}>
-    //           Start
-    //         </button>
-    //       )}
-    //       {timerOn === true && timerTime >= 1000 && (
-    //         <button className="Button-stop" onClick={this.stopTimer}>
-    //           Stop
-    //         </button>
-    //       )}
-    //       {timerOn === false &&
-    //         (timerStart !== 0 &&
-    //           timerStart !== timerTime &&
-    //           timerTime !== 0) && (
-    //           <button className="Button-start" onClick={this.startTimer}>
-    //             Resume
-    //           </button>
-    //         )}
-
-    //       {(timerOn === false || timerTime < 1000) &&
-    //         (timerStart !== timerTime && timerStart > 0) && (
-    //           <button className="Button-reset" onClick={this.resetTimer}>
-    //             Reset
-    //           </button>
-    //         )}
-    //     </div>
-    //   </div>
-    // );
     return (
-      // <div className="Countdown">
-      //   <div className="Countdown-label">Hours : Minutes : Seconds</div>
-      //   <div className="Countdown-time">
-      //     {hours} : {minutes} : {seconds}
-      //   </div>
-      // </div>
-      <Button.Group size="huge" floated="right" basic>
+      <Button.Group size="massive" basic floated="right">
         <Popup
           content="Hours"
           trigger={<Button active>{hours}</Button>}

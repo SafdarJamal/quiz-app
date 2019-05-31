@@ -10,10 +10,10 @@ import {
   Menu,
   Header
 } from 'semantic-ui-react';
+
 import Loader from '../Loader';
 import Result from '../Result';
 import Countdown from '../Countdown';
-import './index.css';
 
 class Quiz extends Component {
   constructor(props) {
@@ -168,17 +168,16 @@ class Quiz extends Component {
               <Item.Group divided>
                 <Item>
                   <Item.Content>
-                    <div className="head">
-                      <Header as="h1" floated="left">
+                    <Item.Extra>
+                      <Header as="h1" block floated="left">
                         <Icon name="info circle" />
                         <Header.Content>
                           Question No.{questionIndex + 1} of 10
                         </Header.Content>
                       </Header>
                       <Countdown />
-                    </div>
-                    {/* <h1>Question No.{questionIndex + 1} of 10</h1> */}
-                    {/* <Item.Header /> */}
+                    </Item.Extra>
+                    <br />
                     <Item.Meta>
                       <Message size="huge" floating>
                         <b>{`Q. ${quizData[questionIndex].question}`}</b>
