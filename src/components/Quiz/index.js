@@ -31,6 +31,7 @@ class Quiz extends Component {
     this.handleItemClick = this.handleItemClick.bind(this);
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.timesUp = this.timesUp.bind(this);
     this.renderResult = this.renderResult.bind(this);
     this.retakeQuiz = this.retakeQuiz.bind(this);
     this.startNewQuiz = this.startNewQuiz.bind(this);
@@ -92,6 +93,17 @@ class Quiz extends Component {
       userSlectedAns: null,
       options,
       outPut
+    });
+  }
+
+  timesUp() {
+    this.setState({
+      // correctAnswers: correctAnswers + point,
+      userSlectedAns: null,
+      isLoading: true,
+      quizIsCompleted: true,
+      questionIndex: 0,
+      options: null
     });
   }
 
@@ -175,7 +187,7 @@ class Quiz extends Component {
                           Question No.{questionIndex + 1} of 10
                         </Header.Content>
                       </Header>
-                      <Countdown />
+                      <Countdown timesUp={this.timesUp} />
                     </Item.Extra>
                     <br />
                     <Item.Meta>
