@@ -98,7 +98,6 @@ class Quiz extends Component {
 
   timesUp() {
     this.setState({
-      // correctAnswers: correctAnswers + point,
       userSlectedAns: null,
       isLoading: true,
       quizIsCompleted: true,
