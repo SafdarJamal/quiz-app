@@ -16,12 +16,32 @@ class Result extends Component {
       correctAnswers: props.correctAnswers,
       userScore: (props.correctAnswers * 100) / 10
     };
+
+    this.timeConverter = this.timeConverter.bind(this);
+  }
+
+  timeConverter(value) {
+    const hours = ('0' + Math.floor((value / 3600000) % 60)).slice(-2);
+    const minutes = ('0' + Math.floor((value / 60000) % 60)).slice(-2);
+    const seconds = ('0' + (Math.floor((value / 1000) % 60) % 60)).slice(-2);
+    // console.log(hours, minutes, seconds);
+
+    return {
+      hours,
+      minutes,
+      seconds
+    };
   }
 
   render() {
     const { correctAnswers, userScore } = this.state;
-    const { retakeQuiz, backToHome } = this.props;
+    const { retakeQuiz, backToHome, takenTime } = this.props;
     // console.log(userScore);
+
+    const result = this.timeConverter(
+      takenTime.totalTime - takenTime.timerTime
+    );
+    const timeTakes = `${result.hours} : ${result.minutes} : ${result.seconds}`;
 
     let remarks = 'Sorry, YOU FAILED!';
     if (userScore >= 60) {
@@ -51,6 +71,9 @@ class Result extends Component {
             </Header>
             <Header as="h3" textAlign="center" block>
               Your Score: {userScore}
+            </Header>
+            <Header as="h3" textAlign="center" block>
+              Time Takes: {timeTakes}
             </Header>
             <div style={{ marginTop: '25px', marginBottom: '8px' }}>
               <Button primary size="big" onClick={retakeQuiz}>

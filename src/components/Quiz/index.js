@@ -7,8 +7,10 @@ import {
   Button,
   Icon,
   Message,
-  Menu
+  Menu,
+  Header
 } from 'semantic-ui-react';
+
 import Loader from '../Loader';
 import Result from '../Result';
 import Countdown from '../Countdown';
@@ -26,9 +28,13 @@ class Quiz extends Component {
       quizIsCompleted: false
     };
 
+    this.takenTime = undefined;
+
     this.handleItemClick = this.handleItemClick.bind(this);
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
+    this.timesUp = this.timesUp.bind(this);
+    this.timeAmount = this.timeAmount.bind(this);
     this.renderResult = this.renderResult.bind(this);
     this.retakeQuiz = this.retakeQuiz.bind(this);
     this.startNewQuiz = this.startNewQuiz.bind(this);
@@ -93,17 +99,37 @@ class Quiz extends Component {
     });
   }
 
+  timesUp() {
+    this.setState({
+      userSlectedAns: null,
+      isLoading: true,
+      quizIsCompleted: true,
+      questionIndex: 0,
+      options: null
+    });
+  }
+
+  timeAmount(timerTime, totalTime) {
+    this.takenTime = {
+      timerTime,
+      totalTime
+    };
+  }
+
   renderResult() {
-    const { correctAnswers } = this.state;
-    const { backToHome } = this.props;
-    const resultRef = (
-      <Result
-        correctAnswers={correctAnswers}
-        retakeQuiz={this.retakeQuiz}
-        backToHome={backToHome}
-      />
-    );
     setTimeout(() => {
+      const { correctAnswers } = this.state;
+      const { backToHome } = this.props;
+
+      const resultRef = (
+        <Result
+          correctAnswers={correctAnswers}
+          retakeQuiz={this.retakeQuiz}
+          backToHome={backToHome}
+          takenTime={this.takenTime}
+        />
+      );
+
       this.setState({ resultRef });
     }, 3000);
   }
@@ -158,7 +184,7 @@ class Quiz extends Component {
     }
 
     return (
-      <div>
+      <Item.Header>
         {!quizIsCompleted && isLoading && <Loader />}
         {!isLoading && (
           <Container>
@@ -166,12 +192,18 @@ class Quiz extends Component {
               <Item.Group divided>
                 <Item>
                   <Item.Content>
-                    <Item.Header>
-                      <h1>Question No.{questionIndex + 1} of 10</h1>
-                      <Countdown />
-                    </Item.Header>
-                    <br />
-                    <br />
+                    <Item.Extra>
+                      <Header as="h1" block floated="left">
+                        <Icon name="info circle" />
+                        <Header.Content>
+                          Question No.{questionIndex + 1} of 10
+                        </Header.Content>
+                      </Header>
+                      <Countdown
+                        timesUp={this.timesUp}
+                        timeAmount={this.timeAmount}
+                      />
+                    </Item.Extra>
                     <br />
                     <Item.Meta>
                       <Message size="huge" floating>
@@ -247,7 +279,7 @@ class Quiz extends Component {
           <Loader text="Getting your result." />
         )}
         {quizIsCompleted && resultRef}
-      </div>
+      </Item.Header>
     );
   }
 }
