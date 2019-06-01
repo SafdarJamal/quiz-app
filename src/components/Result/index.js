@@ -20,8 +20,9 @@ class Result extends Component {
 
   render() {
     const { correctAnswers, userScore } = this.state;
-    const { retakeQuiz, backToHome } = this.props;
+    const { retakeQuiz, backToHome, takenTime } = this.props;
     // console.log(userScore);
+    console.log(takenTime);
 
     let remarks = 'Sorry, YOU FAILED!';
     if (userScore >= 60) {
@@ -51,6 +52,9 @@ class Result extends Component {
             </Header>
             <Header as="h3" textAlign="center" block>
               Your Score: {userScore}
+            </Header>
+            <Header as="h3" textAlign="center" block>
+              Time Takes: {takenTime}
             </Header>
             <div style={{ marginTop: '25px', marginBottom: '8px' }}>
               <Button primary size="big" onClick={retakeQuiz}>

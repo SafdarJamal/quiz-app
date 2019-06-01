@@ -9,7 +9,7 @@ class Countdown extends Component {
     this.state = {
       timerOn: false,
       timerStart: 0,
-      timerTime: 60000
+      timerTime: 15000
     };
   }
 
@@ -25,13 +25,12 @@ class Countdown extends Component {
         });
       } else {
         clearInterval(this.timer);
-        const { timesUp } = this.props;
         Swal.fire({
           title: 'YOUR TIME IS UP',
           type: 'info',
           timer: 5000,
           onClose: () => {
-            timesUp();
+            this.props.timesUp();
           }
         });
       }
@@ -44,6 +43,7 @@ class Countdown extends Component {
 
   componentWillUnmount() {
     clearInterval(this.timer);
+    this.props.timeAmount(this.state.timerTime);
   }
 
   render() {

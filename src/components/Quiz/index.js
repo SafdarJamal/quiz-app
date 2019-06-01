@@ -28,6 +28,8 @@ class Quiz extends Component {
       quizIsCompleted: false
     };
 
+    this.takenTime = undefined;
+
     this.handleItemClick = this.handleItemClick.bind(this);
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -106,17 +108,24 @@ class Quiz extends Component {
     });
   }
 
+  timeAmount(timerTime) {
+    this.takenTime = timerTime;
+  }
+
   renderResult() {
-    const { correctAnswers } = this.state;
-    const { backToHome } = this.props;
-    const resultRef = (
-      <Result
-        correctAnswers={correctAnswers}
-        retakeQuiz={this.retakeQuiz}
-        backToHome={backToHome}
-      />
-    );
     setTimeout(() => {
+      const { correctAnswers } = this.state;
+      const { backToHome } = this.props;
+
+      const resultRef = (
+        <Result
+          correctAnswers={correctAnswers}
+          retakeQuiz={this.retakeQuiz}
+          backToHome={backToHome}
+          takenTime={this.takenTime}
+        />
+      );
+
       this.setState({ resultRef });
     }, 3000);
   }
@@ -186,7 +195,10 @@ class Quiz extends Component {
                           Question No.{questionIndex + 1} of 10
                         </Header.Content>
                       </Header>
-                      <Countdown timesUp={this.timesUp} />
+                      <Countdown
+                        timesUp={this.timesUp}
+                        timeAmount={this.timeAmount}
+                      />
                     </Item.Extra>
                     <br />
                     <Item.Meta>
