@@ -34,13 +34,20 @@ export default props => (
               <Segment size="large">
                 Questions Type: <b>Multiple Choice</b>
               </Segment>
+              <Segment size="large">
+                Available Time: <b>5 Minutes</b>
+              </Segment>
             </Item.Meta>
             <Divider />
             <Item.Extra>
-              <Button primary size="big" onClick={props.startQuiz}>
-                Start Quiz
-                <Icon corner="top right" name="play" />
-              </Button>
+              <Button
+                primary
+                content="Start Quiz"
+                onClick={props.startQuiz}
+                size="big"
+                icon="play"
+                labelPosition="right"
+              />
             </Item.Extra>
           </Item.Content>
         </Item>
