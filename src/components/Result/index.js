@@ -73,7 +73,7 @@ class Result extends Component {
               Your Score: {userScore}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Time Takes: {timeTakes}
+              {`Time Takes: ${timeTakes}`}
             </Header>
             <div style={{ marginTop: '25px', marginBottom: '8px' }}>
               <Button primary size="big" onClick={retakeQuiz}>
