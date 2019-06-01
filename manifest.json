@@ -4,13 +4,26 @@
   "author": "Safdar Jamal",
   "icons": [
     {
-      "src": "favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "./ms-icon-144x144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    },
+    {
+      "src": "./android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "./android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "lang": "en-Us",
+  "description": "Quiz App Built with React Using OpenTDB API",
+  "orientation": "portrait-primary",
+  "theme_color": "#ffffff",
+  "background_color": "#D0D9DD"
 }
