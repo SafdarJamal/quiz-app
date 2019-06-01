@@ -8,16 +8,16 @@ class Countdown extends Component {
 
     this.state = {
       timerStart: 0,
-      timerTime: 120000,
-      totalTime: 120000
+      timerTime: 240000,
+      totalTime: 240000
     };
   }
 
   startTimer() {
     this.timer = setInterval(() => {
-      const { timerTime } = this.state;
+      // const { timerTime } = this.state;
+      // console.log(timerTime);
       const newTime = this.state.timerTime - 1000;
-      console.log(timerTime);
 
       if (newTime >= 0) {
         this.setState({
@@ -34,7 +34,7 @@ class Countdown extends Component {
           }
         });
       }
-    }, 1000);
+    }, 990);
   }
 
   componentDidMount() {

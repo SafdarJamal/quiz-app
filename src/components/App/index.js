@@ -42,7 +42,7 @@ class App extends Component {
     this.setState({ quizData: null, isQuizStart: false });
     setTimeout(() => {
       this.backToHomeHelper();
-    }, 3000);
+    }, 1000);
   }
 
   backToHomeHelper() {

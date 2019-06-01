@@ -28,7 +28,7 @@ export default props => (
                 Questions Type: <b>Multiple Choice</b>
               </Segment>
               <Segment size="large">
-                Available Time: <b>5 Minutes</b>
+                Available Time: <b>4 Minutes</b>
               </Segment>
             </Item.Meta>
             <Divider />

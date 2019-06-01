@@ -153,7 +153,7 @@ class Quiz extends Component {
   startNewQuiz() {
     setTimeout(() => {
       this.setState({ isLoading: false, startNewQuiz: false, resultRef: null });
-    }, 3000);
+    }, 2000);
   }
 
   render() {

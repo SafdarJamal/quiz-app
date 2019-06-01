@@ -68,7 +68,7 @@ class Result extends Component {
             <Header as="h3" textAlign="center" block>
               {`Time Takes: ${timeTakes}`}
             </Header>
-            <div style={{ marginTop: '25px', marginBottom: '8px' }}>
+            <div style={{ marginTop: 35 }}>
               <Button
                 primary
                 content="Retake Quiz"
@@ -76,6 +76,7 @@ class Result extends Component {
                 size="big"
                 icon="redo"
                 labelPosition="right"
+                style={{ marginRight: 15, marginBottom: 8 }}
               />
               <Button
                 color="teal"
@@ -84,6 +85,7 @@ class Result extends Component {
                 size="big"
                 icon="home"
                 labelPosition="right"
+                style={{ marginBottom: 8 }}
               />
             </div>
           </Segment>
