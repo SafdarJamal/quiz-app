@@ -251,21 +251,26 @@ class Quiz extends Component {
                     <Divider />
                     <Item.Extra>
                       {!userSlectedAns && (
-                        <Button primary floated="right" size="big" disabled>
-                          Next
-                          <Icon name="right chevron" />
-                        </Button>
+                        <Button
+                          primary
+                          content="Next"
+                          floated="right"
+                          disabled
+                          size="big"
+                          icon="right chevron"
+                          labelPosition="right"
+                        />
                       )}
                       {userSlectedAns && (
                         <Button
                           primary
+                          content="Next"
+                          onClick={this.handleNext}
                           floated="right"
                           size="big"
-                          onClick={this.handleNext}
-                        >
-                          Next
-                          <Icon name="right chevron" />
-                        </Button>
+                          icon="right chevron"
+                          labelPosition="right"
+                        />
                       )}
                     </Item.Extra>
                   </Item.Content>

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Container,
-  Segment,
-  Item,
-  Divider,
-  Button,
-  Icon
-} from 'semantic-ui-react';
+import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
 import codeImg from '../../assets/images/code.png';
 
 export default props => (

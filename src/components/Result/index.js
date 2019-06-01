@@ -1,12 +1,5 @@
 import React, { Component } from 'react';
-import {
-  Container,
-  Segment,
-  Label,
-  Header,
-  Button,
-  Icon
-} from 'semantic-ui-react';
+import { Container, Segment, Label, Header, Button } from 'semantic-ui-react';
 
 class Result extends Component {
   constructor(props) {
@@ -76,14 +69,22 @@ class Result extends Component {
               {`Time Takes: ${timeTakes}`}
             </Header>
             <div style={{ marginTop: '25px', marginBottom: '8px' }}>
-              <Button primary size="big" onClick={retakeQuiz}>
-                Retake Quiz
-                <Icon corner="top right" name="redo" />
-              </Button>
-              <Button color="teal" size="big" onClick={backToHome}>
-                Back to Home
-                <Icon corner="top right" name="home" />
-              </Button>
+              <Button
+                primary
+                content="Retake Quiz"
+                onClick={retakeQuiz}
+                size="big"
+                icon="redo"
+                labelPosition="right"
+              />
+              <Button
+                color="teal"
+                content="Back to Home"
+                onClick={backToHome}
+                size="big"
+                icon="home"
+                labelPosition="right"
+              />
             </div>
           </Segment>
           <br />
