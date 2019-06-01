@@ -2,7 +2,7 @@
 
 Quiz App Built with React Using OpenTDB API
 
-<p>
+<p align="center">
   <img src="./screenshot.png" width="650" alt='Quiz App in Action'>
 </p>
 
