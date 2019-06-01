@@ -7,9 +7,9 @@ class Countdown extends Component {
     super(props);
 
     this.state = {
-      timerOn: false,
       timerStart: 0,
-      timerTime: 15000
+      timerTime: 120000,
+      totalTime: 120000
     };
   }
 
@@ -43,7 +43,8 @@ class Countdown extends Component {
 
   componentWillUnmount() {
     clearInterval(this.timer);
-    this.props.timeAmount(this.state.timerTime);
+    const { timerTime, totalTime } = this.state;
+    this.props.timeAmount(timerTime, totalTime);
   }
 
   render() {

@@ -34,6 +34,7 @@ class Quiz extends Component {
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.timesUp = this.timesUp.bind(this);
+    this.timeAmount = this.timeAmount.bind(this);
     this.renderResult = this.renderResult.bind(this);
     this.retakeQuiz = this.retakeQuiz.bind(this);
     this.startNewQuiz = this.startNewQuiz.bind(this);
@@ -108,8 +109,11 @@ class Quiz extends Component {
     });
   }
 
-  timeAmount(timerTime) {
-    this.takenTime = timerTime;
+  timeAmount(timerTime, totalTime) {
+    this.takenTime = {
+      timerTime,
+      totalTime
+    };
   }
 
   renderResult() {
