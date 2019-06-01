@@ -2,6 +2,10 @@
 
 Quiz App Built with React Using OpenTDB API
 
+<p>
+  <img src="./screenshot.png" width="650" alt='Quiz App in Action'>
+</p>
+
 ## Development
 
 Install dependencies:
