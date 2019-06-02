@@ -1,6 +1,6 @@
 {
   "short_name": "QuizApp",
-  "name": "The QuizApp",
+  "name": "QuizApp",
   "author": "Safdar Jamal",
   "icons": [
     {
@@ -39,6 +39,6 @@
   "orientation": "portrait-primary",
   "lang": "en-Us",
   "description": "Quiz App Built with React Using OpenTDB API",
-  "theme_color": "#1B1C1D",
+  "theme_color": "#D0D9DD",
   "background_color": "#D0D9DD"
 }
