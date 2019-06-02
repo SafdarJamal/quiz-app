@@ -52,7 +52,7 @@ class Quiz extends Component {
 
     setTimeout(() => {
       this.setState({ isLoading: false, options, outPut });
-    }, 2000);
+    }, 1000);
   }
 
   getRandomNumber() {
@@ -131,7 +131,7 @@ class Quiz extends Component {
       );
 
       this.setState({ resultRef });
-    }, 3000);
+    }, 2000);
   }
 
   retakeQuiz() {
@@ -153,7 +153,7 @@ class Quiz extends Component {
   startNewQuiz() {
     setTimeout(() => {
       this.setState({ isLoading: false, startNewQuiz: false, resultRef: null });
-    }, 2000);
+    }, 1000);
   }
 
   render() {
