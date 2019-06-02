@@ -6,6 +6,11 @@
     {
       "src": "./ms-icon-144x144.png",
       "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "./ms-icon-144x144.png",
+      "type": "image/png",
       "sizes": "144x144"
     },
     {
@@ -24,6 +29,6 @@
   "orientation": "portrait-primary",
   "lang": "en-Us",
   "description": "Quiz App Built with React Using OpenTDB API",
-  "theme_color": "#D0D9DD",
+  "theme_color": "#1B1C1D",
   "background_color": "#D0D9DD"
 }
