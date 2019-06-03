@@ -5,16 +5,12 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { promptEvent: null };
+    this.state = { promptEvent: null, appAccepted: false };
 
     window.addEventListener('beforeinstallprompt', e => {
       e.preventDefault();
-      if (this.state.promptEvent === null) {
-        console.log('Loooging');
-        this.setState({ promptEvent: e });
-      } else {
-        console.log('Booooooo');
-      }
+      console.log('Loooging');
+      this.setState({ promptEvent: e });
     });
 
     this.installApp = this.installApp.bind(this);
@@ -28,18 +24,27 @@ class Header extends Component {
     promptEvent.userChoice.then(result => {
       if (result.outcome === 'accepted') {
         console.log('User accepted the A2HS prompt');
-        // console.log('==>', this.promptEvent);
+        this.setState({ appAccepted: true });
       } else {
         console.log('User dismissed the A2HS prompt');
-        // console.log('==>', this.promptEvent);
       }
     });
   }
 
   render() {
+    const { promptEvent, appAccepted } = this.state;
+
+    let isAppInstalled = false;
+    if (
+      window.matchMedia('(display-mode: standalone)').matches ||
+      appAccepted
+    ) {
+      isAppInstalled = true;
+    }
+
     return (
       <Menu stackable inverted size="massive">
-        <Menu.Item actives>
+        <Menu.Item>
           <h1
             style={{
               color: '#2185D0',
@@ -50,18 +55,20 @@ class Header extends Component {
           </h1>
         </Menu.Item>
 
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Button
-              color="teal"
-              content="Install App"
-              size="big"
-              icon="app store"
-              labelPosition="left"
-              onClick={this.installApp}
-            />
-          </Menu.Item>
-        </Menu.Menu>
+        {promptEvent && !isAppInstalled && (
+          <Menu.Menu position="right">
+            <Menu.Item>
+              <Button
+                color="teal"
+                content="Install App"
+                size="big"
+                icon="app store"
+                labelPosition="left"
+                onClick={this.installApp}
+              />
+            </Menu.Item>
+          </Menu.Menu>
+        )}
       </Menu>
     );
   }
