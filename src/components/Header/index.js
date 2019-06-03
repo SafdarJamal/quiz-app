@@ -5,25 +5,33 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.promptEvent = null;
+    this.state = { promptEvent: null };
 
     window.addEventListener('beforeinstallprompt', e => {
       e.preventDefault();
-      this.promptEvent = e;
+      if (this.state.promptEvent === null) {
+        console.log('Loooging');
+        this.setState({ promptEvent: e });
+      } else {
+        console.log('Booooooo');
+      }
     });
+
+    this.installApp = this.installApp.bind(this);
   }
 
   installApp() {
-    console.log('Init Func ===', this.promptEvent);
+    const { promptEvent } = this.state;
+    console.log('Init Func ===', promptEvent);
 
-    this.promptEvent.prompt();
-    this.promptEvent.userChoice.then(result => {
+    promptEvent.prompt();
+    promptEvent.userChoice.then(result => {
       if (result.outcome === 'accepted') {
         console.log('User accepted the A2HS prompt');
-        console.log('==>', this.promptEvent);
+        // console.log('==>', this.promptEvent);
       } else {
         console.log('User dismissed the A2HS prompt');
-        console.log('==>', this.promptEvent);
+        // console.log('==>', this.promptEvent);
       }
     });
   }
@@ -58,12 +66,5 @@ class Header extends Component {
     );
   }
 }
-
-// let promptEvent;
-
-// window.addEventListener('beforeinstallprompt', e => {
-//   e.preventDefault();
-//   promptEvent = e;
-// });
 
 export default Header;
