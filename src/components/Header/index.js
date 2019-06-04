@@ -9,7 +9,7 @@ class Header extends Component {
 
     window.addEventListener('beforeinstallprompt', e => {
       e.preventDefault();
-      console.log('Loooging');
+      // console.log('Loooging');
       this.setState({ promptEvent: e });
     });
 
@@ -18,15 +18,15 @@ class Header extends Component {
 
   installApp() {
     const { promptEvent } = this.state;
-    console.log('Init Func ===', promptEvent);
+    // console.log('Init Func ===', promptEvent);
 
     promptEvent.prompt();
     promptEvent.userChoice.then(result => {
       if (result.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
+        // console.log('User accepted the A2HS prompt');
         this.setState({ appAccepted: true });
       } else {
-        console.log('User dismissed the A2HS prompt');
+        // console.log('User dismissed the A2HS prompt');
       }
     });
   }
