@@ -10,6 +10,8 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
+import Swal from 'sweetalert2';
+
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
     // [::1] is the IPv6 localhost address.
@@ -42,8 +44,7 @@ export function register(config) {
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
           console.log(
-            'This web app is being served cache-first by a service ' +
-              'worker. To learn more, visit https://bit.ly/CRA-PWA'
+            'This web app is being served cache-first by a service worker.'
           );
         });
       } else {
@@ -71,7 +72,7 @@ function registerValidSW(swUrl, config) {
               // content until all client tabs are closed.
               console.log(
                 'New content is available and will be used when all ' +
-                  'tabs for this page are closed. See https://bit.ly/CRA-PWA.'
+                  'tabs for this page are closed.'
               );
 
               // Execute callback
@@ -83,6 +84,14 @@ function registerValidSW(swUrl, config) {
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
               console.log('Content is cached for offline use.');
+              Swal.fire({
+                toast: 'true',
+                position: 'bottom',
+                type: 'success',
+                title: 'App is ready to work offline.',
+                showConfirmButton: false,
+                timer: 6000
+              });
 
               // Execute callback
               if (config && config.onSuccess) {
