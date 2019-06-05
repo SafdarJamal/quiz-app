@@ -5,6 +5,7 @@ import codeImg from '../../assets/images/code.png';
 import Select from '../Select';
 import CATEGORIES from '../../constants/categories';
 import DIFFICULTY from '../../constants/difficulty';
+import QUESTIONS_TYPE from '../../constants/questionsType';
 
 export default props => (
   <Container>
@@ -33,7 +34,8 @@ export default props => (
                 Passing Score: <b>60 out of 100</b>
               </Segment>
               <Segment size="large">
-                Questions Type: <b>Multiple Choice</b>
+                {/* Questions Type: <b>Multiple Choice</b> */}
+                <Select options={QUESTIONS_TYPE} text="Select Questions Type" />
               </Segment>
               <Segment size="large">
                 Available Time: <b>4 Minutes</b>
