@@ -2,6 +2,8 @@ import React from 'react';
 import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
 import codeImg from '../../assets/images/code.png';
 
+import Select from '../Select';
+
 export default props => (
   <Container>
     <Segment raised>
@@ -16,7 +18,8 @@ export default props => (
             <Divider />
             <Item.Meta>
               <Segment size="large">
-                Category: <b>Computers and Technology</b>
+                {/* Category: <b>Computers and Technology</b> */}
+                <Select />
               </Segment>
               <Segment size="large">
                 No. of Questions: <b>10</b>
