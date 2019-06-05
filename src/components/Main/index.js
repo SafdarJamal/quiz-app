@@ -6,6 +6,7 @@ import Select from '../Select';
 import CATEGORIES from '../../constants/categories';
 import DIFFICULTY from '../../constants/difficulty';
 import QUESTIONS_TYPE from '../../constants/questionsType';
+import NUM_OF_QUESTIONS from '../../constants/numOfQuestions';
 
 export default props => (
   <Container>
@@ -21,11 +22,13 @@ export default props => (
             <Divider />
             <Item.Meta>
               <Segment size="large">
-                {/* Category: <b>Computers and Technology</b> */}
                 <Select options={CATEGORIES} text="Select Quiz Category" />
               </Segment>
               <Segment size="large">
-                No. of Questions: <b>10</b>
+                <Select
+                  options={NUM_OF_QUESTIONS}
+                  text="Select No. of Questions"
+                />
               </Segment>
               <Segment size="large">
                 <Select options={DIFFICULTY} text="Select Difficulty Level" />
@@ -34,7 +37,6 @@ export default props => (
                 Passing Score: <b>60 out of 100</b>
               </Segment>
               <Segment size="large">
-                {/* Questions Type: <b>Multiple Choice</b> */}
                 <Select options={QUESTIONS_TYPE} text="Select Questions Type" />
               </Segment>
               <Segment size="large">
