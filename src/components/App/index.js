@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import Header from '../Header';
 import Main from '../Main';
-import Loader from '../Loader';
+import Placeholder from '../Placeholder';
 import Quiz from '../Quiz';
 
 const API =
@@ -59,7 +59,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header />
-        {!quizData && <Loader />}
+        {!quizData && <Placeholder />}
         {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
         {isQuizStart && (
           <Quiz quizData={quizData} backToHome={this.backToHome} />

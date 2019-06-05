@@ -38,7 +38,7 @@ export default props => (
                 text="Select Countdown Time (In Minutes)"
               />
               <Segment>
-                Passing Score: <b>60 out of 100</b>
+                <b>Passing Score is 60 out of 100</b>
               </Segment>
             </Item.Meta>
             <Divider />

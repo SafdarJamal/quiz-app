@@ -26,6 +26,11 @@ export default () => (
           <Placeholder.Line length="long" />
           <Placeholder.Line length="long" />
           <Placeholder.Line length="full" />
+          <Placeholder.Line length="long" />
+          <Placeholder.Line length="full" />
+          <Placeholder.Line length="long" />
+          <Placeholder.Line length="long" />
+          <Placeholder.Line length="full" />
         </Placeholder.Paragraph>
       </Placeholder>
     </Segment>
