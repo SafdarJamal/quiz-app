@@ -1,61 +1,135 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
 import codeImg from '../../assets/images/code.png';
 
 import Select from '../Select';
 import CATEGORIES from '../../constants/categories';
+import NUM_OF_QUESTIONS from '../../constants/numOfQuestions';
 import DIFFICULTY from '../../constants/difficulty';
 import QUESTIONS_TYPE from '../../constants/questionsType';
-import NUM_OF_QUESTIONS from '../../constants/numOfQuestions';
 import COUNTDOWN_TIME from '../../constants/countdownTime';
 
-export default props => (
-  <Container>
-    <Segment raised>
-      <Item.Group divided>
-        <Item>
-          <Item.Image src={codeImg} />
-          <Item.Content>
-            <Item.Header>
-              <h1>Open Trivia Questions</h1>
-            </Item.Header>
-            <br />
-            <Divider />
-            <Item.Meta>
-              <Select options={CATEGORIES} text="Select Quiz Category" />
-              <br />
-              <Select
-                options={NUM_OF_QUESTIONS}
-                text="Select No. of Questions"
-              />
-              <br />
-              <Select options={DIFFICULTY} text="Select Difficulty Level" />
-              <br />
-              <Select options={QUESTIONS_TYPE} text="Select Questions Type" />
-              <br />
-              <Select
-                options={COUNTDOWN_TIME}
-                text="Select Countdown Time (In Minutes)"
-              />
-              <Segment>
-                <b>Passing Score is 60 out of 100</b>
-              </Segment>
-            </Item.Meta>
-            <Divider />
-            <Item.Extra>
-              <Button
-                primary
-                content="Start Quiz"
-                onClick={props.startQuiz}
-                size="big"
-                icon="play"
-                labelPosition="right"
-              />
-            </Item.Extra>
-          </Item.Content>
-        </Item>
-      </Item.Group>
-    </Segment>
-    <br />
-  </Container>
-);
+class Main extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+
+    this.setCategory = this.setCategory.bind(this);
+    this.setNumOfQ = this.setNumOfQ.bind(this);
+    this.setDifficulty = this.setDifficulty.bind(this);
+    this.setQType = this.setQType.bind(this);
+    this.setTime = this.setTime.bind(this);
+  }
+
+  setCategory(category) {
+    console.log(category);
+
+    this.setState({ category });
+  }
+
+  setNumOfQ(numOfQ) {
+    this.setState({ numOfQ });
+  }
+
+  setDifficulty(difficulty) {
+    this.setState({ difficulty });
+  }
+
+  setQType(type) {
+    this.setState({ type });
+  }
+
+  setTime(time) {
+    this.setState({ time });
+  }
+
+  render() {
+    const { category, numOfQ, difficulty, type, time } = this.state;
+    console.log(category, numOfQ, difficulty, type, time);
+
+    let allFieldsSelected = false;
+    if (category && numOfQ && difficulty && type && time) {
+      allFieldsSelected = true;
+    }
+
+    return (
+      <Container>
+        <Segment raised>
+          <Item.Group divided>
+            <Item>
+              <Item.Image src={codeImg} />
+              <Item.Content>
+                <Item.Header>
+                  <h1>Open Trivia Questions</h1>
+                </Item.Header>
+                <br />
+                <Divider />
+                <Item.Meta>
+                  <Select
+                    options={CATEGORIES}
+                    setValue={this.setCategory}
+                    text="Select Quiz Category"
+                  />
+                  <br />
+                  <Select
+                    options={NUM_OF_QUESTIONS}
+                    setValue={this.setNumOfQ}
+                    text="Select No. of Questions"
+                  />
+                  <br />
+                  <Select
+                    options={DIFFICULTY}
+                    setValue={this.setDifficulty}
+                    text="Select Difficulty Level"
+                  />
+                  <br />
+                  <Select
+                    options={QUESTIONS_TYPE}
+                    setValue={this.setQType}
+                    text="Select Questions Type"
+                  />
+                  <br />
+                  <Select
+                    options={COUNTDOWN_TIME}
+                    setValue={this.setTime}
+                    text="Select Countdown Time (In Minutes)"
+                  />
+                  <Segment>
+                    <b>Passing Score is 60 out of 100</b>
+                  </Segment>
+                </Item.Meta>
+                <Divider />
+                <Item.Extra>
+                  {!allFieldsSelected && (
+                    <Button
+                      primary
+                      content="Start Quiz"
+                      disabled
+                      size="big"
+                      icon="play"
+                      labelPosition="right"
+                    />
+                  )}
+                  {allFieldsSelected && (
+                    <Button
+                      primary
+                      content="Start Quiz"
+                      onClick={this.props.startQuiz}
+                      size="big"
+                      icon="play"
+                      labelPosition="right"
+                    />
+                  )}
+                </Item.Extra>
+              </Item.Content>
+            </Item>
+          </Item.Group>
+        </Segment>
+        <br />
+      </Container>
+    );
+  }
+}
+
+export default Main;

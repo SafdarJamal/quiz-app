@@ -5,9 +5,9 @@ import Main from '../Main';
 import Placeholder from '../Placeholder';
 import Quiz from '../Quiz';
 
-import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
+import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../constants';
 
-const API = `${PATH_BASE}${AMOUNT}&${CATEGORY}&${DIFFICULTY}&${TYPE}`;
+const API = `${PATH_BASE}${AMOUNT}12&${CATEGORY}&${DIFFICULTY}&${TYPE}`;
 
 class App extends Component {
   constructor(props) {

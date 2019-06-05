@@ -4,11 +4,9 @@ import { Dropdown } from 'semantic-ui-react';
 export default props => (
   <Dropdown
     placeholder={props.text}
-    onChange={handleChange}
+    options={props.options}
     fluid
     selection
-    options={props.options}
+    onChange={(e, { value }) => props.setValue(value)}
   />
 );
-
-const handleChange = (e, { value }) => console.log(value);
