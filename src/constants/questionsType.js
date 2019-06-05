@@ -1,8 +1,8 @@
 const QUESTIONS_TYPE = [
   {
-    key: '',
+    key: '0',
     text: 'Any Type',
-    value: ''
+    value: '0'
   },
   {
     key: 'multiple',

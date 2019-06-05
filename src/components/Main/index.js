@@ -7,6 +7,7 @@ import CATEGORIES from '../../constants/categories';
 import DIFFICULTY from '../../constants/difficulty';
 import QUESTIONS_TYPE from '../../constants/questionsType';
 import NUM_OF_QUESTIONS from '../../constants/numOfQuestions';
+import COUNTDOWN_TIME from '../../constants/countdownTime';
 
 export default props => (
   <Container>
@@ -21,26 +22,23 @@ export default props => (
             <br />
             <Divider />
             <Item.Meta>
-              <Segment size="large">
-                <Select options={CATEGORIES} text="Select Quiz Category" />
-              </Segment>
-              <Segment size="large">
-                <Select
-                  options={NUM_OF_QUESTIONS}
-                  text="Select No. of Questions"
-                />
-              </Segment>
-              <Segment size="large">
-                <Select options={DIFFICULTY} text="Select Difficulty Level" />
-              </Segment>
-              <Segment size="large">
+              <Select options={CATEGORIES} text="Select Quiz Category" />
+              <br />
+              <Select
+                options={NUM_OF_QUESTIONS}
+                text="Select No. of Questions"
+              />
+              <br />
+              <Select options={DIFFICULTY} text="Select Difficulty Level" />
+              <br />
+              <Select options={QUESTIONS_TYPE} text="Select Questions Type" />
+              <br />
+              <Select
+                options={COUNTDOWN_TIME}
+                text="Select Countdown Time (In Minutes)"
+              />
+              <Segment>
                 Passing Score: <b>60 out of 100</b>
-              </Segment>
-              <Segment size="large">
-                <Select options={QUESTIONS_TYPE} text="Select Questions Type" />
-              </Segment>
-              <Segment size="large">
-                Available Time: <b>4 Minutes</b>
               </Segment>
             </Item.Meta>
             <Divider />

@@ -1,8 +1,8 @@
 const CATEGORIES = [
   {
-    key: '',
+    key: '0',
     text: 'Any Category',
-    value: ''
+    value: '0'
   },
   {
     key: '9',
