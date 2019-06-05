@@ -5,8 +5,9 @@ import Main from '../Main';
 import Placeholder from '../Placeholder';
 import Quiz from '../Quiz';
 
-const API =
-  'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';
+import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
+
+const API = `${PATH_BASE}${AMOUNT}&${CATEGORY}&${DIFFICULTY}&${TYPE}`;
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends Component {
   }
 
   setData(result) {
+    console.log(result.results);
     this.setState({ quizData: result.results });
   }
 
