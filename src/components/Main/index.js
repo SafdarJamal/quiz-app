@@ -4,6 +4,7 @@ import codeImg from '../../assets/images/code.png';
 
 import Select from '../Select';
 import CATEGORIES from '../../constants/categories';
+import DIFFICULTY from '../../constants/difficulty';
 
 export default props => (
   <Container>
@@ -20,10 +21,13 @@ export default props => (
             <Item.Meta>
               <Segment size="large">
                 {/* Category: <b>Computers and Technology</b> */}
-                <Select options={CATEGORIES} />
+                <Select options={CATEGORIES} text="Select Quiz Category" />
               </Segment>
               <Segment size="large">
                 No. of Questions: <b>10</b>
+              </Segment>
+              <Segment size="large">
+                <Select options={DIFFICULTY} text="Select Difficulty Level" />
               </Segment>
               <Segment size="large">
                 Passing Score: <b>60 out of 100</b>
