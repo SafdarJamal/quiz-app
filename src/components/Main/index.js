@@ -3,6 +3,7 @@ import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
 import codeImg from '../../assets/images/code.png';
 
 import Select from '../Select';
+import CATEGORIES from '../../constants/categories';
 
 export default props => (
   <Container>
@@ -19,7 +20,7 @@ export default props => (
             <Item.Meta>
               <Segment size="large">
                 {/* Category: <b>Computers and Technology</b> */}
-                <Select />
+                <Select options={CATEGORIES} />
               </Segment>
               <Segment size="large">
                 No. of Questions: <b>10</b>
