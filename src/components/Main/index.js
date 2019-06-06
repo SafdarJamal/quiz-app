@@ -49,7 +49,10 @@ class Main extends Component {
     console.log(category, numOfQ, difficulty, type, time);
 
     let allFieldsSelected = false;
+    let selectedValues = [];
+
     if (category && numOfQ && difficulty && type && time) {
+      selectedValues = [category, numOfQ, difficulty, type, time];
       allFieldsSelected = true;
     }
 
@@ -115,7 +118,7 @@ class Main extends Component {
                     <Button
                       primary
                       content="Start Quiz"
-                      onClick={this.props.startQuiz}
+                      onClick={() => this.props.startQuiz(selectedValues)}
                       size="big"
                       icon="play"
                       labelPosition="right"

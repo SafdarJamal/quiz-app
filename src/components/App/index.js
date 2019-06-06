@@ -36,7 +36,8 @@ class App extends Component {
       .catch(error => console.log('API error', error));
   }
 
-  startQuiz() {
+  startQuiz(selectedValues) {
+    console.log(selectedValues);
     this.setState({ isQuizStart: true });
   }
 
