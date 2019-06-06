@@ -150,11 +150,12 @@ class Quiz extends Component {
 
   renderResult() {
     setTimeout(() => {
-      const { correctAnswers } = this.state;
+      const { quizData, correctAnswers } = this.state;
       const { backToHome } = this.props;
 
       const resultRef = (
         <Result
+          totalQuestions={quizData.length}
           correctAnswers={correctAnswers}
           retakeQuiz={this.retakeQuiz}
           backToHome={backToHome}

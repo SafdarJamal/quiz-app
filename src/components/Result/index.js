@@ -6,8 +6,9 @@ class Result extends Component {
     super(props);
 
     this.state = {
-      correctAnswers: props.correctAnswers,
-      userScore: (props.correctAnswers * 100) / 10
+      userScore: Number(
+        ((props.correctAnswers * 100) / props.totalQuestions).toFixed(2)
+      )
     };
 
     this.timeConverter = this.timeConverter.bind(this);
@@ -27,8 +28,14 @@ class Result extends Component {
   }
 
   render() {
-    const { correctAnswers, userScore } = this.state;
-    const { retakeQuiz, backToHome, takenTime } = this.props;
+    const { userScore } = this.state;
+    const {
+      totalQuestions,
+      correctAnswers,
+      takenTime,
+      retakeQuiz,
+      backToHome
+    } = this.props;
     // console.log(userScore);
 
     const result = this.timeConverter(
@@ -54,19 +61,19 @@ class Result extends Component {
               {remarks}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Passing Score: 60
-            </Header>
-            <Header as="h3" textAlign="center" block>
-              Total Questions: 10
+              Total Questions: {totalQuestions}
             </Header>
             <Header as="h3" textAlign="center" block>
               Correct Answers: {correctAnswers}
             </Header>
             <Header as="h3" textAlign="center" block>
+              Passing Score: 60 out of 100
+            </Header>
+            <Header as="h3" textAlign="center" block>
               Your Score: {userScore}
             </Header>
             <Header as="h3" textAlign="center" block>
-              {`Time Takes: ${timeTakes}`}
+              Time Takes: {timeTakes}
             </Header>
             <div style={{ marginTop: 35 }}>
               <Button
