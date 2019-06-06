@@ -16,6 +16,8 @@ import Loader from '../Loader';
 import Result from '../Result';
 import Countdown from '../Countdown';
 
+import he from 'he';
+
 class Quiz extends Component {
   constructor(props) {
     super(props);
@@ -236,7 +238,9 @@ class Quiz extends Component {
                     <br />
                     <Item.Meta>
                       <Message size="huge" floating>
-                        <b>{`Q. ${quizData[questionIndex].question}`}</b>
+                        <b>{`Q. ${he.decode(
+                          quizData[questionIndex].question
+                        )}`}</b>
                       </Message>
                       <br />
                       <Item.Description>
@@ -271,7 +275,7 @@ class Quiz extends Component {
                               onClick={this.handleItemClick}
                             >
                               <b style={{ marginRight: '8px' }}>{letter}</b>
-                              {item}
+                              {he.decode(item)}
                             </Menu.Item>
                           );
                         })}
