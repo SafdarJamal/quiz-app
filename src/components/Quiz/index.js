@@ -10,6 +10,7 @@ import {
   Menu,
   Header
 } from 'semantic-ui-react';
+import Swal from 'sweetalert2';
 
 import Loader from '../Loader';
 import Result from '../Result';
@@ -59,6 +60,20 @@ class Quiz extends Component {
 
   setData(results) {
     console.log(results);
+
+    if (results.length === 0) {
+      return Swal.fire({
+        title: 'Oops...',
+        text: 'There is not enough questions in database',
+        type: 'error',
+        timer: 5000,
+        onClose: () => {
+          // window.location.reload();
+          this.props.backToHome();
+        }
+      });
+    }
+
     const quizData = results;
     const { questionIndex } = this.state;
     const outPut = this.getRandomNumber();
