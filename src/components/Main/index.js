@@ -3,11 +3,13 @@ import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
 import codeImg from '../../assets/images/code.png';
 
 import Select from '../Select';
-import CATEGORIES from '../../constants/categories';
-import NUM_OF_QUESTIONS from '../../constants/numOfQuestions';
-import DIFFICULTY from '../../constants/difficulty';
-import QUESTIONS_TYPE from '../../constants/questionsType';
-import COUNTDOWN_TIME from '../../constants/countdownTime';
+import {
+  CATEGORIES,
+  NUM_OF_QUESTIONS,
+  DIFFICULTY,
+  QUESTIONS_TYPE,
+  COUNTDOWN_TIME
+} from '../../constants';
 
 class Main extends Component {
   constructor(props) {

@@ -5,7 +5,7 @@ import Main from '../Main';
 import Placeholder from '../Placeholder';
 import Quiz from '../Quiz';
 
-import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../constants';
+import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
 
 const API = `${PATH_BASE}${AMOUNT}12&${CATEGORY}&${DIFFICULTY}&${TYPE}`;
 
