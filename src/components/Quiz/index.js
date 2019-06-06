@@ -64,13 +64,17 @@ class Quiz extends Component {
     console.log(results);
 
     if (results.length === 0) {
+      const message =
+        "The API doesn't have enough questions for your query<br />" +
+        '(ex. Asking for 50 questions in a category that only has 20).' +
+        '<br /><br />Please change number of questions, difficulty level ' +
+        'or type of questions.';
+
       return Swal.fire({
         title: 'Oops...',
-        text: 'There is not enough questions in database',
+        html: message,
         type: 'error',
-        timer: 5000,
         onClose: () => {
-          // window.location.reload();
           this.props.backToHome();
         }
       });
