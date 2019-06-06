@@ -37,8 +37,12 @@ class App extends Component {
   }
 
   startQuiz(selectedValues) {
-    console.log(selectedValues);
-    this.setState({ isQuizStart: true });
+    // console.log(selectedValues);
+    const API = `${PATH_BASE + AMOUNT + selectedValues[1]}&${CATEGORY +
+      selectedValues[0]}&${DIFFICULTY + selectedValues[2]}&${TYPE +
+      selectedValues[3]}`;
+
+    this.setState({ isQuizStart: true, API });
   }
 
   backToHome() {
@@ -56,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    const { quizData, isQuizStart } = this.state;
+    const { quizData, isQuizStart, API } = this.state;
     // console.log(quizData);
 
     return (
@@ -64,9 +68,7 @@ class App extends Component {
         <Header />
         {!quizData && <Placeholder />}
         {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {isQuizStart && (
-          <Quiz quizData={quizData} backToHome={this.backToHome} />
-        )}
+        {isQuizStart && <Quiz API={API} backToHome={this.backToHome} />}
       </Fragment>
     );
   }

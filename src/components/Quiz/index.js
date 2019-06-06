@@ -20,7 +20,7 @@ class Quiz extends Component {
     super(props);
 
     this.state = {
-      quizData: props.quizData,
+      quizData: null,
       isLoading: true,
       questionIndex: 0,
       correctAnswers: 0,
@@ -30,8 +30,9 @@ class Quiz extends Component {
 
     this.takenTime = undefined;
 
-    this.handleItemClick = this.handleItemClick.bind(this);
     this.getRandomNumber = this.getRandomNumber.bind(this);
+    this.setData = this.setData.bind(this);
+    this.handleItemClick = this.handleItemClick.bind(this);
     this.handleNext = this.handleNext.bind(this);
     this.timesUp = this.timesUp.bind(this);
     this.timeAmount = this.timeAmount.bind(this);
@@ -40,25 +41,34 @@ class Quiz extends Component {
     this.startNewQuiz = this.startNewQuiz.bind(this);
   }
 
-  handleItemClick(e, { name }) {
-    this.setState({ userSlectedAns: name });
-  }
-
   componentDidMount() {
-    const { quizData, questionIndex } = this.state;
-    const outPut = this.getRandomNumber();
-    const options = [...quizData[questionIndex].incorrect_answers];
-    options.splice(outPut, 0, quizData[questionIndex].correct_answer);
+    const { API } = this.props;
+    // console.log(API);
 
-    setTimeout(() => {
-      this.setState({ isLoading: false, options, outPut });
-    }, 1000);
+    fetch(API)
+      .then(respone => respone.json())
+      .then(result => setTimeout(() => this.setData(result.results), 500))
+      .catch(error => console.log('API==>', error));
   }
 
   getRandomNumber() {
     const min = Math.ceil(0);
     const max = Math.floor(3);
     return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  setData(results) {
+    const quizData = results;
+    const { questionIndex } = this.state;
+    const outPut = this.getRandomNumber();
+    const options = [...quizData[questionIndex].incorrect_answers];
+    options.splice(outPut, 0, quizData[questionIndex].correct_answer);
+
+    this.setState({ quizData, isLoading: false, options, outPut });
+  }
+
+  handleItemClick(e, { name }) {
+    this.setState({ userSlectedAns: name });
   }
 
   handleNext() {
@@ -74,7 +84,7 @@ class Quiz extends Component {
       point = 1;
     }
 
-    if (questionIndex === 9) {
+    if (questionIndex === quizData.length - 1) {
       this.setState({
         correctAnswers: correctAnswers + point,
         userSlectedAns: null,
