@@ -43,11 +43,11 @@ class Quiz extends Component {
 
   componentDidMount() {
     const { API } = this.props;
-    // console.log(API);
+    console.log(API);
 
     fetch(API)
       .then(respone => respone.json())
-      .then(result => setTimeout(() => this.setData(result.results), 500))
+      .then(result => setTimeout(() => this.setData(result.results), 1000))
       .catch(error => console.log('API==>', error));
   }
 
@@ -58,6 +58,7 @@ class Quiz extends Component {
   }
 
   setData(results) {
+    console.log(results);
     const quizData = results;
     const { questionIndex } = this.state;
     const outPut = this.getRandomNumber();
