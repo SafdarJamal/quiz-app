@@ -206,10 +206,13 @@ class Quiz extends Component {
                       <Header as="h1" block floated="left">
                         <Icon name="info circle" />
                         <Header.Content>
-                          Question No.{questionIndex + 1} of 10
+                          {`Question No.${questionIndex + 1} of ${
+                            quizData.length
+                          }`}
                         </Header.Content>
                       </Header>
                       <Countdown
+                        countdownTime={this.props.countdownTime}
                         timesUp={this.timesUp}
                         timeAmount={this.timeAmount}
                       />

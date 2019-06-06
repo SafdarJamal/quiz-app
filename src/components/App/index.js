@@ -42,7 +42,7 @@ class App extends Component {
       selectedValues[0]}&${DIFFICULTY + selectedValues[2]}&${TYPE +
       selectedValues[3]}`;
 
-    this.setState({ isQuizStart: true, API });
+    this.setState({ isQuizStart: true, API, countdownTime: selectedValues[4] });
   }
 
   backToHome() {
@@ -60,7 +60,7 @@ class App extends Component {
   }
 
   render() {
-    const { quizData, isQuizStart, API } = this.state;
+    const { quizData, isQuizStart, API, countdownTime } = this.state;
     // console.log(quizData);
 
     return (
@@ -68,7 +68,13 @@ class App extends Component {
         <Header />
         {!quizData && <Placeholder />}
         {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {isQuizStart && <Quiz API={API} backToHome={this.backToHome} />}
+        {isQuizStart && (
+          <Quiz
+            API={API}
+            countdownTime={countdownTime}
+            backToHome={this.backToHome}
+          />
+        )}
       </Fragment>
     );
   }
