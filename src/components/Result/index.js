@@ -48,6 +48,35 @@ class Result extends Component {
       remarks = 'Congratulations, YOU PASSED!';
     }
 
+    let grade;
+    if (userScore >= 97) {
+      grade = 'A+';
+    } else if (userScore >= 93 && userScore <= 96) {
+      grade = 'A';
+    } else if (userScore >= 90 && userScore <= 92) {
+      grade = 'A-';
+    } else if (userScore >= 87 && userScore <= 89) {
+      grade = 'B+';
+    } else if (userScore >= 83 && userScore <= 86) {
+      grade = 'B';
+    } else if (userScore >= 80 && userScore <= 82) {
+      grade = 'B-';
+    } else if (userScore >= 77 && userScore <= 79) {
+      grade = 'C+';
+    } else if (userScore >= 73 && userScore <= 76) {
+      grade = 'C';
+    } else if (userScore >= 70 && userScore <= 72) {
+      grade = 'C-';
+    } else if (userScore >= 67 && userScore <= 69) {
+      grade = 'D+';
+    } else if (userScore >= 63 && userScore <= 66) {
+      grade = 'D';
+    } else if (userScore >= 60 && userScore <= 62) {
+      grade = 'D-';
+    } else if (userScore < 60) {
+      grade = 'F';
+    }
+
     return (
       <div>
         <Container>
@@ -60,8 +89,8 @@ class Result extends Component {
             <Header as="h1" textAlign="center" block>
               {remarks}
             </Header>
-            <Header as="h1" textAlign="center" block>
-              Grade: A+
+            <Header as="h2" textAlign="center" block>
+              Grade: {grade}
             </Header>
             <Header as="h3" textAlign="center" block>
               Total Questions: {totalQuestions}
