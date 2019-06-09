@@ -101,10 +101,10 @@ class Result extends Component {
               Correct Answers: {correctAnswers}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Passing Score: 60%
+              Your Score: {userScore}%
             </Header>
             <Header as="h3" textAlign="center" block>
-              Your Score: {userScore}%
+              Passing Score: 60%
             </Header>
             <Header as="h3" textAlign="center" block>
               Time Takes: {timeTakes}
