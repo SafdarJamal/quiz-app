@@ -100,9 +100,6 @@ class Main extends Component {
                     setValue={this.setTime}
                     text="Select Countdown Time (In Minutes)"
                   />
-                  <Segment>
-                    <b>Passing Score is 60 out of 100</b>
-                  </Segment>
                 </Item.Meta>
                 <Divider />
                 <Item.Extra>

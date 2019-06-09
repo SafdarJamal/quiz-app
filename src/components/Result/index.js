@@ -60,6 +60,9 @@ class Result extends Component {
             <Header as="h1" textAlign="center" block>
               {remarks}
             </Header>
+            <Header as="h1" textAlign="center" block>
+              Grade: A+
+            </Header>
             <Header as="h3" textAlign="center" block>
               Total Questions: {totalQuestions}
             </Header>
