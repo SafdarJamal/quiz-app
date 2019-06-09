@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 import Loader from '../Loader';
 import Result from '../Result';
 import Countdown from '../Countdown';
+import Offline from '../Offline';
 
 import he from 'he';
 
@@ -28,7 +29,8 @@ class Quiz extends Component {
       questionIndex: 0,
       correctAnswers: 0,
       userSlectedAns: null,
-      quizIsCompleted: false
+      quizIsCompleted: false,
+      isOffline: false
     };
 
     this.takenTime = undefined;
@@ -42,6 +44,7 @@ class Quiz extends Component {
     this.renderResult = this.renderResult.bind(this);
     this.retakeQuiz = this.retakeQuiz.bind(this);
     this.startNewQuiz = this.startNewQuiz.bind(this);
+    this.resolveError = this.resolveError.bind(this);
   }
 
   componentDidMount() {
@@ -51,14 +54,15 @@ class Quiz extends Component {
     fetch(API)
       .then(respone => respone.json())
       .then(result => setTimeout(() => this.setData(result.results), 1000))
-      .catch(error => this.resolveError(error));
+      .catch(error => setTimeout(() => this.resolveError(error), 1000));
   }
 
   resolveError(error) {
     if (!navigator.onLine) {
-      console.log('Connection problem');
+      // console.log('Connection problem');
+      this.setState({ isOffline: true });
     } else {
-      console.log('API problem ==>', error);
+      console.log('API problem ==> ', error);
     }
   }
 
@@ -208,7 +212,8 @@ class Quiz extends Component {
       // correctAnswers,
       quizIsCompleted,
       resultRef,
-      startNewQuiz
+      startNewQuiz,
+      isOffline
     } = this.state;
 
     // console.log(userSlectedAns);
@@ -226,8 +231,8 @@ class Quiz extends Component {
 
     return (
       <Item.Header>
-        {!quizIsCompleted && isLoading && <Loader />}
-        {!isLoading && (
+        {!isOffline && !quizIsCompleted && isLoading && <Loader />}
+        {!isOffline && !isLoading && (
           <Container>
             <Segment raised>
               <Item.Group divided>
@@ -330,6 +335,7 @@ class Quiz extends Component {
           <Loader text="Getting your result." />
         )}
         {quizIsCompleted && resultRef}
+        {isOffline && <Offline />}
       </Item.Header>
     );
   }
