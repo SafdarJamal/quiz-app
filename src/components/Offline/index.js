@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container, Header, Icon, Segment } from 'semantic-ui-react';
+import { Container, Segment, Header, Icon } from 'semantic-ui-react';
 
-export default () => (
+const Offline = () => (
   <Container>
     <Segment placeholder>
       <Header icon>
@@ -12,3 +12,5 @@ export default () => (
     </Segment>
   </Container>
 );
+
+export default Offline;
