@@ -43,9 +43,9 @@ export function register(config) {
         // Add some additional logging to localhost, pointing developers to the
         // service worker/PWA documentation.
         navigator.serviceWorker.ready.then(() => {
-          console.log(
-            'This web app is being served cache-first by a service worker.'
-          );
+          // console.log(
+          //   'This web app is being served cache-first by a service worker.'
+          // );
         });
       } else {
         // Is not localhost. Just register service worker
@@ -70,10 +70,10 @@ function registerValidSW(swUrl, config) {
               // At this point, the updated precached content has been fetched,
               // but the previous service worker will still serve the older
               // content until all client tabs are closed.
-              console.log(
-                'New content is available and will be used when all ' +
-                  'tabs for this page are closed.'
-              );
+              // console.log(
+              //   'New content is available and will be used when all ' +
+              //     'tabs for this page are closed.'
+              // );
 
               // Execute callback
               if (config && config.onUpdate) {
@@ -83,7 +83,7 @@ function registerValidSW(swUrl, config) {
               // At this point, everything has been precached.
               // It's the perfect time to display a
               // "Content is cached for offline use." message.
-              console.log('Content is cached for offline use.');
+              // console.log('Content is cached for offline use.');
               Swal.fire({
                 toast: 'true',
                 position: 'bottom',
@@ -129,9 +129,9 @@ function checkValidServiceWorker(swUrl, config) {
       }
     })
     .catch(() => {
-      console.log(
-        'No internet connection found. App is running in offline mode.'
-      );
+      // console.log(
+      //   'No internet connection found. App is running in offline mode.'
+      // );
     });
 }
 
