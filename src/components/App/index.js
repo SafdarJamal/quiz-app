@@ -5,65 +5,61 @@ import Main from '../Main';
 import Loader from '../Loader';
 import Quiz from '../Quiz';
 
-const API =
-  'https://opentdb.com/api.php?amount=10&category=18&difficulty=hard&type=multiple';
+import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      quizData: null,
-      isQuizStart: false
+      isQuizStart: false,
+      API: null,
+      countdownTime: null,
+      isLoading: false
     };
 
-    this.setData = this.setData.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
     this.backToHome = this.backToHome.bind(this);
-    this.backToHomeHelper = this.backToHomeHelper.bind(this);
   }
 
-  setData(result) {
-    this.setState({ quizData: result.results });
-  }
+  startQuiz(selectedValues) {
+    // console.log(selectedValues);
 
-  componentDidMount() {
-    fetch(API)
-      .then(respone => respone.json())
-      .then(result => setTimeout(() => this.setData(result), 2000))
-      .catch(error => console.log('API error', error));
-  }
+    const API = `${PATH_BASE + AMOUNT + selectedValues[1]}&${CATEGORY +
+      selectedValues[0]}&${DIFFICULTY + selectedValues[2]}&${TYPE +
+      selectedValues[3]}`;
 
-  startQuiz() {
-    this.setState({ isQuizStart: true });
+    this.setState({ isQuizStart: true, API, countdownTime: selectedValues[4] });
   }
 
   backToHome() {
-    this.setState({ quizData: null, isQuizStart: false });
+    this.setState({ isLoading: true });
+
     setTimeout(() => {
-      this.backToHomeHelper();
+      this.setState({
+        isLoading: false,
+        isQuizStart: false,
+        API: null,
+        countdownTime: null
+      });
     }, 1000);
   }
 
-  backToHomeHelper() {
-    fetch(API)
-      .then(respone => respone.json())
-      .then(result => setTimeout(() => this.setData(result), 1000))
-      .catch(error => console.log('API error', error));
-  }
-
   render() {
-    const { quizData, isQuizStart } = this.state;
-    // console.log(quizData);
+    const { isQuizStart, API, countdownTime, isLoading } = this.state;
 
     return (
       <Fragment>
         <Header />
-        {!quizData && <Loader />}
-        {quizData && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {isQuizStart && (
-          <Quiz quizData={quizData} backToHome={this.backToHome} />
+        {!isLoading && !isQuizStart && <Main startQuiz={this.startQuiz} />}
+        {!isLoading && isQuizStart && (
+          <Quiz
+            API={API}
+            countdownTime={countdownTime}
+            backToHome={this.backToHome}
+          />
         )}
+        {isLoading && <Loader />}
       </Fragment>
     );
   }

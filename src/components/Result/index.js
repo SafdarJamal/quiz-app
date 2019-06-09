@@ -6,8 +6,9 @@ class Result extends Component {
     super(props);
 
     this.state = {
-      correctAnswers: props.correctAnswers,
-      userScore: (props.correctAnswers * 100) / 10
+      userScore: Number(
+        ((props.correctAnswers * 100) / props.totalQuestions).toFixed(2)
+      )
     };
 
     this.timeConverter = this.timeConverter.bind(this);
@@ -27,8 +28,14 @@ class Result extends Component {
   }
 
   render() {
-    const { correctAnswers, userScore } = this.state;
-    const { retakeQuiz, backToHome, takenTime } = this.props;
+    const { userScore } = this.state;
+    const {
+      totalQuestions,
+      correctAnswers,
+      takenTime,
+      retakeQuiz,
+      backToHome
+    } = this.props;
     // console.log(userScore);
 
     const result = this.timeConverter(
@@ -39,6 +46,37 @@ class Result extends Component {
     let remarks = 'Sorry, YOU FAILED!';
     if (userScore >= 60) {
       remarks = 'Congratulations, YOU PASSED!';
+    }
+
+    const calcGrade = parseInt(userScore);
+    let grade;
+
+    if (calcGrade >= 97) {
+      grade = 'A+';
+    } else if (calcGrade >= 93 && calcGrade <= 96) {
+      grade = 'A';
+    } else if (calcGrade >= 90 && calcGrade <= 92) {
+      grade = 'A-';
+    } else if (calcGrade >= 87 && calcGrade <= 89) {
+      grade = 'B+';
+    } else if (calcGrade >= 83 && calcGrade <= 86) {
+      grade = 'B';
+    } else if (calcGrade >= 80 && calcGrade <= 82) {
+      grade = 'B-';
+    } else if (calcGrade >= 77 && calcGrade <= 79) {
+      grade = 'C+';
+    } else if (calcGrade >= 73 && calcGrade <= 76) {
+      grade = 'C';
+    } else if (calcGrade >= 70 && calcGrade <= 72) {
+      grade = 'C-';
+    } else if (calcGrade >= 67 && calcGrade <= 69) {
+      grade = 'D+';
+    } else if (calcGrade >= 63 && calcGrade <= 66) {
+      grade = 'D';
+    } else if (calcGrade >= 60 && calcGrade <= 62) {
+      grade = 'D-';
+    } else if (calcGrade < 60) {
+      grade = 'F';
     }
 
     return (
@@ -53,20 +91,23 @@ class Result extends Component {
             <Header as="h1" textAlign="center" block>
               {remarks}
             </Header>
-            <Header as="h3" textAlign="center" block>
-              Passing Score: 60
+            <Header as="h2" textAlign="center" block>
+              Grade: {grade}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Total Questions: 10
+              Total Questions: {totalQuestions}
             </Header>
             <Header as="h3" textAlign="center" block>
               Correct Answers: {correctAnswers}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Your Score: {userScore}
+              Your Score: {userScore}%
             </Header>
             <Header as="h3" textAlign="center" block>
-              {`Time Takes: ${timeTakes}`}
+              Passing Score: 60%
+            </Header>
+            <Header as="h3" textAlign="center" block>
+              Time Takes: {timeTakes}
             </Header>
             <div style={{ marginTop: 35 }}>
               <Button

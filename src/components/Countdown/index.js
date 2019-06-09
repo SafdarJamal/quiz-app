@@ -6,10 +6,12 @@ class Countdown extends Component {
   constructor(props) {
     super(props);
 
+    const countdownTime = props.countdownTime * 60000;
+
     this.state = {
       timerStart: 0,
-      timerTime: 240000,
-      totalTime: 240000
+      timerTime: countdownTime,
+      totalTime: countdownTime
     };
   }
 
@@ -34,7 +36,7 @@ class Countdown extends Component {
           }
         });
       }
-    }, 990);
+    }, 980);
   }
 
   componentDidMount() {

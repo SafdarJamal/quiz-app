@@ -1,14 +1,14 @@
 {
   "name": "quiz-app",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "author": {
     "name": "Safdar Jamal",
     "email": "safdar.dev@gmail.com",
     "url": "https://safdarjamal.github.io"
   },
-  "homepage": "https://safdarjamal.github.io/quiz-app",
   "dependencies": {
+    "he": "^1.2.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
