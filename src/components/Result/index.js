@@ -48,32 +48,34 @@ class Result extends Component {
       remarks = 'Congratulations, YOU PASSED!';
     }
 
+    const calcGrade = parseInt(userScore);
     let grade;
-    if (userScore >= 97) {
+
+    if (calcGrade >= 97) {
       grade = 'A+';
-    } else if (userScore >= 93 && userScore <= 96) {
+    } else if (calcGrade >= 93 && calcGrade <= 96) {
       grade = 'A';
-    } else if (userScore >= 90 && userScore <= 92) {
+    } else if (calcGrade >= 90 && calcGrade <= 92) {
       grade = 'A-';
-    } else if (userScore >= 87 && userScore <= 89) {
+    } else if (calcGrade >= 87 && calcGrade <= 89) {
       grade = 'B+';
-    } else if (userScore >= 83 && userScore <= 86) {
+    } else if (calcGrade >= 83 && calcGrade <= 86) {
       grade = 'B';
-    } else if (userScore >= 80 && userScore <= 82) {
+    } else if (calcGrade >= 80 && calcGrade <= 82) {
       grade = 'B-';
-    } else if (userScore >= 77 && userScore <= 79) {
+    } else if (calcGrade >= 77 && calcGrade <= 79) {
       grade = 'C+';
-    } else if (userScore >= 73 && userScore <= 76) {
+    } else if (calcGrade >= 73 && calcGrade <= 76) {
       grade = 'C';
-    } else if (userScore >= 70 && userScore <= 72) {
+    } else if (calcGrade >= 70 && calcGrade <= 72) {
       grade = 'C-';
-    } else if (userScore >= 67 && userScore <= 69) {
+    } else if (calcGrade >= 67 && calcGrade <= 69) {
       grade = 'D+';
-    } else if (userScore >= 63 && userScore <= 66) {
+    } else if (calcGrade >= 63 && calcGrade <= 66) {
       grade = 'D';
-    } else if (userScore >= 60 && userScore <= 62) {
+    } else if (calcGrade >= 60 && calcGrade <= 62) {
       grade = 'D-';
-    } else if (userScore < 60) {
+    } else if (calcGrade < 60) {
       grade = 'F';
     }
 
@@ -99,10 +101,10 @@ class Result extends Component {
               Correct Answers: {correctAnswers}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Passing Score: 60 out of 100
+              Passing Score: 60%
             </Header>
             <Header as="h3" textAlign="center" block>
-              Your Score: {userScore}
+              Your Score: {userScore}%
             </Header>
             <Header as="h3" textAlign="center" block>
               Time Takes: {timeTakes}
