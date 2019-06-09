@@ -49,7 +49,7 @@ class Quiz extends Component {
 
   componentDidMount() {
     const { API } = this.props;
-    console.log(API);
+    // console.log(API);
 
     fetch(API)
       .then(respone => respone.json())
@@ -73,7 +73,7 @@ class Quiz extends Component {
   }
 
   setData(results) {
-    console.log(results);
+    // console.log(results);
 
     if (results.length === 0) {
       const message =
@@ -86,6 +86,7 @@ class Quiz extends Component {
         title: 'Oops...',
         html: message,
         type: 'error',
+        timer: 5000,
         onClose: () => {
           this.props.backToHome();
         }

@@ -25,8 +25,6 @@ class Main extends Component {
   }
 
   setCategory(category) {
-    console.log(category);
-
     this.setState({ category });
   }
 
@@ -48,7 +46,7 @@ class Main extends Component {
 
   render() {
     const { category, numOfQ, difficulty, type, time } = this.state;
-    console.log(category, numOfQ, difficulty, type, time);
+    // console.log(category, numOfQ, difficulty, type, time);
 
     let allFieldsSelected = false;
     let selectedValues = [];
