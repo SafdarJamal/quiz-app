@@ -51,7 +51,15 @@ class Quiz extends Component {
     fetch(API)
       .then(respone => respone.json())
       .then(result => setTimeout(() => this.setData(result.results), 1000))
-      .catch(error => console.log('API==>', error));
+      .catch(error => this.resolveError(error));
+  }
+
+  resolveError(error) {
+    if (!navigator.onLine) {
+      console.log('Connection problem');
+    } else {
+      console.log('API problem ==>', error);
+    }
   }
 
   getRandomNumber() {
