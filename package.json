@@ -7,6 +7,7 @@
     "email": "safdar.dev@gmail.com",
     "url": "https://safdarjamal.github.io"
   },
+  "homepage": "https://safdarjamal.github.io/quiz-app",
   "dependencies": {
     "he": "^1.2.0",
     "react": "^16.8.6",
