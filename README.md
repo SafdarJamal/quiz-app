@@ -1,6 +1,6 @@
 # Quiz App
 
-Quiz App Built with React Using OpenTDB API
+Quiz Progressive Web App Built with React Using OpenTDB API
 
 <p align="center">
   <img src="./screenshot.png" alt='Quiz App in Action'>
