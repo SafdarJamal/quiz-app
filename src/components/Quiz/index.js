@@ -62,7 +62,8 @@ class Quiz extends Component {
       // console.log('Connection problem');
       this.setState({ isOffline: true });
     } else {
-      console.log('API problem ==> ', error);
+      // console.log('API problem ==> ', error);
+      this.setState({ isOffline: true });
     }
   }
 
