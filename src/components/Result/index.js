@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Container, Segment, Label, Header, Button } from 'semantic-ui-react';
 
+import { timeConverter } from '../../utils/timeConverter';
+
 class Result extends Component {
   constructor(props) {
     super(props);
@@ -9,21 +11,6 @@ class Result extends Component {
       userScore: Number(
         ((props.correctAnswers * 100) / props.totalQuestions).toFixed(2)
       )
-    };
-
-    this.timeConverter = this.timeConverter.bind(this);
-  }
-
-  timeConverter(value) {
-    const hours = ('0' + Math.floor((value / 3600000) % 60)).slice(-2);
-    const minutes = ('0' + Math.floor((value / 60000) % 60)).slice(-2);
-    const seconds = ('0' + (Math.floor((value / 1000) % 60) % 60)).slice(-2);
-    // console.log(hours, minutes, seconds);
-
-    return {
-      hours,
-      minutes,
-      seconds
     };
   }
 
@@ -38,11 +25,9 @@ class Result extends Component {
     } = this.props;
     // console.log(userScore);
 
-    const result = this.timeConverter(
+    const { hours, minutes, seconds } = timeConverter(
       takenTime.totalTime - takenTime.timerTime
     );
-
-    const timeTakes = `${result.hours} : ${result.minutes} : ${result.seconds}`;
 
     let remarks = 'Sorry, YOU FAILED!';
     if (userScore >= 60) {
@@ -108,7 +93,7 @@ class Result extends Component {
               Passing Score: 60%
             </Header>
             <Header as="h3" textAlign="center" block>
-              Time Takes: {timeTakes}
+              Time Takes: {`${hours} : ${minutes} : ${seconds}`}
             </Header>
             <div style={{ marginTop: 35 }}>
               <Button

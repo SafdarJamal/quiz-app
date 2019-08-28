@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Popup } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
 
+import { timeConverter } from '../../utils/timeConverter';
+
 class Countdown extends Component {
   constructor(props) {
     super(props);
@@ -50,12 +52,7 @@ class Countdown extends Component {
 
   render() {
     const { timerTime } = this.state;
-
-    const hours = ('0' + Math.floor((timerTime / 3600000) % 60)).slice(-2);
-    const minutes = ('0' + Math.floor((timerTime / 60000) % 60)).slice(-2);
-    const seconds = ('0' + (Math.floor((timerTime / 1000) % 60) % 60)).slice(
-      -2
-    );
+    const { hours, minutes, seconds } = timeConverter(timerTime);
 
     return (
       <Button.Group size="massive" basic floated="right">
