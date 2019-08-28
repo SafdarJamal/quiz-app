@@ -41,6 +41,7 @@ class Result extends Component {
     const result = this.timeConverter(
       takenTime.totalTime - takenTime.timerTime
     );
+
     const timeTakes = `${result.hours} : ${result.minutes} : ${result.seconds}`;
 
     let remarks = 'Sorry, YOU FAILED!';

@@ -23,13 +23,12 @@ class App extends Component {
   }
 
   startQuiz(selectedValues) {
-    // console.log(selectedValues);
+    const { category, numOfQ, difficulty, type, time } = selectedValues;
 
-    const API = `${PATH_BASE + AMOUNT + selectedValues[1]}&${CATEGORY +
-      selectedValues[0]}&${DIFFICULTY + selectedValues[2]}&${TYPE +
-      selectedValues[3]}`;
+    const API = `${PATH_BASE + AMOUNT + numOfQ}&${CATEGORY +
+      category}&${DIFFICULTY + difficulty}&${TYPE + type}`;
 
-    this.setState({ isQuizStart: true, API, countdownTime: selectedValues[4] });
+    this.setState({ isQuizStart: true, API, countdownTime: time });
   }
 
   backToHome() {
@@ -37,10 +36,10 @@ class App extends Component {
 
     setTimeout(() => {
       this.setState({
-        isLoading: false,
         isQuizStart: false,
         API: null,
-        countdownTime: null
+        countdownTime: null,
+        isLoading: false
       });
     }, 1000);
   }

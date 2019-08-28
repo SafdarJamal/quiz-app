@@ -129,13 +129,14 @@ class Quiz extends Component {
         questionIndex: 0,
         options: null
       });
-      return false;
+      return;
     }
 
     const outPut = this.getRandomNumber();
 
     const options = [...quizData[questionIndex + 1].incorrect_answers];
     options.splice(outPut, 0, quizData[questionIndex + 1].correct_answer);
+
     this.setState({
       correctAnswers: correctAnswers + point,
       questionIndex: questionIndex + 1,
@@ -224,7 +225,7 @@ class Quiz extends Component {
 
     if (quizIsCompleted && !resultRef) {
       this.renderResult();
-      // console.log('Routing to result');
+      // console.log('Redirecting to result');
     }
 
     if (startNewQuiz) {
@@ -234,6 +235,7 @@ class Quiz extends Component {
     return (
       <Item.Header>
         {!isOffline && !quizIsCompleted && isLoading && <Loader />}
+
         {!isOffline && !isLoading && (
           <Container>
             <Segment raised>
@@ -270,6 +272,7 @@ class Quiz extends Component {
                       <Menu vertical fluid size="massive">
                         {options.map((item, i) => {
                           let letter;
+
                           switch (i) {
                             case 0:
                               letter = 'A.';
@@ -287,6 +290,7 @@ class Quiz extends Component {
                               letter = i;
                               break;
                           }
+
                           return (
                             <Menu.Item
                               key={item}
@@ -303,22 +307,21 @@ class Quiz extends Component {
                     </Item.Meta>
                     <Divider />
                     <Item.Extra>
-                      {!userSlectedAns && (
-                        <Button
-                          primary
-                          content="Next"
-                          floated="right"
-                          disabled
-                          size="big"
-                          icon="right chevron"
-                          labelPosition="right"
-                        />
-                      )}
-                      {userSlectedAns && (
+                      {userSlectedAns ? (
                         <Button
                           primary
                           content="Next"
                           onClick={this.handleNext}
+                          floated="right"
+                          size="big"
+                          icon="right chevron"
+                          labelPosition="right"
+                        />
+                      ) : (
+                        <Button
+                          disabled
+                          primary
+                          content="Next"
                           floated="right"
                           size="big"
                           icon="right chevron"
@@ -333,10 +336,13 @@ class Quiz extends Component {
             <br />
           </Container>
         )}
+
         {quizIsCompleted && !resultRef && (
           <Loader text="Getting your result." />
         )}
+
         {quizIsCompleted && resultRef}
+
         {isOffline && <Offline />}
       </Item.Header>
     );

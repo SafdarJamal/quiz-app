@@ -17,8 +17,6 @@ class Countdown extends Component {
 
   startTimer() {
     this.timer = setInterval(() => {
-      // const { timerTime } = this.state;
-      // console.log(timerTime);
       const newTime = this.state.timerTime - 1000;
 
       if (newTime >= 0) {
@@ -36,7 +34,7 @@ class Countdown extends Component {
           }
         });
       }
-    }, 980);
+    }, 1000);
   }
 
   componentDidMount() {
@@ -45,6 +43,7 @@ class Countdown extends Component {
 
   componentWillUnmount() {
     clearInterval(this.timer);
+
     const { timerTime, totalTime } = this.state;
     this.props.timeAmount(timerTime, totalTime);
   }
