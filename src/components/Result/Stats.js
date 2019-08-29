@@ -4,7 +4,7 @@ import { Container, Segment, Label, Header, Button } from 'semantic-ui-react';
 import { calculateGrade } from '../../utils/calculateGrade';
 import { timeConverter } from '../../utils/timeConverter';
 
-class Result extends Component {
+class Stats extends Component {
   render() {
     const {
       totalQuestions,
@@ -78,4 +78,4 @@ class Result extends Component {
   }
 }
 
-export default Result;
+export default Stats;

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Container, Menu } from 'semantic-ui-react';
 
-import Result from './Result';
+import Stats from './Stats';
 import QA from './QA';
 
-export default class extends Component {
-  state = { activeItem: 'Result' };
+class Result extends Component {
+  state = { activeItem: 'Stats' };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -24,19 +24,19 @@ export default class extends Component {
       <Container>
         <Menu fluid widths={2}>
           <Menu.Item
-            name="Result"
-            active={activeItem === 'Result'}
+            name="Stats"
+            active={activeItem === 'Stats'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name="Q-A"
-            active={activeItem === 'Q-A'}
+            name="Q / A"
+            active={activeItem === 'Q / A'}
             onClick={this.handleItemClick}
           />
         </Menu>
 
-        {activeItem === 'Result' ? (
-          <Result
+        {activeItem === 'Stats' ? (
+          <Stats
             totalQuestions={totalQuestions}
             correctAnswers={correctAnswers}
             takenTime={takenTime}
@@ -52,3 +52,5 @@ export default class extends Component {
     );
   }
 }
+
+export default Result;

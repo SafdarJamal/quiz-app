@@ -17,7 +17,7 @@ const QA = ({ QA }) => (
           <Table.HeaderCell>Questions No.</Table.HeaderCell>
           <Table.HeaderCell>Your Answers</Table.HeaderCell>
           <Table.HeaderCell>Correct Answers</Table.HeaderCell>
-          <Table.HeaderCell>Scores</Table.HeaderCell>
+          <Table.HeaderCell>Points</Table.HeaderCell>
         </Table.Row>
       </Table.Header>
 
