@@ -8,8 +8,8 @@ class Header extends Component {
     this.state = { promptEvent: null, appAccepted: false };
 
     window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault();
       // console.log('Loooging');
+      e.preventDefault();
       this.setState({ promptEvent: e });
     });
 
@@ -18,7 +18,7 @@ class Header extends Component {
 
   installApp() {
     const { promptEvent } = this.state;
-    // console.log('Init Func ===', promptEvent);
+    // console.log('Init Func ==>', promptEvent);
 
     promptEvent.prompt();
     promptEvent.userChoice.then(result => {
@@ -33,8 +33,8 @@ class Header extends Component {
 
   render() {
     const { promptEvent, appAccepted } = this.state;
-
     let isAppInstalled = false;
+
     if (
       window.matchMedia('(display-mode: standalone)').matches ||
       appAccepted

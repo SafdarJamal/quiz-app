@@ -15,7 +15,13 @@ class Main extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      category: null,
+      numOfQ: null,
+      difficulty: null,
+      type: null,
+      time: null
+    };
 
     this.setCategory = this.setCategory.bind(this);
     this.setNumOfQ = this.setNumOfQ.bind(this);
@@ -49,11 +55,18 @@ class Main extends Component {
     // console.log(category, numOfQ, difficulty, type, time);
 
     let allFieldsSelected = false;
-    let selectedValues = [];
+    let selectedValues = null;
 
     if (category && numOfQ && difficulty && type && time) {
-      selectedValues = [category, numOfQ, difficulty, type, time];
       allFieldsSelected = true;
+
+      selectedValues = {
+        category,
+        numOfQ,
+        difficulty,
+        type,
+        time
+      };
     }
 
     return (
@@ -101,21 +114,20 @@ class Main extends Component {
                 </Item.Meta>
                 <Divider />
                 <Item.Extra>
-                  {!allFieldsSelected && (
-                    <Button
-                      primary
-                      content="Start Quiz"
-                      disabled
-                      size="big"
-                      icon="play"
-                      labelPosition="right"
-                    />
-                  )}
-                  {allFieldsSelected && (
+                  {allFieldsSelected ? (
                     <Button
                       primary
                       content="Start Quiz"
                       onClick={() => this.props.startQuiz(selectedValues)}
+                      size="big"
+                      icon="play"
+                      labelPosition="right"
+                    />
+                  ) : (
+                    <Button
+                      disabled
+                      primary
+                      content="Start Quiz"
                       size="big"
                       icon="play"
                       labelPosition="right"

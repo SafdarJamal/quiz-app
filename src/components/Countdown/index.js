@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Button, Popup } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
 
+import { timeConverter } from '../../utils/timeConverter';
+
 class Countdown extends Component {
   constructor(props) {
     super(props);
@@ -17,8 +19,6 @@ class Countdown extends Component {
 
   startTimer() {
     this.timer = setInterval(() => {
-      // const { timerTime } = this.state;
-      // console.log(timerTime);
       const newTime = this.state.timerTime - 1000;
 
       if (newTime >= 0) {
@@ -36,7 +36,7 @@ class Countdown extends Component {
           }
         });
       }
-    }, 980);
+    }, 1000);
   }
 
   componentDidMount() {
@@ -45,18 +45,14 @@ class Countdown extends Component {
 
   componentWillUnmount() {
     clearInterval(this.timer);
+
     const { timerTime, totalTime } = this.state;
     this.props.timeAmount(timerTime, totalTime);
   }
 
   render() {
     const { timerTime } = this.state;
-
-    const hours = ('0' + Math.floor((timerTime / 3600000) % 60)).slice(-2);
-    const minutes = ('0' + Math.floor((timerTime / 60000) % 60)).slice(-2);
-    const seconds = ('0' + (Math.floor((timerTime / 1000) % 60) % 60)).slice(
-      -2
-    );
+    const { hours, minutes, seconds } = timeConverter(timerTime);
 
     return (
       <Button.Group size="massive" basic floated="right">
