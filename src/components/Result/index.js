@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Container, Segment, Label, Header, Button } from 'semantic-ui-react';
 
+import { calculateGrade } from '../../utils/calculateGrade';
 import { timeConverter } from '../../utils/timeConverter';
 
 class Result extends Component {
@@ -8,14 +9,14 @@ class Result extends Component {
     super(props);
 
     this.state = {
-      userScore: Number(
+      score: Number(
         ((props.correctAnswers * 100) / props.totalQuestions).toFixed(2)
       )
     };
   }
 
   render() {
-    const { userScore } = this.state;
+    const { score } = this.state;
     const {
       totalQuestions,
       correctAnswers,
@@ -24,48 +25,13 @@ class Result extends Component {
       retakeQuiz,
       backToHome
     } = this.props;
-    // console.log(userScore);
+    // console.log(score);
     console.log(questionAnswers);
 
+    const { grade, remarks } = calculateGrade(score);
     const { hours, minutes, seconds } = timeConverter(
       takenTime.totalTime - takenTime.timerTime
     );
-
-    let remarks = 'Sorry, YOU FAILED!';
-    if (userScore >= 60) {
-      remarks = 'Congratulations, YOU PASSED!';
-    }
-
-    const calcGrade = parseInt(userScore);
-    let grade;
-
-    if (calcGrade >= 97) {
-      grade = 'A+';
-    } else if (calcGrade >= 93 && calcGrade <= 96) {
-      grade = 'A';
-    } else if (calcGrade >= 90 && calcGrade <= 92) {
-      grade = 'A-';
-    } else if (calcGrade >= 87 && calcGrade <= 89) {
-      grade = 'B+';
-    } else if (calcGrade >= 83 && calcGrade <= 86) {
-      grade = 'B';
-    } else if (calcGrade >= 80 && calcGrade <= 82) {
-      grade = 'B-';
-    } else if (calcGrade >= 77 && calcGrade <= 79) {
-      grade = 'C+';
-    } else if (calcGrade >= 73 && calcGrade <= 76) {
-      grade = 'C';
-    } else if (calcGrade >= 70 && calcGrade <= 72) {
-      grade = 'C-';
-    } else if (calcGrade >= 67 && calcGrade <= 69) {
-      grade = 'D+';
-    } else if (calcGrade >= 63 && calcGrade <= 66) {
-      grade = 'D';
-    } else if (calcGrade >= 60 && calcGrade <= 62) {
-      grade = 'D-';
-    } else if (calcGrade < 60) {
-      grade = 'F';
-    }
 
     return (
       <div>
@@ -89,7 +55,7 @@ class Result extends Component {
               Correct Answers: {correctAnswers}
             </Header>
             <Header as="h3" textAlign="center" block>
-              Your Score: {userScore}%
+              Your Score: {score}%
             </Header>
             <Header as="h3" textAlign="center" block>
               Passing Score: 60%
