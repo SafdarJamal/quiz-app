@@ -189,7 +189,7 @@ class Quiz extends Component {
         />
       );
 
-      this.setState({ resultRef });
+      this.setState({ resultRef, questionAnswers: [] });
     }, 2000);
   }
 

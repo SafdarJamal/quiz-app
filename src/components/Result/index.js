@@ -5,18 +5,7 @@ import { calculateGrade } from '../../utils/calculateGrade';
 import { timeConverter } from '../../utils/timeConverter';
 
 class Result extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      score: Number(
-        ((props.correctAnswers * 100) / props.totalQuestions).toFixed(2)
-      )
-    };
-  }
-
   render() {
-    const { score } = this.state;
     const {
       totalQuestions,
       correctAnswers,
@@ -25,9 +14,9 @@ class Result extends Component {
       retakeQuiz,
       backToHome
     } = this.props;
-    // console.log(score);
     console.log(questionAnswers);
 
+    const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
     const { grade, remarks } = calculateGrade(score);
     const { hours, minutes, seconds } = timeConverter(
       takenTime.totalTime - takenTime.timerTime
