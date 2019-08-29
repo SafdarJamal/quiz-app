@@ -117,16 +117,17 @@ class Quiz extends Component {
       questionAnswers
     } = this.state;
 
-    questionAnswers.push({
-      question: quizData[questionIndex].question,
-      user_answer: userSlectedAns,
-      correct_answer: quizData[questionIndex].correct_answer
-    });
-
     let point = 0;
     if (userSlectedAns === quizData[questionIndex].correct_answer) {
       point = 1;
     }
+
+    questionAnswers.push({
+      question: quizData[questionIndex].question,
+      user_answer: userSlectedAns,
+      correct_answer: quizData[questionIndex].correct_answer,
+      point
+    });
 
     if (questionIndex === quizData.length - 1) {
       this.setState({

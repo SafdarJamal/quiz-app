@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
-import { Container, Segment, Label, Header, Button } from 'semantic-ui-react';
+import { Container, Menu } from 'semantic-ui-react';
 
-import { calculateGrade } from '../../utils/calculateGrade';
-import { timeConverter } from '../../utils/timeConverter';
+import Result from './Result';
+import QA from './QA';
 
-class Result extends Component {
+export default class extends Component {
+  state = { activeItem: 'Result' };
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
   render() {
+    const { activeItem } = this.state;
     const {
       totalQuestions,
       correctAnswers,
@@ -14,70 +19,36 @@ class Result extends Component {
       retakeQuiz,
       backToHome
     } = this.props;
-    console.log(questionAnswers);
-
-    const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
-    const { grade, remarks } = calculateGrade(score);
-    const { hours, minutes, seconds } = timeConverter(
-      takenTime.totalTime - takenTime.timerTime
-    );
 
     return (
-      <div>
-        <Container>
-          <Segment raised>
-            <Label attached="top" size="huge">
-              Result
-            </Label>
-            <br />
-            <br />
-            <Header as="h1" textAlign="center" block>
-              {remarks}
-            </Header>
-            <Header as="h2" textAlign="center" block>
-              Grade: {grade}
-            </Header>
-            <Header as="h3" textAlign="center" block>
-              Total Questions: {totalQuestions}
-            </Header>
-            <Header as="h3" textAlign="center" block>
-              Correct Answers: {correctAnswers}
-            </Header>
-            <Header as="h3" textAlign="center" block>
-              Your Score: {score}%
-            </Header>
-            <Header as="h3" textAlign="center" block>
-              Passing Score: 60%
-            </Header>
-            <Header as="h3" textAlign="center" block>
-              Time Takes: {`${hours} : ${minutes} : ${seconds}`}
-            </Header>
-            <div style={{ marginTop: 35 }}>
-              <Button
-                primary
-                content="Retake Quiz"
-                onClick={retakeQuiz}
-                size="big"
-                icon="redo"
-                labelPosition="right"
-                style={{ marginRight: 15, marginBottom: 8 }}
-              />
-              <Button
-                color="teal"
-                content="Back to Home"
-                onClick={backToHome}
-                size="big"
-                icon="home"
-                labelPosition="right"
-                style={{ marginBottom: 8 }}
-              />
-            </div>
-          </Segment>
-          <br />
-        </Container>
-      </div>
+      <Container>
+        <Menu fluid widths={2}>
+          <Menu.Item
+            name="Result"
+            active={activeItem === 'Result'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="Q-A"
+            active={activeItem === 'Q-A'}
+            onClick={this.handleItemClick}
+          />
+        </Menu>
+
+        {activeItem === 'Result' ? (
+          <Result
+            totalQuestions={totalQuestions}
+            correctAnswers={correctAnswers}
+            takenTime={takenTime}
+            questionAnswers={questionAnswers}
+            retakeQuiz={retakeQuiz}
+            backToHome={backToHome}
+          />
+        ) : (
+          <QA QA={questionAnswers} />
+        )}
+        <br />
+      </Container>
     );
   }
 }
-
-export default Result;
