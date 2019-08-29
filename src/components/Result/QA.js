@@ -1,7 +1,7 @@
 import React from 'react';
 import { Segment, Table } from 'semantic-ui-react';
 
-const QA = ({ QA }) => (
+const QA = ({ questionsAndAnswers }) => (
   <Segment>
     <Table celled>
       <Table.Header>
@@ -22,7 +22,7 @@ const QA = ({ QA }) => (
       </Table.Header>
 
       <Table.Body>
-        {QA.map((item, i) => (
+        {questionsAndAnswers.map((item, i) => (
           <Table.Row key={i + 1}>
             <Table.Cell>{i + 1}</Table.Cell>
             <Table.Cell>{item.user_answer}</Table.Cell>

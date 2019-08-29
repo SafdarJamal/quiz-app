@@ -10,11 +10,9 @@ class Stats extends Component {
       totalQuestions,
       correctAnswers,
       takenTime,
-      questionAnswers,
       retakeQuiz,
       backToHome
     } = this.props;
-    console.log(questionAnswers);
 
     const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
     const { grade, remarks } = calculateGrade(score);
@@ -72,7 +70,6 @@ class Stats extends Component {
             />
           </div>
         </Segment>
-        <br />
       </Container>
     );
   }

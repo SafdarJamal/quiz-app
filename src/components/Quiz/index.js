@@ -30,7 +30,7 @@ class Quiz extends Component {
       correctAnswers: 0,
       userSlectedAns: null,
       quizIsCompleted: false,
-      questionAnswers: [],
+      questionsAndAnswers: [],
       isOffline: false
     };
 
@@ -114,7 +114,7 @@ class Quiz extends Component {
       quizData,
       questionIndex,
       correctAnswers,
-      questionAnswers
+      questionsAndAnswers
     } = this.state;
 
     let point = 0;
@@ -122,7 +122,7 @@ class Quiz extends Component {
       point = 1;
     }
 
-    questionAnswers.push({
+    questionsAndAnswers.push({
       question: quizData[questionIndex].question,
       user_answer: userSlectedAns,
       correct_answer: quizData[questionIndex].correct_answer,
@@ -137,7 +137,7 @@ class Quiz extends Component {
         quizIsCompleted: true,
         questionIndex: 0,
         options: null,
-        questionAnswers
+        questionsAndAnswers
       });
       return;
     }
@@ -153,7 +153,7 @@ class Quiz extends Component {
       userSlectedAns: null,
       options,
       outPut,
-      questionAnswers
+      questionsAndAnswers
     });
   }
 
@@ -176,7 +176,7 @@ class Quiz extends Component {
 
   renderResult() {
     setTimeout(() => {
-      const { quizData, correctAnswers, questionAnswers } = this.state;
+      const { quizData, correctAnswers, questionsAndAnswers } = this.state;
       const { backToHome } = this.props;
 
       const resultRef = (
@@ -184,13 +184,13 @@ class Quiz extends Component {
           totalQuestions={quizData.length}
           correctAnswers={correctAnswers}
           takenTime={this.takenTime}
-          questionAnswers={questionAnswers}
+          questionsAndAnswers={questionsAndAnswers}
           retakeQuiz={this.retakeQuiz}
           backToHome={backToHome}
         />
       );
 
-      this.setState({ resultRef, questionAnswers: [] });
+      this.setState({ resultRef, questionsAndAnswers: [] });
     }, 2000);
   }
 

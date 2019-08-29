@@ -15,7 +15,7 @@ class Result extends Component {
       totalQuestions,
       correctAnswers,
       takenTime,
-      questionAnswers,
+      questionsAndAnswers,
       retakeQuiz,
       backToHome
     } = this.props;
@@ -35,17 +35,17 @@ class Result extends Component {
           />
         </Menu>
 
-        {activeItem === 'Stats' ? (
+        {activeItem === 'Stats' && (
           <Stats
             totalQuestions={totalQuestions}
             correctAnswers={correctAnswers}
             takenTime={takenTime}
-            questionAnswers={questionAnswers}
             retakeQuiz={retakeQuiz}
             backToHome={backToHome}
           />
-        ) : (
-          <QA QA={questionAnswers} />
+        )}
+        {activeItem === 'Q / A' && (
+          <QA questionsAndAnswers={questionsAndAnswers} />
         )}
         <br />
       </Container>
