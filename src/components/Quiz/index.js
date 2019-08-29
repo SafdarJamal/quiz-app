@@ -30,6 +30,7 @@ class Quiz extends Component {
       correctAnswers: 0,
       userSlectedAns: null,
       quizIsCompleted: false,
+      questionAnswers: [],
       isOffline: false
     };
 
@@ -112,8 +113,15 @@ class Quiz extends Component {
       userSlectedAns,
       quizData,
       questionIndex,
-      correctAnswers
+      correctAnswers,
+      questionAnswers
     } = this.state;
+
+    questionAnswers.push({
+      question: quizData[questionIndex].question,
+      user_answer: userSlectedAns,
+      correct_answer: quizData[questionIndex].correct_answer
+    });
 
     let point = 0;
     if (userSlectedAns === quizData[questionIndex].correct_answer) {
@@ -127,7 +135,8 @@ class Quiz extends Component {
         isLoading: true,
         quizIsCompleted: true,
         questionIndex: 0,
-        options: null
+        options: null,
+        questionAnswers
       });
       return;
     }
@@ -142,7 +151,8 @@ class Quiz extends Component {
       questionIndex: questionIndex + 1,
       userSlectedAns: null,
       options,
-      outPut
+      outPut,
+      questionAnswers
     });
   }
 
@@ -165,16 +175,17 @@ class Quiz extends Component {
 
   renderResult() {
     setTimeout(() => {
-      const { quizData, correctAnswers } = this.state;
+      const { quizData, correctAnswers, questionAnswers } = this.state;
       const { backToHome } = this.props;
 
       const resultRef = (
         <Result
           totalQuestions={quizData.length}
           correctAnswers={correctAnswers}
+          takenTime={this.takenTime}
+          questionAnswers={questionAnswers}
           retakeQuiz={this.retakeQuiz}
           backToHome={backToHome}
-          takenTime={this.takenTime}
         />
       );
 

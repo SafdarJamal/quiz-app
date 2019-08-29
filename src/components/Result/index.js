@@ -20,10 +20,12 @@ class Result extends Component {
       totalQuestions,
       correctAnswers,
       takenTime,
+      questionAnswers,
       retakeQuiz,
       backToHome
     } = this.props;
     // console.log(userScore);
+    console.log(questionAnswers);
 
     const { hours, minutes, seconds } = timeConverter(
       takenTime.totalTime - takenTime.timerTime
