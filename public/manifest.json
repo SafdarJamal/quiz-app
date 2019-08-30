@@ -1,7 +1,11 @@
 {
   "short_name": "QuizApp",
   "name": "QuizApp",
-  "author": "Safdar Jamal",
+  "author": {
+    "name": "Safdar Jamal",
+    "email": "safdar.dev@gmail.com",
+    "url": "https://safdarjamal.github.io"
+  },
   "icons": [
     {
       "src": "./android-chrome-48x48.png",
@@ -39,6 +43,6 @@
   "orientation": "portrait-primary",
   "lang": "en-Us",
   "description": "Quiz App Built with React Using OpenTDB API",
-  "theme_color": "#D0D9DD",
+  "theme_color": "#000000",
   "background_color": "#D0D9DD"
 }
