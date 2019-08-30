@@ -44,9 +44,11 @@ class Result extends Component {
             backToHome={backToHome}
           />
         )}
+
         {activeItem === 'Q / A' && (
           <QA questionsAndAnswers={questionsAndAnswers} />
         )}
+
         <br />
       </Container>
     );

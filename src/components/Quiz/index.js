@@ -118,14 +118,14 @@ class Quiz extends Component {
     } = this.state;
 
     let point = 0;
-    if (userSlectedAns === quizData[questionIndex].correct_answer) {
+    if (userSlectedAns === he.decode(quizData[questionIndex].correct_answer)) {
       point = 1;
     }
 
     questionsAndAnswers.push({
-      question: quizData[questionIndex].question,
+      question: he.decode(quizData[questionIndex].question),
       user_answer: userSlectedAns,
-      correct_answer: quizData[questionIndex].correct_answer,
+      correct_answer: he.decode(quizData[questionIndex].correct_answer),
       point
     });
 
@@ -282,7 +282,7 @@ class Quiz extends Component {
                       </Item.Description>
                       <Divider />
                       <Menu vertical fluid size="massive">
-                        {options.map((item, i) => {
+                        {options.map((option, i) => {
                           let letter;
 
                           switch (i) {
@@ -303,15 +303,17 @@ class Quiz extends Component {
                               break;
                           }
 
+                          const decodedOption = he.decode(option);
+
                           return (
                             <Menu.Item
-                              key={item}
-                              name={item}
-                              active={userSlectedAns === item}
+                              key={decodedOption}
+                              name={decodedOption}
+                              active={userSlectedAns === decodedOption}
                               onClick={this.handleItemClick}
                             >
                               <b style={{ marginRight: '8px' }}>{letter}</b>
-                              {he.decode(item)}
+                              {decodedOption}
                             </Menu.Item>
                           );
                         })}
