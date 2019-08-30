@@ -250,7 +250,7 @@ class Quiz extends Component {
 
         {!isOffline && !isLoading && (
           <Container>
-            <Segment raised>
+            <Segment>
               <Item.Group divided>
                 <Item>
                   <Item.Content>

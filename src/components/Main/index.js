@@ -71,7 +71,7 @@ class Main extends Component {
 
     return (
       <Container>
-        <Segment raised>
+        <Segment>
           <Item.Group divided>
             <Item>
               <Item.Image src={codeImg} />
