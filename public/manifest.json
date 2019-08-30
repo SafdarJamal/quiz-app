@@ -43,6 +43,6 @@
   "orientation": "portrait-primary",
   "lang": "en-Us",
   "description": "Quiz App Built with React Using OpenTDB API",
-  "theme_color": "#000000",
+  "theme_color": "#1B1C1D",
   "background_color": "#D0D9DD"
 }
