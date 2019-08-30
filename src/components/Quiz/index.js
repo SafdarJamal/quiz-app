@@ -34,7 +34,7 @@ class Quiz extends Component {
       isOffline: false
     };
 
-    this.takenTime = undefined;
+    this.timeTakesToComplete = undefined;
 
     this.getRandomNumber = this.getRandomNumber.bind(this);
     this.setData = this.setData.bind(this);
@@ -88,7 +88,7 @@ class Quiz extends Component {
         title: 'Oops...',
         html: message,
         type: 'error',
-        timer: 5000,
+        timer: 10000,
         onClose: () => {
           this.props.backToHome();
         }
@@ -168,7 +168,7 @@ class Quiz extends Component {
   }
 
   timeAmount(timerTime, totalTime) {
-    this.takenTime = {
+    this.timeTakesToComplete = {
       timerTime,
       totalTime
     };
@@ -183,7 +183,7 @@ class Quiz extends Component {
         <Result
           totalQuestions={quizData.length}
           correctAnswers={correctAnswers}
-          takenTime={this.takenTime}
+          timeTakesToComplete={this.timeTakesToComplete}
           questionsAndAnswers={questionsAndAnswers}
           retakeQuiz={this.retakeQuiz}
           backToHome={backToHome}
@@ -221,14 +221,14 @@ class Quiz extends Component {
       quizData,
       questionIndex,
       options,
-      // outPut,
       userSlectedAns,
       isLoading,
-      // correctAnswers,
       quizIsCompleted,
       resultRef,
       startNewQuiz,
       isOffline
+      // outPut,
+      // correctAnswers,
     } = this.state;
 
     // console.log(userSlectedAns);

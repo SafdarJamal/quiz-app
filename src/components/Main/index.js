@@ -23,31 +23,11 @@ class Main extends Component {
       time: null
     };
 
-    this.setCategory = this.setCategory.bind(this);
-    this.setNumOfQ = this.setNumOfQ.bind(this);
-    this.setDifficulty = this.setDifficulty.bind(this);
-    this.setQType = this.setQType.bind(this);
-    this.setTime = this.setTime.bind(this);
+    this.setValue = this.setValue.bind(this);
   }
 
-  setCategory(category) {
-    this.setState({ category });
-  }
-
-  setNumOfQ(numOfQ) {
-    this.setState({ numOfQ });
-  }
-
-  setDifficulty(difficulty) {
-    this.setState({ difficulty });
-  }
-
-  setQType(type) {
-    this.setState({ type });
-  }
-
-  setTime(time) {
-    this.setState({ time });
+  setValue(name, value) {
+    this.setState({ [name]: value });
   }
 
   render() {
@@ -83,33 +63,38 @@ class Main extends Component {
                 <Divider />
                 <Item.Meta>
                   <Select
-                    options={CATEGORIES}
-                    setValue={this.setCategory}
+                    name="category"
                     text="Select Quiz Category"
+                    options={CATEGORIES}
+                    onChange={this.setValue}
                   />
                   <br />
                   <Select
-                    options={NUM_OF_QUESTIONS}
-                    setValue={this.setNumOfQ}
+                    name="numOfQ"
                     text="Select No. of Questions"
+                    options={NUM_OF_QUESTIONS}
+                    onChange={this.setValue}
                   />
                   <br />
                   <Select
-                    options={DIFFICULTY}
-                    setValue={this.setDifficulty}
+                    name="difficulty"
                     text="Select Difficulty Level"
+                    options={DIFFICULTY}
+                    onChange={this.setValue}
                   />
                   <br />
                   <Select
-                    options={QUESTIONS_TYPE}
-                    setValue={this.setQType}
+                    name="type"
                     text="Select Questions Type"
+                    options={QUESTIONS_TYPE}
+                    onChange={this.setValue}
                   />
                   <br />
                   <Select
-                    options={COUNTDOWN_TIME}
-                    setValue={this.setTime}
+                    name="time"
                     text="Select Countdown Time (In Minutes)"
+                    options={COUNTDOWN_TIME}
+                    onChange={this.setValue}
                   />
                 </Item.Meta>
                 <Divider />

@@ -5,10 +5,14 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { promptEvent: null, appAccepted: false };
+    this.state = {
+      promptEvent: null,
+      appAccepted: false
+    };
 
     window.addEventListener('beforeinstallprompt', e => {
       // console.log('Loooging');
+
       e.preventDefault();
       this.setState({ promptEvent: e });
     });

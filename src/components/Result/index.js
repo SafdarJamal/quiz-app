@@ -5,16 +5,26 @@ import Stats from './Stats';
 import QA from './QA';
 
 class Result extends Component {
-  state = { activeItem: 'Stats' };
+  constructor(props) {
+    super(props);
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+    this.state = {
+      activeTab: 'Stats'
+    };
+
+    this.handleTabClick = this.handleTabClick.bind(this);
+  }
+
+  handleTabClick(e, { name }) {
+    this.setState({ activeTab: name });
+  }
 
   render() {
-    const { activeItem } = this.state;
+    const { activeTab } = this.state;
     const {
       totalQuestions,
       correctAnswers,
-      takenTime,
+      timeTakesToComplete,
       questionsAndAnswers,
       retakeQuiz,
       backToHome
@@ -25,30 +35,28 @@ class Result extends Component {
         <Menu fluid widths={2}>
           <Menu.Item
             name="Stats"
-            active={activeItem === 'Stats'}
-            onClick={this.handleItemClick}
+            active={activeTab === 'Stats'}
+            onClick={this.handleTabClick}
           />
           <Menu.Item
             name="Q / A"
-            active={activeItem === 'Q / A'}
-            onClick={this.handleItemClick}
+            active={activeTab === 'Q / A'}
+            onClick={this.handleTabClick}
           />
         </Menu>
 
-        {activeItem === 'Stats' && (
+        {activeTab === 'Stats' && (
           <Stats
             totalQuestions={totalQuestions}
             correctAnswers={correctAnswers}
-            takenTime={takenTime}
+            timeTakesToComplete={timeTakesToComplete}
             retakeQuiz={retakeQuiz}
             backToHome={backToHome}
           />
         )}
-
-        {activeItem === 'Q / A' && (
+        {activeTab === 'Q / A' && (
           <QA questionsAndAnswers={questionsAndAnswers} />
         )}
-
         <br />
       </Container>
     );

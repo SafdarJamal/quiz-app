@@ -1,13 +1,13 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
-const Select = ({ text, options, setValue }) => (
+const Select = ({ name, text, options, onChange }) => (
   <Dropdown
-    placeholder={text}
-    options={options}
     fluid
     selection
-    onChange={(e, { value }) => setValue(value)}
+    placeholder={text}
+    options={options}
+    onChange={(e, { value }) => onChange(name, value)}
   />
 );
 
