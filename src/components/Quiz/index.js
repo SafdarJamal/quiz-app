@@ -18,6 +18,7 @@ import Countdown from '../Countdown';
 import Offline from '../Offline';
 
 import he from 'he';
+import { getRandomNumber } from '../../utils/getRandomNumber';
 
 class Quiz extends Component {
   constructor(props) {
@@ -36,7 +37,6 @@ class Quiz extends Component {
 
     this.timeTakesToComplete = undefined;
 
-    this.getRandomNumber = this.getRandomNumber.bind(this);
     this.setData = this.setData.bind(this);
     this.handleItemClick = this.handleItemClick.bind(this);
     this.handleNext = this.handleNext.bind(this);
@@ -68,12 +68,6 @@ class Quiz extends Component {
     }
   }
 
-  getRandomNumber() {
-    const min = Math.ceil(0);
-    const max = Math.floor(3);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   setData(results) {
     // console.log(results);
 
@@ -97,7 +91,7 @@ class Quiz extends Component {
 
     const quizData = results;
     const { questionIndex } = this.state;
-    const outPut = this.getRandomNumber();
+    const outPut = getRandomNumber(0, 3);
     const options = [...quizData[questionIndex].incorrect_answers];
     options.splice(outPut, 0, quizData[questionIndex].correct_answer);
 
@@ -142,7 +136,7 @@ class Quiz extends Component {
       return;
     }
 
-    const outPut = this.getRandomNumber();
+    const outPut = getRandomNumber(0, 3);
 
     const options = [...quizData[questionIndex + 1].incorrect_answers];
     options.splice(outPut, 0, quizData[questionIndex + 1].correct_answer);
@@ -197,7 +191,7 @@ class Quiz extends Component {
   retakeQuiz() {
     // console.log('Retake quiz func');
     const { quizData, questionIndex } = this.state;
-    const outPut = this.getRandomNumber();
+    const outPut = getRandomNumber(0, 3);
     const options = [...quizData[questionIndex].incorrect_answers];
     options.splice(outPut, 0, quizData[questionIndex].correct_answer);
 
