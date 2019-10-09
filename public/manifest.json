@@ -38,9 +38,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "lang": "en-Us",
   "description": "Quiz App Built with React Using OpenTDB API",
   "theme_color": "#1B1C1D",
