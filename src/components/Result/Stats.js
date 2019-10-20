@@ -1,5 +1,6 @@
 import React from 'react';
 import { Segment, Header, Button } from 'semantic-ui-react';
+import ShareButton from '../ShareButton';
 
 import { calculateGrade } from '../../utils/calculateGrade';
 import { timeConverter } from '../../utils/timeConverter';
@@ -49,7 +50,7 @@ const Stats = props => {
           onClick={retakeQuiz}
           size="big"
           icon="redo"
-          labelPosition="right"
+          labelPosition="left"
           style={{ marginRight: 15, marginBottom: 8 }}
         />
         <Button
@@ -58,9 +59,10 @@ const Stats = props => {
           onClick={backToHome}
           size="big"
           icon="home"
-          labelPosition="right"
+          labelPosition="left"
           style={{ marginBottom: 8 }}
         />
+        <ShareButton />
       </div>
     </Segment>
   );
