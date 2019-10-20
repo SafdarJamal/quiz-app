@@ -5,6 +5,7 @@ const ShareButton = () => {
   const doShare = () => {
     navigator
       .share({
+        title: document.title,
         text: 'Check out the QuizApp — it rocks!',
         url: 'https://safdarjamal.github.io/quiz-app'
       })
