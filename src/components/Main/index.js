@@ -106,7 +106,7 @@ class Main extends Component {
                       onClick={() => this.props.startQuiz(selectedValues)}
                       size="big"
                       icon="play"
-                      labelPosition="right"
+                      labelPosition="left"
                     />
                   ) : (
                     <Button
@@ -115,7 +115,7 @@ class Main extends Component {
                       content="Start Quiz"
                       size="big"
                       icon="play"
-                      labelPosition="right"
+                      labelPosition="left"
                     />
                   )}
                 </Item.Extra>
