@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Container, Segment, Item, Divider, Button } from 'semantic-ui-react';
+import {
+  Container,
+  Segment,
+  Item,
+  Dropdown,
+  Divider,
+  Button
+} from 'semantic-ui-react';
 import codeImg from '../../assets/images/code.png';
 
-import Select from '../Select';
 import {
   CATEGORIES,
   NUM_OF_QUESTIONS,
@@ -32,7 +38,6 @@ class Main extends Component {
 
   render() {
     const { category, numOfQ, difficulty, type, time } = this.state;
-    // console.log(category, numOfQ, difficulty, type, time);
 
     let allFieldsSelected = false;
     let selectedValues = null;
@@ -62,39 +67,59 @@ class Main extends Component {
                 <br />
                 <Divider />
                 <Item.Meta>
-                  <Select
+                  <Dropdown
+                    fluid
+                    selection
                     name="category"
-                    text="Select Quiz Category"
+                    placeholder="Select Quiz Category"
                     options={CATEGORIES}
-                    onChange={this.setValue}
+                    onChange={(e, { name, value }) =>
+                      this.setValue(name, value)
+                    }
                   />
                   <br />
-                  <Select
+                  <Dropdown
+                    fluid
+                    selection
                     name="numOfQ"
-                    text="Select No. of Questions"
+                    placeholder="Select No. of Questions"
                     options={NUM_OF_QUESTIONS}
-                    onChange={this.setValue}
+                    onChange={(e, { name, value }) =>
+                      this.setValue(name, value)
+                    }
                   />
                   <br />
-                  <Select
+                  <Dropdown
+                    fluid
+                    selection
                     name="difficulty"
-                    text="Select Difficulty Level"
+                    placeholder="Select Difficulty Level"
                     options={DIFFICULTY}
-                    onChange={this.setValue}
+                    onChange={(e, { name, value }) =>
+                      this.setValue(name, value)
+                    }
                   />
                   <br />
-                  <Select
+                  <Dropdown
+                    fluid
+                    selection
                     name="type"
-                    text="Select Questions Type"
+                    placeholder="Select Questions Type"
                     options={QUESTIONS_TYPE}
-                    onChange={this.setValue}
+                    onChange={(e, { name, value }) =>
+                      this.setValue(name, value)
+                    }
                   />
                   <br />
-                  <Select
+                  <Dropdown
+                    fluid
+                    selection
                     name="time"
-                    text="Select Countdown Time (In Minutes)"
+                    placeholder="Select Countdown Time (In Minutes)"
                     options={COUNTDOWN_TIME}
-                    onChange={this.setValue}
+                    onChange={(e, { name, value }) =>
+                      this.setValue(name, value)
+                    }
                   />
                 </Item.Meta>
                 <Divider />
