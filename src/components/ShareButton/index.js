@@ -10,7 +10,7 @@ const ShareButton = () => {
         url: 'https://safdarjamal.github.io/quiz-app'
       })
       .then(() => {
-        // console.log('Successfully shared');
+        console.log('Successfully shared');
       })
       .catch(error => console.log(error));
   };

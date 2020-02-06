@@ -11,8 +11,6 @@ class Header extends Component {
     };
 
     window.addEventListener('beforeinstallprompt', e => {
-      // console.log('Loooging');
-
       e.preventDefault();
       this.setState({ promptEvent: e });
     });

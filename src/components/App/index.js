@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 
 import Header from '../Header';
 import Main from '../Main';
-import Loader from '../Loader';
 import Quiz from '../Quiz';
+import Loader from '../Loader';
 
 import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
 

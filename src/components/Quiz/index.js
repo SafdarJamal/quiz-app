@@ -13,8 +13,8 @@ import {
 import Swal from 'sweetalert2';
 
 import Loader from '../Loader';
-import Result from '../Result';
 import Countdown from '../Countdown';
+import Result from '../Result';
 import Offline from '../Offline';
 
 import he from 'he';
@@ -50,7 +50,6 @@ class Quiz extends Component {
 
   componentDidMount() {
     const { API } = this.props;
-    // console.log(API);
 
     fetch(API)
       .then(respone => respone.json())
@@ -60,17 +59,15 @@ class Quiz extends Component {
 
   resolveError(error) {
     if (!navigator.onLine) {
-      // console.log('Connection problem');
       this.setState({ isOffline: true });
+      console.log('Connection problem');
     } else {
-      // console.log('API problem ==> ', error);
       this.setState({ isOffline: true });
+      console.log('API problem ==> ', error);
     }
   }
 
   setData(results) {
-    // console.log(results);
-
     if (results.length === 0) {
       const message =
         "The API doesn't have enough questions for your query<br />" +
@@ -133,6 +130,7 @@ class Quiz extends Component {
         options: null,
         questionsAndAnswers
       });
+
       return;
     }
 
@@ -189,7 +187,6 @@ class Quiz extends Component {
   }
 
   retakeQuiz() {
-    // console.log('Retake quiz func');
     const { quizData, questionIndex } = this.state;
     const outPut = getRandomNumber(0, 3);
     const options = [...quizData[questionIndex].incorrect_answers];

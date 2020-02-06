@@ -1,5 +1,6 @@
 const calculateGrade = score => {
   const percentage = parseInt(score);
+
   let grade = null;
   let remarks = null;
 
