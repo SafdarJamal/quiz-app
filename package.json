@@ -11,9 +11,9 @@
     "he": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^3.3.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.1",
+    "semantic-ui-react": "^0.88.2",
     "sweetalert2": "^8.19.0"
   },
   "scripts": {
@@ -40,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.1.1"
+    "gh-pages": "^2.2.0"
   }
 }
