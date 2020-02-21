@@ -1,6 +1,6 @@
 # The QuizApp
 
-The QuizApp is a progressive web app ([PWA](https://developers.google.com/web/progressive-web-apps)) Built with [React](https://reactjs.org) using [OpenTDB](https://opentdb.com) API.
+The QuizApp is a progressive web app ([PWA](https://developers.google.com/web/progressive-web-apps)) built with [React](https://reactjs.org) using [OpenTDB](https://opentdb.com) API.
 
 <p align="center">
   <img src="./screenshot.png" alt='QuizApp in Action'>
@@ -9,10 +9,10 @@ The QuizApp is a progressive web app ([PWA](https://developers.google.com/web/pr
 ## Demo
 
 - [master](https://safdarjamal.github.io/quiz-app) (Latest)
-- [v4.0](https://quizapp-v4.surge.sh) (Create Q/A Section)
-- [v3.0](https://quizapp-v3.surge.sh) (Play Fully Customize Quiz and its now a PWA)
-- [v2.0](https://quizapp-v2.surge.sh) (Add Countdown Timer and some UI Enhancement)
-- [v1.0](https://quizapp-v1.surge.sh) (Basic 10 Questions Quiz)
+- [v4.0](https://quizapp-v4.surge.sh) (Create Q/A dashboard)
+- [v3.0](https://quizapp-v3.surge.sh) (Play fully customize quiz and its now a PWA)
+- [v2.0](https://quizapp-v2.surge.sh) (Add countdown timer and some UI enhancement)
+- [v1.0](https://quizapp-v1.surge.sh) (Basic 10 questions quiz)
 
 ## Development
 
