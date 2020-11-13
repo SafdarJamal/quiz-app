@@ -2,12 +2,10 @@
   "name": "quiz-app",
   "version": "4.3.0",
   "private": true,
-  "author": {
-    "name": "Safdar Jamal",
-    "url": "https://safdarjamal.github.io"
-  },
-  "homepage": "https://safdarjamal.github.io/quiz-app",
   "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
     "he": "^1.2.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
