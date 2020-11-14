@@ -1,18 +1,16 @@
 import React from 'react';
 import { Segment, Header, Button } from 'semantic-ui-react';
-import ShareButton from '../ShareButton';
 
+import ShareButton from '../ShareButton';
 import { calculateGrade, timeConverter } from '../../utils';
 
-const Stats = props => {
-  const {
-    totalQuestions,
-    correctAnswers,
-    timeTakesToComplete,
-    retakeQuiz,
-    backToHome
-  } = props;
-
+const Stats = ({
+  totalQuestions,
+  correctAnswers,
+  timeTakesToComplete,
+  retakeQuiz,
+  backToHome
+}) => {
   const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
   const { grade, remarks } = calculateGrade(score);
   const { hours, minutes, seconds } = timeConverter(
