@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Popup } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
 
-import { timeConverter } from '../../utils/timeConverter';
+import { timeConverter } from '../../utils';
 
 class Countdown extends Component {
   constructor(props) {

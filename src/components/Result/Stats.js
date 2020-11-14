@@ -2,8 +2,7 @@ import React from 'react';
 import { Segment, Header, Button } from 'semantic-ui-react';
 import ShareButton from '../ShareButton';
 
-import { calculateGrade } from '../../utils/calculateGrade';
-import { timeConverter } from '../../utils/timeConverter';
+import { calculateGrade, timeConverter } from '../../utils';
 
 const Stats = props => {
   const {

@@ -18,7 +18,7 @@ import Result from '../Result';
 import Offline from '../Offline';
 
 import he from 'he';
-import { getRandomNumber } from '../../utils/getRandomNumber';
+import { getRandomNumber } from '../../utils';
 
 class Quiz extends Component {
   constructor(props) {
