@@ -1,64 +1,46 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 
 import Header from '../Header';
 import Main from '../Main';
 import Quiz from '../Quiz';
 import Loader from '../Loader';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+const App = () => {
+  const [isQuizStart, setIsQuizStart] = useState(false);
+  const [API, setAPI] = useState(null);
+  const [countdownTime, setCountdownTime] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-    this.state = {
-      isQuizStart: false,
-      API: null,
-      countdownTime: null,
-      isLoading: false
-    };
-
-    this.startQuiz = this.startQuiz.bind(this);
-    this.backToHome = this.backToHome.bind(this);
-  }
-
-  startQuiz(selectedValues) {
+  const startQuiz = selectedValues => {
     const { category, numOfQ, difficulty, type, time } = selectedValues;
-
     const API = `https://opentdb.com/api.php?amount=${numOfQ}&category=${category}&difficulty=${difficulty}&type=${type}`;
 
-    this.setState({ isQuizStart: true, API, countdownTime: time });
-  }
+    setIsQuizStart(true);
+    setAPI(API);
+    setCountdownTime(time);
+  };
 
-  backToHome() {
-    this.setState({ isLoading: true });
+  const backToHome = () => {
+    setIsLoading(true);
 
     setTimeout(() => {
-      this.setState({
-        isQuizStart: false,
-        API: null,
-        countdownTime: null,
-        isLoading: false
-      });
+      setIsQuizStart(false);
+      setAPI(null);
+      setCountdownTime(null);
+      setIsLoading(false);
     }, 1000);
-  }
+  };
 
-  render() {
-    const { isQuizStart, API, countdownTime, isLoading } = this.state;
-
-    return (
-      <Fragment>
-        <Header />
-        {!isLoading && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {!isLoading && isQuizStart && (
-          <Quiz
-            API={API}
-            countdownTime={countdownTime}
-            backToHome={this.backToHome}
-          />
-        )}
-        {isLoading && <Loader />}
-      </Fragment>
-    );
-  }
-}
+  return (
+    <Fragment>
+      <Header />
+      {!isLoading && !isQuizStart && <Main startQuiz={startQuiz} />}
+      {!isLoading && isQuizStart && (
+        <Quiz API={API} countdownTime={countdownTime} backToHome={backToHome} />
+      )}
+      {isLoading && <Loader />}
+    </Fragment>
+  );
+};
 
 export default App;
