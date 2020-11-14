@@ -12,4 +12,4 @@ const timeConverter = milliseconds => {
   };
 };
 
-export { timeConverter };
+export default timeConverter;
