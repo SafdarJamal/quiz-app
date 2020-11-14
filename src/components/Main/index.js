@@ -7,7 +7,7 @@ import {
   Divider,
   Button
 } from 'semantic-ui-react';
-import codeImg from '../../assets/images/code.png';
+import codeImg from '../../images/code.png';
 
 import {
   CATEGORIES,
