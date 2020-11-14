@@ -2,16 +2,14 @@ import React, { Fragment } from 'react';
 import { Button } from 'semantic-ui-react';
 
 const ShareButton = () => {
-  const doShare = () => {
+  const handleShare = () => {
     navigator
       .share({
         title: document.title,
-        text: 'Check out the QuizApp — it rocks!',
-        url: 'https://safdarjamal.github.io/quiz-app'
+        text: 'Check out this quiz app — it rocks!',
+        url: 'https://safdarjamal.github.io/quiz-app/'
       })
-      .then(() => {
-        console.log('Successfully shared');
-      })
+      .then(() => console.log('Successfully shared'))
       .catch(error => console.log(error));
   };
 
@@ -24,7 +22,7 @@ const ShareButton = () => {
           size="big"
           circular
           icon="share alternate"
-          onClick={doShare}
+          onClick={handleShare}
         />
       ) : null}
     </Fragment>
