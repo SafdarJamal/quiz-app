@@ -5,8 +5,6 @@ import Main from '../Main';
 import Quiz from '../Quiz';
 import Loader from '../Loader';
 
-import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
-
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,8 +23,7 @@ class App extends Component {
   startQuiz(selectedValues) {
     const { category, numOfQ, difficulty, type, time } = selectedValues;
 
-    const API = `${PATH_BASE + AMOUNT + numOfQ}&${CATEGORY +
-      category}&${DIFFICULTY + difficulty}&${TYPE + type}`;
+    const API = `https://opentdb.com/api.php?amount=${numOfQ}&category=${category}&difficulty=${difficulty}&type=${type}`;
 
     this.setState({ isQuizStart: true, API, countdownTime: time });
   }
