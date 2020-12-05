@@ -26,20 +26,20 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);
-  const [quizIsCompleted, setQuizIsCompleted] = useState(false);
+  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [isOffline, setIsOffline] = useState(false);
 
   const [options, setOptions] = useState([]);
   const [outPut, setOutPut] = useState(null);
-  const [timeTakesToComplete, setTimeTakesToComplete] = useState({});
+  const [time, setTime] = useState({});
   const [resultRef, setResultRef] = useState(null);
-  const [startNewQuiz, setStartNewQuiz] = useState(false);
+  const [isNewQuizStarted, setIsNewQuizStarted] = useState(false);
 
   useEffect(() => {
     fetch(API)
       .then(respone => respone.json())
-      .then(result => setTimeout(() => setData(result.results), 1000))
+      .then(data => setTimeout(() => setData(data.results), 1000))
       .catch(error => setTimeout(() => resolveError(error), 1000));
   }, []);
 
@@ -103,7 +103,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       setCorrectAnswers(correctAnswers + point);
       setUserSlectedAns(null);
       setIsLoading(true);
-      setQuizIsCompleted(true);
+      setIsQuizCompleted(true);
       setQuestionIndex(0);
       setOptions(null);
       setQuestionsAndAnswers(qna);
@@ -126,13 +126,13 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   const timesUp = () => {
     setUserSlectedAns(null);
     setIsLoading(true);
-    setQuizIsCompleted(true);
+    setIsQuizCompleted(true);
     setQuestionIndex(0);
     setOptions(null);
   };
 
   const timeAmount = (timerTime, totalTime) => {
-    setTimeTakesToComplete({
+    setTime({
       timerTime,
       totalTime
     });
@@ -144,7 +144,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
         <Result
           totalQuestions={quizData.length}
           correctAnswers={correctAnswers}
-          timeTakesToComplete={timeTakesToComplete}
+          time={time}
           questionsAndAnswers={questionsAndAnswers}
           retakeQuiz={retakeQuiz}
           backToHome={backToHome}
@@ -162,8 +162,8 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     options.splice(outPut, 0, quizData[questionIndex].correct_answer);
 
     setCorrectAnswers(0);
-    setQuizIsCompleted(false);
-    setStartNewQuiz(true);
+    setIsQuizCompleted(false);
+    setIsNewQuizStarted(true);
     setOptions(options);
     setOutPut(outPut);
   };
@@ -172,22 +172,22 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   console.log(questionIndex, outPut);
   console.log('Score ==>', correctAnswers);
 
-  if (quizIsCompleted && !resultRef) {
+  if (isQuizCompleted && !resultRef) {
     console.log('Redirecting to result screen');
     renderResult();
   }
 
-  if (startNewQuiz) {
+  if (isNewQuizStarted) {
     setTimeout(() => {
       setIsLoading(false);
-      setStartNewQuiz(false);
+      setIsNewQuizStarted(false);
       setResultRef(null);
     }, 1000);
   }
 
   return (
     <Item.Header>
-      {!isOffline && !quizIsCompleted && isLoading && <Loader />}
+      {!isOffline && !isQuizCompleted && isLoading && <Loader />}
 
       {!isOffline && !isLoading && (
         <Container>
@@ -281,9 +281,9 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
         </Container>
       )}
 
-      {quizIsCompleted && !resultRef && <Loader text="Getting your result." />}
+      {isQuizCompleted && !resultRef && <Loader text="Getting your result." />}
 
-      {quizIsCompleted && resultRef}
+      {isQuizCompleted && resultRef}
 
       {isOffline && <Offline />}
     </Item.Header>
