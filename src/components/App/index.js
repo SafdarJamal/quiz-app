@@ -6,39 +6,39 @@ import Quiz from '../Quiz';
 import Loader from '../Loader';
 
 const App = () => {
-  const [isQuizStart, setIsQuizStart] = useState(false);
+  const [isQuizStarted, setIsQuizStarted] = useState(false);
   const [API, setAPI] = useState(null);
   const [countdownTime, setCountdownTime] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const startQuiz = selectedValues => {
     const { category, numOfQ, difficulty, type, time } = selectedValues;
     const API = `https://opentdb.com/api.php?amount=${numOfQ}&category=${category}&difficulty=${difficulty}&type=${type}`;
 
-    setIsQuizStart(true);
+    setIsQuizStarted(true);
     setAPI(API);
     setCountdownTime(time);
   };
 
   const backToHome = () => {
-    setIsLoading(true);
+    setLoading(true);
 
     setTimeout(() => {
-      setIsQuizStart(false);
+      setIsQuizStarted(false);
       setAPI(null);
       setCountdownTime(null);
-      setIsLoading(false);
+      setLoading(false);
     }, 1000);
   };
 
   return (
     <Fragment>
       <Header />
-      {!isLoading && !isQuizStart && <Main startQuiz={startQuiz} />}
-      {!isLoading && isQuizStart && (
+      {!loading && !isQuizStarted && <Main startQuiz={startQuiz} />}
+      {!loading && isQuizStarted && (
         <Quiz API={API} countdownTime={countdownTime} backToHome={backToHome} />
       )}
-      {isLoading && <Loader />}
+      {loading && <Loader />}
     </Fragment>
   );
 };
