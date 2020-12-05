@@ -7,7 +7,7 @@ import QA from './QA';
 const Result = ({
   totalQuestions,
   correctAnswers,
-  timeTakesToComplete,
+  time,
   questionsAndAnswers,
   retakeQuiz,
   backToHome
@@ -36,7 +36,7 @@ const Result = ({
         <Stats
           totalQuestions={totalQuestions}
           correctAnswers={correctAnswers}
-          timeTakesToComplete={timeTakesToComplete}
+          time={time}
           retakeQuiz={retakeQuiz}
           backToHome={backToHome}
         />

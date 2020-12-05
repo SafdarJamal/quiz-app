@@ -7,14 +7,14 @@ import { calculateGrade, timeConverter } from '../../utils';
 const Stats = ({
   totalQuestions,
   correctAnswers,
-  timeTakesToComplete,
+  time,
   retakeQuiz,
   backToHome
 }) => {
   const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
   const { grade, remarks } = calculateGrade(score);
   const { hours, minutes, seconds } = timeConverter(
-    timeTakesToComplete.totalTime - timeTakesToComplete.timerTime
+    time.totalTime - time.timerTime
   );
 
   return (
@@ -38,7 +38,7 @@ const Stats = ({
         Passing Score: 60%
       </Header>
       <Header as="h3" textAlign="center" block>
-        Time Takes: {`${hours} : ${minutes} : ${seconds}`}
+        Time Taken: {`${hours} : ${minutes} : ${seconds}`}
       </Header>
       <div style={{ marginTop: 35 }}>
         <Button
