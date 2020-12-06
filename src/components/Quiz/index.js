@@ -31,7 +31,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   const [isOffline, setIsOffline] = useState(false);
 
   const [options, setOptions] = useState([]);
-  const [outPut, setOutPut] = useState(null);
   const [time, setTime] = useState({});
   const [resultRef, setResultRef] = useState(null);
   const [isNewQuizStarted, setIsNewQuizStarted] = useState(false);
@@ -61,14 +60,16 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     }
 
     const quizData = results;
-    const outPut = getRandomNumber(0, 3);
     const options = [...quizData[questionIndex].incorrect_answers];
-    options.splice(outPut, 0, quizData[questionIndex].correct_answer);
+    options.splice(
+      getRandomNumber(0, 3),
+      0,
+      quizData[questionIndex].correct_answer
+    );
 
     setQuizData(quizData);
     setIsLoading(false);
     setOptions(options);
-    setOutPut(outPut);
   };
 
   const resolveError = error => {
@@ -111,15 +112,17 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       return;
     }
 
-    const outPut = getRandomNumber(0, 3);
     const options = [...quizData[questionIndex + 1].incorrect_answers];
-    options.splice(outPut, 0, quizData[questionIndex + 1].correct_answer);
+    options.splice(
+      getRandomNumber(0, 3),
+      0,
+      quizData[questionIndex + 1].correct_answer
+    );
 
     setCorrectAnswers(correctAnswers + point);
     setQuestionIndex(questionIndex + 1);
     setUserSlectedAns(null);
     setOptions(options);
-    setOutPut(outPut);
     setQuestionsAndAnswers(qna);
   };
 
@@ -157,20 +160,18 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   };
 
   const retakeQuiz = () => {
-    const outPut = getRandomNumber(0, 3);
     const options = [...quizData[questionIndex].incorrect_answers];
-    options.splice(outPut, 0, quizData[questionIndex].correct_answer);
+    options.splice(
+      getRandomNumber(0, 3),
+      0,
+      quizData[questionIndex].correct_answer
+    );
 
     setCorrectAnswers(0);
     setIsQuizCompleted(false);
     setIsNewQuizStarted(true);
     setOptions(options);
-    setOutPut(outPut);
   };
-
-  console.log(userSlectedAns);
-  console.log(questionIndex, outPut);
-  console.log('Score ==>', correctAnswers);
 
   if (isQuizCompleted && !resultRef) {
     console.log('Redirecting to result screen');
