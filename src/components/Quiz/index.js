@@ -42,6 +42,17 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       .catch(error => setTimeout(() => resolveError(error), 1000));
   }, []);
 
+  const manipulateOptions = (data, questionIndex) => {
+    const options = [...data[questionIndex].incorrect_answers];
+    options.splice(
+      getRandomNumber(0, 3),
+      0,
+      data[questionIndex].correct_answer
+    );
+
+    return options;
+  };
+
   const handleData = results => {
     if (results.length === 0) {
       const message =
@@ -59,17 +70,9 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       });
     }
 
-    const data = results;
-    const options = [...data[questionIndex].incorrect_answers];
-    options.splice(
-      getRandomNumber(0, 3),
-      0,
-      data[questionIndex].correct_answer
-    );
-
-    setData(data);
+    setData(results);
     setLoading(false);
-    setOptions(options);
+    setOptions(manipulateOptions(results, questionIndex));
   };
 
   const resolveError = error => {
@@ -112,17 +115,10 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       return;
     }
 
-    const options = [...data[questionIndex + 1].incorrect_answers];
-    options.splice(
-      getRandomNumber(0, 3),
-      0,
-      data[questionIndex + 1].correct_answer
-    );
-
     setCorrectAnswers(correctAnswers + point);
     setQuestionIndex(questionIndex + 1);
     setUserSlectedAns(null);
-    setOptions(options);
+    setOptions(manipulateOptions(data, questionIndex + 1));
     setQuestionsAndAnswers(qna);
   };
 
@@ -160,17 +156,10 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   };
 
   const retakeQuiz = () => {
-    const options = [...data[questionIndex].incorrect_answers];
-    options.splice(
-      getRandomNumber(0, 3),
-      0,
-      data[questionIndex].correct_answer
-    );
-
     setCorrectAnswers(0);
     setIsQuizCompleted(false);
     setIsNewQuizStarted(true);
-    setOptions(options);
+    setOptions(manipulateOptions(data, questionIndex));
   };
 
   if (isQuizCompleted && !resultRef) {
