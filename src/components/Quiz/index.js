@@ -24,22 +24,31 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const [options, setOptions] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
-  const [isOffline, setIsOffline] = useState(false);
-
-  const [options, setOptions] = useState([]);
   const [time, setTime] = useState({});
-  const [resultRef, setResultRef] = useState(null);
+  const [loadingResult, setLoadingResult] = useState(false);
   const [isNewQuizStarted, setIsNewQuizStarted] = useState(false);
+  const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
     fetch(API)
       .then(respone => respone.json())
       .then(data => setTimeout(() => handleData(data.results), 1000))
-      .catch(error => setTimeout(() => resolveError(error), 1000));
+      .catch(error =>
+        setTimeout(() => {
+          if (!navigator.onLine) {
+            setIsOffline(true);
+            console.log('Connection problem =>', error.message);
+          } else {
+            setIsOffline(true);
+            console.log('API problem =>', error.message);
+          }
+        }, 1000)
+      );
   }, []);
 
   const manipulateOptions = (data, questionIndex) => {
@@ -53,8 +62,8 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     return options;
   };
 
-  const handleData = results => {
-    if (results.length === 0) {
+  const handleData = data => {
+    if (data.length === 0) {
       const message =
         "The API doesn't have enough questions for your query<br />" +
         '(ex. Asking for 50 questions in a category that only has 20).' +
@@ -70,19 +79,9 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       });
     }
 
-    setData(results);
+    setData(data);
     setLoading(false);
-    setOptions(manipulateOptions(results, questionIndex));
-  };
-
-  const resolveError = error => {
-    if (!navigator.onLine) {
-      setIsOffline(true);
-      console.log('Connection problem');
-    } else {
-      setIsOffline(true);
-      console.log('API problem ==> ', error);
-    }
+    setOptions(manipulateOptions(data, questionIndex));
   };
 
   const handleItemClick = (e, { name }) => {
@@ -111,6 +110,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       setQuestionIndex(0);
       setOptions(null);
       setQuestionsAndAnswers(qna);
+      setLoadingResult(true);
 
       return;
     }
@@ -128,6 +128,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     setIsQuizCompleted(true);
     setQuestionIndex(0);
     setOptions(null);
+    setLoadingResult(true);
   };
 
   const timeAmount = (timerTime, totalTime) => {
@@ -137,41 +138,24 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     });
   };
 
-  const renderResult = () => {
-    setTimeout(() => {
-      const resultRef = (
-        <Result
-          totalQuestions={data.length}
-          correctAnswers={correctAnswers}
-          time={time}
-          questionsAndAnswers={questionsAndAnswers}
-          retakeQuiz={retakeQuiz}
-          backToHome={backToHome}
-        />
-      );
-
-      setResultRef(resultRef);
-      setQuestionsAndAnswers([]);
-    }, 2000);
-  };
-
   const retakeQuiz = () => {
     setCorrectAnswers(0);
     setIsQuizCompleted(false);
+    setQuestionsAndAnswers([]);
     setIsNewQuizStarted(true);
     setOptions(manipulateOptions(data, questionIndex));
   };
 
-  if (isQuizCompleted && !resultRef) {
-    console.log('Redirecting to result screen');
-    renderResult();
+  if (loadingResult) {
+    setTimeout(() => {
+      setLoadingResult(false);
+    }, 2000);
   }
 
   if (isNewQuizStarted) {
     setTimeout(() => {
       setLoading(false);
       setIsNewQuizStarted(false);
-      setResultRef(null);
     }, 1000);
   }
 
@@ -267,9 +251,20 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
         </Container>
       )}
 
-      {isQuizCompleted && !resultRef && <Loader text="Getting your result." />}
+      {isQuizCompleted && loadingResult && (
+        <Loader text="Getting your result." />
+      )}
 
-      {isQuizCompleted && resultRef}
+      {isQuizCompleted && !loadingResult && (
+        <Result
+          totalQuestions={data.length}
+          correctAnswers={correctAnswers}
+          time={time}
+          questionsAndAnswers={questionsAndAnswers}
+          retakeQuiz={retakeQuiz}
+          backToHome={backToHome}
+        />
+      )}
 
       {isOffline && <Offline />}
     </Item.Header>
