@@ -21,8 +21,8 @@ import Offline from '../Offline';
 import { getRandomNumber } from '../../utils';
 
 const Quiz = ({ API, countdownTime, backToHome }) => {
-  const [quizData, setQuizData] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);
@@ -38,11 +38,11 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   useEffect(() => {
     fetch(API)
       .then(respone => respone.json())
-      .then(data => setTimeout(() => setData(data.results), 1000))
+      .then(data => setTimeout(() => handleData(data.results), 1000))
       .catch(error => setTimeout(() => resolveError(error), 1000));
   }, []);
 
-  const setData = results => {
+  const handleData = results => {
     if (results.length === 0) {
       const message =
         "The API doesn't have enough questions for your query<br />" +
@@ -59,16 +59,16 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       });
     }
 
-    const quizData = results;
-    const options = [...quizData[questionIndex].incorrect_answers];
+    const data = results;
+    const options = [...data[questionIndex].incorrect_answers];
     options.splice(
       getRandomNumber(0, 3),
       0,
-      quizData[questionIndex].correct_answer
+      data[questionIndex].correct_answer
     );
 
-    setQuizData(quizData);
-    setIsLoading(false);
+    setData(data);
+    setLoading(false);
     setOptions(options);
   };
 
@@ -88,22 +88,22 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
 
   const handleNext = () => {
     let point = 0;
-    if (userSlectedAns === he.decode(quizData[questionIndex].correct_answer)) {
+    if (userSlectedAns === he.decode(data[questionIndex].correct_answer)) {
       point = 1;
     }
 
     const qna = questionsAndAnswers;
     qna.push({
-      question: he.decode(quizData[questionIndex].question),
+      question: he.decode(data[questionIndex].question),
       user_answer: userSlectedAns,
-      correct_answer: he.decode(quizData[questionIndex].correct_answer),
+      correct_answer: he.decode(data[questionIndex].correct_answer),
       point
     });
 
-    if (questionIndex === quizData.length - 1) {
+    if (questionIndex === data.length - 1) {
       setCorrectAnswers(correctAnswers + point);
       setUserSlectedAns(null);
-      setIsLoading(true);
+      setLoading(true);
       setIsQuizCompleted(true);
       setQuestionIndex(0);
       setOptions(null);
@@ -112,11 +112,11 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       return;
     }
 
-    const options = [...quizData[questionIndex + 1].incorrect_answers];
+    const options = [...data[questionIndex + 1].incorrect_answers];
     options.splice(
       getRandomNumber(0, 3),
       0,
-      quizData[questionIndex + 1].correct_answer
+      data[questionIndex + 1].correct_answer
     );
 
     setCorrectAnswers(correctAnswers + point);
@@ -128,7 +128,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
 
   const timesUp = () => {
     setUserSlectedAns(null);
-    setIsLoading(true);
+    setLoading(true);
     setIsQuizCompleted(true);
     setQuestionIndex(0);
     setOptions(null);
@@ -145,7 +145,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     setTimeout(() => {
       const resultRef = (
         <Result
-          totalQuestions={quizData.length}
+          totalQuestions={data.length}
           correctAnswers={correctAnswers}
           time={time}
           questionsAndAnswers={questionsAndAnswers}
@@ -160,11 +160,11 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   };
 
   const retakeQuiz = () => {
-    const options = [...quizData[questionIndex].incorrect_answers];
+    const options = [...data[questionIndex].incorrect_answers];
     options.splice(
       getRandomNumber(0, 3),
       0,
-      quizData[questionIndex].correct_answer
+      data[questionIndex].correct_answer
     );
 
     setCorrectAnswers(0);
@@ -180,7 +180,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
 
   if (isNewQuizStarted) {
     setTimeout(() => {
-      setIsLoading(false);
+      setLoading(false);
       setIsNewQuizStarted(false);
       setResultRef(null);
     }, 1000);
@@ -188,9 +188,9 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
 
   return (
     <Item.Header>
-      {!isOffline && !isQuizCompleted && isLoading && <Loader />}
+      {!isOffline && !isQuizCompleted && loading && <Loader />}
 
-      {!isOffline && !isLoading && (
+      {!isOffline && !loading && (
         <Container>
           <Segment>
             <Item.Group divided>
@@ -200,9 +200,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
                     <Header as="h1" block floated="left">
                       <Icon name="info circle" />
                       <Header.Content>
-                        {`Question No.${questionIndex + 1} of ${
-                          quizData.length
-                        }`}
+                        {`Question No.${questionIndex + 1} of ${data.length}`}
                       </Header.Content>
                     </Header>
                     <Countdown
@@ -214,9 +212,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
                   <br />
                   <Item.Meta>
                     <Message size="huge" floating>
-                      <b>{`Q. ${he.decode(
-                        quizData[questionIndex].question
-                      )}`}</b>
+                      <b>{`Q. ${he.decode(data[questionIndex].question)}`}</b>
                     </Message>
                     <br />
                     <Item.Description>
