@@ -24,7 +24,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [options, setOptions] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
@@ -42,25 +41,14 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
         setTimeout(() => {
           if (!navigator.onLine) {
             setIsOffline(true);
-            console.log('Connection problem =>', error.message);
+            console.log('Connection problem => ', error.message);
           } else {
             setIsOffline(true);
-            console.log('API problem =>', error.message);
+            console.log('API problem => ', error.message);
           }
         }, 1000)
       );
   }, []);
-
-  const manipulateOptions = (data, questionIndex) => {
-    const options = [...data[questionIndex].incorrect_answers];
-    options.splice(
-      getRandomNumber(0, 3),
-      0,
-      data[questionIndex].correct_answer
-    );
-
-    return options;
-  };
 
   const handleData = data => {
     if (data.length === 0) {
@@ -79,9 +67,13 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       });
     }
 
+    data.forEach(element => {
+      element.options = [...element.incorrect_answers];
+      element.options.splice(getRandomNumber(0, 3), 0, element.correct_answer);
+    });
+
     setData(data);
     setLoading(false);
-    setOptions(manipulateOptions(data, questionIndex));
   };
 
   const handleItemClick = (e, { name }) => {
@@ -108,7 +100,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
       setLoading(true);
       setIsQuizCompleted(true);
       setQuestionIndex(0);
-      setOptions(null);
       setQuestionsAndAnswers(qna);
       setLoadingResult(true);
 
@@ -118,7 +109,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     setCorrectAnswers(correctAnswers + point);
     setQuestionIndex(questionIndex + 1);
     setUserSlectedAns(null);
-    setOptions(manipulateOptions(data, questionIndex + 1));
     setQuestionsAndAnswers(qna);
   };
 
@@ -127,7 +117,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     setLoading(true);
     setIsQuizCompleted(true);
     setQuestionIndex(0);
-    setOptions(null);
     setLoadingResult(true);
   };
 
@@ -143,7 +132,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     setIsQuizCompleted(false);
     setQuestionsAndAnswers([]);
     setIsNewQuizStarted(true);
-    setOptions(manipulateOptions(data, questionIndex));
   };
 
   if (loadingResult) {
@@ -193,7 +181,7 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
                     </Item.Description>
                     <Divider />
                     <Menu vertical fluid size="massive">
-                      {options.map((option, i) => {
+                      {data[questionIndex].options.map((option, i) => {
                         let letter;
 
                         switch (i) {
