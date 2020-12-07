@@ -30,7 +30,6 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [time, setTime] = useState({});
   const [loadingResult, setLoadingResult] = useState(false);
-  const [isNewQuizStarted, setIsNewQuizStarted] = useState(false);
   const [isOffline, setIsOffline] = useState(false);
 
   useEffect(() => {
@@ -131,20 +130,16 @@ const Quiz = ({ API, countdownTime, backToHome }) => {
     setCorrectAnswers(0);
     setIsQuizCompleted(false);
     setQuestionsAndAnswers([]);
-    setIsNewQuizStarted(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
   };
 
   if (loadingResult) {
     setTimeout(() => {
       setLoadingResult(false);
     }, 2000);
-  }
-
-  if (isNewQuizStarted) {
-    setTimeout(() => {
-      setLoading(false);
-      setIsNewQuizStarted(false);
-    }, 1000);
   }
 
   return (
