@@ -45,7 +45,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       setQuestionIndex(0);
       setQuestionsAndAnswers(qna);
 
-      return endQuiz(correctAnswers, time, questionsAndAnswers);
+      return endQuiz({ correctAnswers, time, questionsAndAnswers });
     }
 
     setCorrectAnswers(correctAnswers + point);
@@ -58,7 +58,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     setUserSlectedAns(null);
     setQuestionIndex(0);
 
-    return endQuiz(correctAnswers, time, questionsAndAnswers);
+    return endQuiz({ correctAnswers, time, questionsAndAnswers });
   };
 
   const timeAmount = (timerTime, totalTime) => {
