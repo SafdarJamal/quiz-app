@@ -25,14 +25,14 @@ const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState(null);
   const [numOfQ, setNumOfQ] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
-  const [type, setType] = useState(null);
+  const [questionsType, setQuestionsType] = useState(null);
   const [countdownTime, setCountdownTime] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
   const [offline, setOffline] = useState(false);
 
   let allFieldsSelected = false;
-  if (category && numOfQ && difficulty && type && countdownTime) {
+  if (category && numOfQ && difficulty && questionsType && countdownTime) {
     allFieldsSelected = true;
   }
 
@@ -40,7 +40,7 @@ const Main = ({ startQuiz }) => {
     if (!allFieldsSelected) return;
     if (!processing) return;
 
-    const API = `https://opentdb.com/api.php?amount=${numOfQ}&category=${category}&difficulty=${difficulty}&type=${type}`;
+    const API = `https://opentdb.com/api.php?amount=${numOfQ}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
 
     fetch(API)
       .then(respone => respone.json())
@@ -145,7 +145,7 @@ const Main = ({ startQuiz }) => {
                   name="type"
                   placeholder="Select Questions Type"
                   options={QUESTIONS_TYPE}
-                  onChange={(e, { value }) => setType(value)}
+                  onChange={(e, { value }) => setQuestionsType(value)}
                 />
                 <br />
                 <Dropdown
