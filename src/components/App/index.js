@@ -7,11 +7,11 @@ import Quiz from '../Quiz';
 import Result from '../Result';
 
 const App = () => {
-  const [isQuizStarted, setIsQuizStarted] = useState(false);
-  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
-  const [countdownTime, setCountdownTime] = useState(null);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
+  const [countdownTime, setCountdownTime] = useState(null);
+  const [isQuizStarted, setIsQuizStarted] = useState(false);
+  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
   const [resultData, setResultData] = useState(null);
 
   const startQuiz = (data, countdownTime) => {
@@ -51,10 +51,10 @@ const App = () => {
     setLoading(true);
 
     setTimeout(() => {
+      setData(null);
+      setCountdownTime(null);
       setIsQuizStarted(false);
       setIsQuizCompleted(false);
-      setCountdownTime(null);
-      setData(null);
       setResultData(null);
       setLoading(false);
     }, 1000);
@@ -70,7 +70,6 @@ const App = () => {
       )}
       {isQuizCompleted && (
         <Result
-          totalQuestions={data.length}
           {...resultData}
           retakeQuiz={retakeQuiz}
           backToHome={backToHome}
