@@ -26,13 +26,13 @@ const Main = ({ startQuiz }) => {
   const [numOfQ, setNumOfQ] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
   const [type, setType] = useState(null);
-  const [time, setTime] = useState(null);
+  const [countdownTime, setCountdownTime] = useState(null);
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
   const [offline, setOffline] = useState(false);
 
   let allFieldsSelected = false;
-  if (category && numOfQ && difficulty && type && time) {
+  if (category && numOfQ && difficulty && type && countdownTime) {
     allFieldsSelected = true;
   }
 
@@ -73,7 +73,7 @@ const Main = ({ startQuiz }) => {
           });
 
           setProcessing(false);
-          startQuiz(data, time);
+          startQuiz(data, countdownTime);
         }, 1000)
       )
       .catch(error =>
@@ -154,7 +154,7 @@ const Main = ({ startQuiz }) => {
                   name="time"
                   placeholder="Select Countdown Time (In Minutes)"
                   options={COUNTDOWN_TIME}
-                  onChange={(e, { value }) => setTime(value)}
+                  onChange={(e, { value }) => setCountdownTime(value)}
                 />
               </Item.Meta>
               <Divider />
