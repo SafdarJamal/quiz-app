@@ -146,25 +146,15 @@ const Main = ({ startQuiz }) => {
               </Item.Meta>
               <Divider />
               <Item.Extra>
-                {allFieldsSelected ? (
-                  <Button
-                    primary
-                    content="Start Quiz"
-                    onClick={() => setProcessing(true)}
-                    size="big"
-                    icon="play"
-                    labelPosition="left"
-                  />
-                ) : (
-                  <Button
-                    disabled
-                    primary
-                    content="Start Quiz"
-                    size="big"
-                    icon="play"
-                    labelPosition="left"
-                  />
-                )}
+                <Button
+                  primary
+                  size="big"
+                  icon="play"
+                  labelPosition="left"
+                  content={processing ? 'Processing...' : 'Start Quiz'}
+                  onClick={() => setProcessing(true)}
+                  disabled={!allFieldsSelected}
+                />
               </Item.Extra>
             </Item.Content>
           </Item>
