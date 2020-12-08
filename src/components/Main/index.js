@@ -23,7 +23,7 @@ import Offline from '../Offline';
 
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState(null);
-  const [numOfQ, setNumOfQ] = useState(null);
+  const [numOfQuestions, setNumOfQuestions] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
   const [questionsType, setQuestionsType] = useState(null);
   const [countdownTime, setCountdownTime] = useState(null);
@@ -32,7 +32,13 @@ const Main = ({ startQuiz }) => {
   const [offline, setOffline] = useState(false);
 
   let allFieldsSelected = false;
-  if (category && numOfQ && difficulty && questionsType && countdownTime) {
+  if (
+    category &&
+    numOfQuestions &&
+    difficulty &&
+    questionsType &&
+    countdownTime
+  ) {
     allFieldsSelected = true;
   }
 
@@ -40,7 +46,7 @@ const Main = ({ startQuiz }) => {
     if (!allFieldsSelected) return;
     if (!processing) return;
 
-    const API = `https://opentdb.com/api.php?amount=${numOfQ}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
+    const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
 
     fetch(API)
       .then(respone => respone.json())
@@ -127,7 +133,7 @@ const Main = ({ startQuiz }) => {
                   name="numOfQ"
                   placeholder="Select No. of Questions"
                   options={NUM_OF_QUESTIONS}
-                  onChange={(e, { value }) => setNumOfQ(value)}
+                  onChange={(e, { value }) => setNumOfQuestions(value)}
                 />
                 <br />
                 <Dropdown
