@@ -1,5 +1,5 @@
-export { default } from './categories';
-export { default } from './numOfQuestions';
-export { default } from './difficulty';
-export { default } from './questionsType';
-export { default } from './countdownTime';
+export { default as CATEGORIES } from './categories';
+export { default as NUM_OF_QUESTIONS } from './numOfQuestions';
+export { default as DIFFICULTY } from './difficulty';
+export { default as QUESTIONS_TYPE } from './questionsType';
+export { default as COUNTDOWN_TIME } from './countdownTime';
