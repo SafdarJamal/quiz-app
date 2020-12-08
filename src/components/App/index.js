@@ -1,8 +1,8 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 
 import Loader from '../Loader';
-import Header from '../Header';
+import Layout from '../Layout';
 import Main from '../Main';
 import Quiz from '../Quiz';
 import Result from '../Result';
@@ -114,8 +114,7 @@ const App = () => {
   if (isOffline) return <Offline />;
 
   return (
-    <Fragment>
-      <Header />
+    <Layout>
       {!isQuizStarted && <Main startQuiz={startQuiz} />}
       {isQuizStarted && (
         <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
@@ -128,7 +127,7 @@ const App = () => {
           backToHome={backToHome}
         />
       )}
-    </Fragment>
+    </Layout>
   );
 };
 
