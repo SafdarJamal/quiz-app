@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
 
 import Stats from './Stats';
@@ -47,6 +48,15 @@ const Result = ({
       <br />
     </Container>
   );
+};
+
+Result.propTypes = {
+  totalQuestions: PropTypes.number.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  takenTime: PropTypes.number.isRequired,
+  questionsAndAnswers: PropTypes.array.isRequired,
+  retakeQuiz: PropTypes.func.isRequired,
+  backToHome: PropTypes.func.isRequired
 };
 
 export default Result;
