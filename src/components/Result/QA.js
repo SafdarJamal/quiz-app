@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
 const QA = ({ questionsAndAnswers }) => {
@@ -26,6 +27,10 @@ const QA = ({ questionsAndAnswers }) => {
       </Table.Body>
     </Table>
   );
+};
+
+QA.propTypes = {
+  questionsAndAnswers: PropTypes.array.isRequired
 };
 
 export default QA;
