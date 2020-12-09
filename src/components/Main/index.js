@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import {
   Container,
   Segment,
@@ -183,5 +184,7 @@ const Main = ({ startQuiz }) => {
     </Container>
   );
 };
+
+Main.propTypes = { startQuiz: PropTypes.func.isRequired };
 
 export default Main;
