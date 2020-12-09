@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment, Header, Button } from 'semantic-ui-react';
 
 import ShareButton from '../ShareButton';
@@ -61,6 +62,14 @@ const Stats = ({
       </div>
     </Segment>
   );
+};
+
+Stats.propTypes = {
+  totalQuestions: PropTypes.number.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  takenTime: PropTypes.number.isRequired,
+  retakeQuiz: PropTypes.func.isRequired,
+  backToHome: PropTypes.func.isRequired
 };
 
 export default Stats;
