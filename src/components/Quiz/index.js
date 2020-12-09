@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import {
   Container,
   Segment,
@@ -160,6 +161,12 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       </Container>
     </Item.Header>
   );
+};
+
+Quiz.propTypes = {
+  data: PropTypes.array.isRequired,
+  countdownTime: PropTypes.number.isRequired,
+  endQuiz: PropTypes.func.isRequired
 };
 
 export default Quiz;
