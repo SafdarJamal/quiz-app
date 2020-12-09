@@ -19,7 +19,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
-  const [time, setTime] = useState({});
+  const [takenTime, setTakenTime] = useState(null);
 
   const handleItemClick = (e, { name }) => {
     setUserSlectedAns(name);
@@ -48,7 +48,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       return endQuiz({
         totalQuestions: data.length,
         correctAnswers,
-        time,
+        takenTime,
         questionsAndAnswers
       });
     }
@@ -66,15 +66,8 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     return endQuiz({
       totalQuestions: data.length,
       correctAnswers,
-      time,
+      takenTime,
       questionsAndAnswers
-    });
-  };
-
-  const timeAmount = (timerTime, totalTime) => {
-    setTime({
-      timerTime,
-      totalTime
     });
   };
 
@@ -95,7 +88,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                   <Countdown
                     countdownTime={countdownTime}
                     timesUp={timesUp}
-                    timeAmount={timeAmount}
+                    setTakenTime={setTakenTime}
                   />
                 </Item.Extra>
                 <br />
