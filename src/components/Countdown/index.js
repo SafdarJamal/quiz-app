@@ -4,13 +4,13 @@ import Swal from 'sweetalert2';
 
 import { timeConverter } from '../../utils';
 
-const Countdown = ({ countdownTime, timesUp, timeAmount }) => {
-  const [timerTime, setTimerTime] = useState(countdownTime * 60000);
+const Countdown = ({ countdownTime, timesUp, setTakenTime }) => {
   const totalTime = countdownTime * 60000;
+  const [timerTime, setTimerTime] = useState(countdownTime * 60000);
   const { hours, minutes, seconds } = timeConverter(timerTime);
 
-  const startTimer = () => {
-    timer = setInterval(() => {
+  useEffect(() => {
+    const timer = setInterval(() => {
       const newTime = timerTime - 1000;
 
       if (newTime >= 0) {
@@ -26,13 +26,10 @@ const Countdown = ({ countdownTime, timesUp, timeAmount }) => {
         });
       }
     }, 1000);
-  };
 
-  useEffect(() => {
-    startTimer();
     return () => {
       clearInterval(timer);
-      timeAmount(timerTime, totalTime);
+      setTakenTime(totalTime - timerTime);
     };
   }, []);
 
