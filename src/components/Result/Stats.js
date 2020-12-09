@@ -2,7 +2,7 @@ import React from 'react';
 import { Segment, Header, Button } from 'semantic-ui-react';
 
 import ShareButton from '../ShareButton';
-import { calculateGrade, timeConverter } from '../../utils';
+import { calculateScore, calculateGrade, timeConverter } from '../../utils';
 
 const Stats = ({
   totalQuestions,
@@ -11,7 +11,7 @@ const Stats = ({
   retakeQuiz,
   backToHome
 }) => {
-  const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
+  const score = calculateScore(totalQuestions, correctAnswers);
   const { grade, remarks } = calculateGrade(score);
   const { hours, minutes, seconds } = timeConverter(
     time.totalTime - time.timerTime
