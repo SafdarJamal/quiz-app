@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
 
@@ -52,6 +53,12 @@ const Countdown = ({ countdownTime, timesUp, setTakenTime }) => {
       />
     </Button.Group>
   );
+};
+
+Countdown.propTypes = {
+  countdownTime: PropTypes.number.isRequired,
+  timesUp: PropTypes.func.isRequired,
+  setTakenTime: PropTypes.func.isRequired
 };
 
 export default Countdown;
