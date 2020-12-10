@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 import { timeConverter } from '../../utils';
 
-const Countdown = ({ countdownTime, timesUp, setTakenTime }) => {
+const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
   const totalTime = countdownTime * 60000;
   const [timerTime, setTimerTime] = useState(countdownTime * 60000);
   const { hours, minutes, seconds } = timeConverter(timerTime);
@@ -23,7 +23,7 @@ const Countdown = ({ countdownTime, timesUp, setTakenTime }) => {
           title: 'YOUR TIME IS UP',
           type: 'info',
           timer: 5000,
-          onClose: timesUp
+          onClose: timeOver
         });
       }
     }, 1000);
@@ -57,7 +57,7 @@ const Countdown = ({ countdownTime, timesUp, setTakenTime }) => {
 
 Countdown.propTypes = {
   countdownTime: PropTypes.number.isRequired,
-  timesUp: PropTypes.func.isRequired,
+  timeOver: PropTypes.func.isRequired,
   setTakenTime: PropTypes.func.isRequired
 };
 

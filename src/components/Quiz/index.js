@@ -60,7 +60,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     setQuestionsAndAnswers(qna);
   };
 
-  const timesUp = () => {
+  const timeOver = () => {
     setUserSlectedAns(null);
     setQuestionIndex(0);
 
@@ -88,7 +88,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                   </Header>
                   <Countdown
                     countdownTime={countdownTime}
-                    timesUp={timesUp}
+                    timeOver={timeOver}
                     setTakenTime={setTakenTime}
                   />
                 </Item.Extra>
