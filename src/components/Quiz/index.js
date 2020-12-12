@@ -41,16 +41,11 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     });
 
     if (questionIndex === data.length - 1) {
-      setCorrectAnswers(correctAnswers + point);
-      setUserSlectedAns(null);
-      setQuestionIndex(0);
-      setQuestionsAndAnswers(qna);
-
       return endQuiz({
         totalQuestions: data.length,
-        correctAnswers,
+        correctAnswers: correctAnswers + point,
         takenTime,
-        questionsAndAnswers
+        questionsAndAnswers: qna
       });
     }
 
@@ -61,9 +56,6 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   };
 
   const timeOver = () => {
-    setUserSlectedAns(null);
-    setQuestionIndex(0);
-
     return endQuiz({
       totalQuestions: data.length,
       correctAnswers,
