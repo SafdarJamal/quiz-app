@@ -1,67 +1,83 @@
-import React, { Component, Fragment } from 'react';
+import React, { useState } from 'react';
 
-import Header from '../Header';
+import Layout from '../Layout';
+import Loader from '../Loader';
 import Main from '../Main';
 import Quiz from '../Quiz';
-import Loader from '../Loader';
+import Result from '../Result';
 
-import { PATH_BASE, AMOUNT, CATEGORY, DIFFICULTY, TYPE } from '../../api';
+const App = () => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [countdownTime, setCountdownTime] = useState(null);
+  const [isQuizStarted, setIsQuizStarted] = useState(false);
+  const [isQuizCompleted, setIsQuizCompleted] = useState(false);
+  const [resultData, setResultData] = useState(null);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isQuizStart: false,
-      API: null,
-      countdownTime: null,
-      isLoading: false
-    };
-
-    this.startQuiz = this.startQuiz.bind(this);
-    this.backToHome = this.backToHome.bind(this);
-  }
-
-  startQuiz(selectedValues) {
-    const { category, numOfQ, difficulty, type, time } = selectedValues;
-
-    const API = `${PATH_BASE + AMOUNT + numOfQ}&${CATEGORY +
-      category}&${DIFFICULTY + difficulty}&${TYPE + type}`;
-
-    this.setState({ isQuizStart: true, API, countdownTime: time });
-  }
-
-  backToHome() {
-    this.setState({ isLoading: true });
+  const startQuiz = (data, countdownTime) => {
+    setLoading(true);
+    setCountdownTime(countdownTime);
 
     setTimeout(() => {
-      this.setState({
-        isQuizStart: false,
-        API: null,
-        countdownTime: null,
-        isLoading: false
-      });
+      setData(data);
+      setIsQuizStarted(true);
+      setLoading(false);
     }, 1000);
-  }
+  };
 
-  render() {
-    const { isQuizStart, API, countdownTime, isLoading } = this.state;
+  const endQuiz = resultData => {
+    setLoading(true);
 
-    return (
-      <Fragment>
-        <Header />
-        {!isLoading && !isQuizStart && <Main startQuiz={this.startQuiz} />}
-        {!isLoading && isQuizStart && (
-          <Quiz
-            API={API}
-            countdownTime={countdownTime}
-            backToHome={this.backToHome}
-          />
-        )}
-        {isLoading && <Loader />}
-      </Fragment>
-    );
-  }
-}
+    setTimeout(() => {
+      setIsQuizStarted(false);
+      setIsQuizCompleted(true);
+      setResultData(resultData);
+      setLoading(false);
+    }, 2000);
+  };
+
+  const retakeQuiz = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setIsQuizStarted(true);
+      setIsQuizCompleted(false);
+      setResultData(null);
+      setLoading(false);
+    }, 1000);
+  };
+
+  const backToHome = () => {
+    setLoading(true);
+
+    setTimeout(() => {
+      setData(null);
+      setCountdownTime(null);
+      setIsQuizStarted(false);
+      setIsQuizCompleted(false);
+      setResultData(null);
+      setLoading(false);
+    }, 1000);
+  };
+
+  return (
+    <Layout>
+      {loading && <Loader />}
+      {!loading && !isQuizStarted && !isQuizCompleted && (
+        <Main startQuiz={startQuiz} />
+      )}
+      {!loading && isQuizStarted && (
+        <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
+      )}
+      {!loading && isQuizCompleted && (
+        <Result
+          {...resultData}
+          retakeQuiz={retakeQuiz}
+          backToHome={backToHome}
+        />
+      )}
+    </Layout>
+  );
+};
 
 export default App;

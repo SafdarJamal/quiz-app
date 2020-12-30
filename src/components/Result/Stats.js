@@ -1,24 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment, Header, Button } from 'semantic-ui-react';
+
 import ShareButton from '../ShareButton';
+import { calculateScore, calculateGrade, timeConverter } from '../../utils';
 
-import { calculateGrade } from '../../utils/calculateGrade';
-import { timeConverter } from '../../utils/timeConverter';
-
-const Stats = props => {
-  const {
-    totalQuestions,
-    correctAnswers,
-    timeTakesToComplete,
-    retakeQuiz,
-    backToHome
-  } = props;
-
-  const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
+const Stats = ({
+  totalQuestions,
+  correctAnswers,
+  takenTime,
+  retakeQuiz,
+  backToHome
+}) => {
+  const score = calculateScore(totalQuestions, correctAnswers);
   const { grade, remarks } = calculateGrade(score);
-  const { hours, minutes, seconds } = timeConverter(
-    timeTakesToComplete.totalTime - timeTakesToComplete.timerTime
-  );
+  const { hours, minutes, seconds } = timeConverter(takenTime);
 
   return (
     <Segment>
@@ -41,7 +37,7 @@ const Stats = props => {
         Passing Score: 60%
       </Header>
       <Header as="h3" textAlign="center" block>
-        Time Takes: {`${hours} : ${minutes} : ${seconds}`}
+        Taken Time: {`${hours} : ${minutes} : ${seconds}`}
       </Header>
       <div style={{ marginTop: 35 }}>
         <Button
@@ -66,6 +62,14 @@ const Stats = props => {
       </div>
     </Segment>
   );
+};
+
+Stats.propTypes = {
+  totalQuestions: PropTypes.number.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  takenTime: PropTypes.number.isRequired,
+  retakeQuiz: PropTypes.func.isRequired,
+  backToHome: PropTypes.func.isRequired
 };
 
 export default Stats;

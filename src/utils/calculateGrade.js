@@ -44,4 +44,4 @@ const calculateGrade = score => {
   };
 };
 
-export { calculateGrade };
+export default calculateGrade;
