@@ -23,14 +23,14 @@ const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
           title: 'YOUR TIME IS UP',
           type: 'info',
           timer: 5000,
-          onClose: timeOver
+          onClose: () => timeOver(totalTime - timerTime)
         });
       }
     }, 1000);
 
     return () => {
       clearInterval(timer);
-      setTakenTime(totalTime - timerTime);
+      setTakenTime(totalTime - timerTime + 1000);
     };
 
     // eslint-disable-next-line

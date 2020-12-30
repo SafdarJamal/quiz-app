@@ -56,7 +56,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     setQuestionsAndAnswers(qna);
   };
 
-  const timeOver = () => {
+  const timeOver = takenTime => {
     return endQuiz({
       totalQuestions: data.length,
       correctAnswers,
