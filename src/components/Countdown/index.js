@@ -32,6 +32,8 @@ const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
       clearInterval(timer);
       setTakenTime(totalTime - timerTime);
     };
+
+    // eslint-disable-next-line
   }, [timerTime]);
 
   return (
