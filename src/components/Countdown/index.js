@@ -7,7 +7,7 @@ import { timeConverter } from '../../utils';
 
 const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
   const totalTime = countdownTime * 60000;
-  const [timerTime, setTimerTime] = useState(countdownTime * 60000);
+  const [timerTime, setTimerTime] = useState(totalTime);
   const { hours, minutes, seconds } = timeConverter(timerTime);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
       clearInterval(timer);
       setTakenTime(totalTime - timerTime);
     };
-  }, []);
+  }, [timerTime]);
 
   return (
     <Button.Group size="massive" basic floated="right">
