@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-import Loader from '../Loader';
 import Layout from '../Layout';
+import Loader from '../Loader';
 import Main from '../Main';
 import Quiz from '../Quiz';
 import Result from '../Result';
@@ -60,15 +60,16 @@ const App = () => {
     }, 1000);
   };
 
-  if (loading) return <Loader />;
-
   return (
     <Layout>
-      {!isQuizStarted && <Main startQuiz={startQuiz} />}
-      {isQuizStarted && (
+      {loading && <Loader />}
+      {!loading && !isQuizStarted && !isQuizCompleted && (
+        <Main startQuiz={startQuiz} />
+      )}
+      {!loading && isQuizStarted && (
         <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
       )}
-      {isQuizCompleted && (
+      {!loading && isQuizCompleted && (
         <Result
           {...resultData}
           retakeQuiz={retakeQuiz}
