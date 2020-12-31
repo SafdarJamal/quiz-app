@@ -65,7 +65,7 @@ const Main = ({ startQuiz }) => {
             return Swal.fire({
               title: 'Oops...',
               html: message,
-              type: 'error',
+              icon: 'error',
               timer: 10000
             });
           }
@@ -100,7 +100,7 @@ const Main = ({ startQuiz }) => {
     Swal.fire({
       title: 'Error!',
       text: error.message,
-      type: 'error',
+      icon: 'error',
       timer: 10000
     });
 

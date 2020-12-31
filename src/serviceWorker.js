@@ -77,7 +77,7 @@ function registerValidSW(swUrl, config) {
               Swal.fire({
                 toast: 'true',
                 position: 'bottom',
-                type: 'success',
+                icon: 'success',
                 title: 'App is ready to work offline.',
                 showConfirmButton: false,
                 timer: 6000
