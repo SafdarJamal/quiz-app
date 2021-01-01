@@ -1,10 +1,7 @@
 {
   "short_name": "QuizApp",
   "name": "QuizApp",
-  "author": {
-    "name": "Safdar Jamal",
-    "url": "https://safdarjamal.github.io"
-  },
+  "description": "The QuizApp is a progressive web app (PWA) built with React using OpenTDB API.",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
@@ -20,8 +17,6 @@
   "start_url": ".",
   "display": "standalone",
   "orientation": "any",
-  "lang": "en-Us",
-  "description": "Quiz App Built with React Using OpenTDB API",
   "theme_color": "#1B1C1D",
   "background_color": "#D0D9DD"
 }
