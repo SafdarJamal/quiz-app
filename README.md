@@ -2,10 +2,6 @@
 
 The QuizApp is a progressive web app ([PWA](https://developers.google.com/web/progressive-web-apps)) built with [React](https://reactjs.org) using [OpenTDB](https://opentdb.com) API.
 
-<p align="center">
-  <img src="./screenshot.png" alt='QuizApp in Action'>
-</p>
-
 ## Demo
 
 - [master](https://safdarjamal.github.io/quiz-app) (Latest)
