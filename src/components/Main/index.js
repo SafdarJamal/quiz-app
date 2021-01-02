@@ -125,6 +125,7 @@ const Main = ({ startQuiz }) => {
                   name="category"
                   placeholder="Select Quiz Category"
                   options={CATEGORIES}
+                  value={category}
                   onChange={(e, { value }) => setCategory(value)}
                 />
                 <br />
@@ -134,6 +135,7 @@ const Main = ({ startQuiz }) => {
                   name="numOfQ"
                   placeholder="Select No. of Questions"
                   options={NUM_OF_QUESTIONS}
+                  value={numOfQuestions}
                   onChange={(e, { value }) => setNumOfQuestions(value)}
                 />
                 <br />
@@ -143,6 +145,7 @@ const Main = ({ startQuiz }) => {
                   name="difficulty"
                   placeholder="Select Difficulty Level"
                   options={DIFFICULTY}
+                  value={difficulty}
                   onChange={(e, { value }) => setDifficulty(value)}
                 />
                 <br />
@@ -152,6 +155,7 @@ const Main = ({ startQuiz }) => {
                   name="type"
                   placeholder="Select Questions Type"
                   options={QUESTIONS_TYPE}
+                  value={questionsType}
                   onChange={(e, { value }) => setQuestionsType(value)}
                 />
                 <br />
@@ -161,6 +165,7 @@ const Main = ({ startQuiz }) => {
                   name="time"
                   placeholder="Select Countdown Time (In Minutes)"
                   options={COUNTDOWN_TIME}
+                  value={countdownTime}
                   onChange={(e, { value }) => setCountdownTime(value)}
                 />
               </Item.Meta>
