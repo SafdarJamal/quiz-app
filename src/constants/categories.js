@@ -5,124 +5,124 @@ const CATEGORIES = [
     value: '0'
   },
   {
-    key: '9',
+    key: 9,
     text: 'General Knowledge',
-    value: '9'
+    value: 9
   },
   {
-    key: '10',
+    key: 10,
     text: 'Entertainment: Books',
-    value: '10'
+    value: 10
   },
   {
-    key: '11',
+    key: 11,
     text: 'Entertainment: Films',
-    value: '11'
+    value: 11
   },
   {
-    key: '12',
+    key: 12,
     text: 'Entertainment: Music',
-    value: '12'
+    value: 12
   },
   {
-    key: '13',
+    key: 13,
     text: 'Entertainment: Musicals & Theatres',
-    value: '13'
+    value: 13
   },
   {
-    key: '14',
+    key: 14,
     text: 'Entertainment: Television',
-    value: '14'
+    value: 14
   },
   {
-    key: '15',
+    key: 15,
     text: 'Entertainment: Video Games',
-    value: '15'
+    value: 15
   },
   {
-    key: '16',
+    key: 16,
     text: 'Entertainment: Board Games',
-    value: '16'
+    value: 16
   },
   {
-    key: '17',
+    key: 17,
     text: 'Science & Nature',
-    value: '17'
+    value: 17
   },
   {
-    key: '18',
+    key: 18,
     text: 'Science: Computers',
-    value: '18'
+    value: 18
   },
   {
-    key: '19',
+    key: 19,
     text: 'Science: Mathematics',
-    value: '19'
+    value: 19
   },
   {
-    key: '20',
+    key: 20,
     text: 'Mythology',
-    value: '20'
+    value: 20
   },
   {
-    key: '21',
+    key: 21,
     text: 'Sports',
-    value: '21'
+    value: 21
   },
   {
-    key: '22',
+    key: 22,
     text: 'Geography',
-    value: '22'
+    value: 22
   },
   {
-    key: '23',
+    key: 23,
     text: 'History',
-    value: '23'
+    value: 23
   },
   {
-    key: '24',
+    key: 24,
     text: 'Politics',
-    value: '24'
+    value: 24
   },
   {
-    key: '25',
+    key: 25,
     text: 'Arts',
-    value: '25'
+    value: 25
   },
   {
-    key: '26',
+    key: 26,
     text: 'Celebrities',
-    value: '26'
+    value: 26
   },
   {
-    key: '27',
+    key: 27,
     text: 'Animals',
-    value: '27'
+    value: 27
   },
   {
-    key: '28',
+    key: 28,
     text: 'Vehicles',
-    value: '28'
+    value: 28
   },
   {
-    key: '29',
+    key: 29,
     text: 'Entertainment: Comics',
-    value: '29'
+    value: 29
   },
   {
-    key: '30',
+    key: 30,
     text: 'Science: Gadgets',
-    value: '30'
+    value: 30
   },
   {
-    key: '31',
+    key: 31,
     text: 'Entertainment: Japanese Anime & Manga',
-    value: '31'
+    value: 31
   },
   {
-    key: '32',
+    key: 32,
     text: 'Entertainment: Cartoon & Animations',
-    value: '32'
+    value: 32
   }
 ];
 
