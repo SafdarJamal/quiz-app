@@ -51,26 +51,23 @@ const Main = ({ startQuiz }) => {
 
     fetch(API)
       .then(respone => respone.json())
-      .then(result =>
+      .then(data =>
         setTimeout(() => {
-          const { results: data } = result;
+          const { response_code, results } = data;
 
-          if (data.length === 0) {
+          if (response_code === 1) {
             const message =
-              "The API doesn't have enough questions for your query<br />" +
-              '(ex. Asking for 50 questions in a category that only has 20).' +
-              '<br /><br />Please change number of questions, difficulty level ' +
-              'or type of questions.';
+              "The API doesn't have enough questions for your query. (Ex. Asking for 50 Questions in a Category that only has 20.)" +
+              '<br /><br />Please change the <strong>No. of Questions</strong>, <strong>Difficulty Level</strong>, ' +
+              'or <strong>Type of Questions</strong>.';
 
-            return Swal.fire({
-              title: 'Oops...',
-              html: message,
-              icon: 'error',
-              timer: 10000
-            });
+            setProcessing(false);
+            setError({ message });
+
+            return;
           }
 
-          data.forEach(element => {
+          results.forEach(element => {
             element.options = [...element.incorrect_answers];
             element.options.splice(
               getRandomNumber(0, 3),
@@ -80,7 +77,7 @@ const Main = ({ startQuiz }) => {
           });
 
           setProcessing(false);
-          startQuiz(data, countdownTime);
+          startQuiz(results, countdownTime);
         }, 1000)
       )
       .catch(error =>
@@ -89,19 +86,28 @@ const Main = ({ startQuiz }) => {
             setOffline(true);
             console.log('Connection problem => ', error.message);
           } else {
+            setProcessing(false);
             setError(error);
             console.log('API problem => ', error.message);
           }
         }, 1000)
       );
-  });
+
+    // eslint-disable-next-line
+  }, [
+    category,
+    countdownTime,
+    difficulty,
+    numOfQuestions,
+    processing,
+    questionsType
+  ]);
 
   if (error)
     Swal.fire({
-      title: 'Error!',
-      text: error.message,
       icon: 'error',
-      timer: 10000
+      title: 'Error!',
+      html: error.message
     });
 
   if (offline) return <Offline />;
@@ -190,6 +196,8 @@ const Main = ({ startQuiz }) => {
   );
 };
 
-Main.propTypes = { startQuiz: PropTypes.func.isRequired };
+Main.propTypes = {
+  startQuiz: PropTypes.func.isRequired
+};
 
 export default Main;
