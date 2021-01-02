@@ -23,7 +23,7 @@ const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
           title: 'YOUR TIME IS UP',
           icon: 'info',
           timer: 5000,
-          onClose: () => timeOver(totalTime - timerTime)
+          willClose: () => timeOver(totalTime - timerTime)
         });
       }
     }, 1000);
