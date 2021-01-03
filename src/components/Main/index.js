@@ -182,7 +182,7 @@ const Main = ({ startQuiz }) => {
                   labelPosition="left"
                   content={processing ? 'Processing...' : 'Start Quiz'}
                   onClick={() => setProcessing(true)}
-                  disabled={!allFieldsSelected}
+                  disabled={!allFieldsSelected || processing}
                 />
               </Item.Extra>
             </Item.Content>
