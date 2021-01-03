@@ -14,7 +14,7 @@ import {
 import he from 'he';
 
 import Countdown from '../Countdown';
-import { getLetterByNumber } from '../../utils';
+import { getLetter } from '../../utils';
 
 const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -97,7 +97,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                   <Divider />
                   <Menu vertical fluid size="massive">
                     {data[questionIndex].options.map((option, i) => {
-                      const letter = getLetterByNumber(i);
+                      const letter = getLetter(i);
                       const decodedOption = he.decode(option);
 
                       return (

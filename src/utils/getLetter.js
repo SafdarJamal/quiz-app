@@ -1,7 +1,7 @@
-const getLetterByNumber = num => {
+const getLetter = number => {
   let letter;
 
-  switch (num) {
+  switch (number) {
     case 0:
       letter = 'A.';
       break;
@@ -22,4 +22,4 @@ const getLetterByNumber = num => {
   return letter;
 };
 
-export default getLetterByNumber;
+export default getLetter;
