@@ -18,7 +18,7 @@ import {
   QUESTIONS_TYPE,
   COUNTDOWN_TIME
 } from '../../constants';
-import { getRandomNumber } from '../../utils';
+import { shuffle } from '../../utils';
 
 import Offline from '../Offline';
 
@@ -68,12 +68,10 @@ const Main = ({ startQuiz }) => {
           }
 
           results.forEach(element => {
-            element.options = [...element.incorrect_answers];
-            element.options.splice(
-              getRandomNumber(0, 3),
-              0,
-              element.correct_answer
-            );
+            element.options = shuffle([
+              element.correct_answer,
+              ...element.incorrect_answers
+            ]);
           });
 
           setProcessing(false);
