@@ -6,9 +6,9 @@ import {
   Item,
   Dropdown,
   Divider,
-  Button
+  Button,
+  Message
 } from 'semantic-ui-react';
-import Swal from 'sweetalert2';
 
 import codeImg from '../../images/code.png';
 import {
@@ -56,10 +56,17 @@ const Main = ({ startQuiz }) => {
           const { response_code, results } = data;
 
           if (response_code === 1) {
-            const message =
-              "The API doesn't have enough questions for your query. (Ex. Asking for 50 Questions in a Category that only has 20.)" +
-              '<br /><br />Please change the <strong>No. of Questions</strong>, <strong>Difficulty Level</strong>, ' +
-              'or <strong>Type of Questions</strong>.';
+            const message = (
+              <p>
+                The API doesn't have enough questions for your query. (Ex.
+                Asking for 50 Questions in a Category that only has 20.)
+                <br />
+                <br />
+                Please change the <strong>No. of Questions</strong>,{' '}
+                <strong>Difficulty Level</strong>, or{' '}
+                <strong>Type of Questions</strong>.
+              </p>
+            );
 
             setProcessing(false);
             setError({ message });
@@ -101,13 +108,6 @@ const Main = ({ startQuiz }) => {
     questionsType
   ]);
 
-  if (error)
-    Swal.fire({
-      icon: 'error',
-      title: 'Error!',
-      html: error.message
-    });
-
   if (offline) return <Offline />;
 
   return (
@@ -120,7 +120,12 @@ const Main = ({ startQuiz }) => {
               <Item.Header>
                 <h1>Open Trivia Questions</h1>
               </Item.Header>
-              <br />
+              {error && (
+                <Message error onDismiss={() => setError(null)}>
+                  <Message.Header>Error!</Message.Header>
+                  {error.message}
+                </Message>
+              )}
               <Divider />
               <Item.Meta>
                 <Dropdown
