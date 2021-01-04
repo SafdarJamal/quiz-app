@@ -6,6 +6,8 @@ import Main from '../Main';
 import Quiz from '../Quiz';
 import Result from '../Result';
 
+import { shuffle } from '../../utils';
+
 const App = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
@@ -38,6 +40,13 @@ const App = () => {
 
   const retakeQuiz = () => {
     setLoading(true);
+
+    const shuffledData = shuffle(data);
+    shuffledData.forEach(element => {
+      element.options = shuffle(element.options);
+    });
+
+    setData(shuffledData);
 
     setTimeout(() => {
       setIsQuizStarted(true);
