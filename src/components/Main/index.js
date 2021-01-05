@@ -47,6 +47,8 @@ const Main = ({ startQuiz }) => {
     if (!allFieldsSelected) return;
     if (!processing) return;
 
+    if (error) setError(null);
+
     const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
 
     fetch(API)
@@ -89,11 +91,11 @@ const Main = ({ startQuiz }) => {
         setTimeout(() => {
           if (!navigator.onLine) {
             setOffline(true);
-            console.log('Connection problem => ', error.message);
+            console.log('Connection problem: ', error.message);
           } else {
             setProcessing(false);
             setError(error);
-            console.log('API problem => ', error.message);
+            console.log('API problem: ', error.message);
           }
         }, 1000)
       );
