@@ -1,9 +1,9 @@
-# The QuizApp
+# QuizApp
 
 [![GitHub Release (latest by date)](https://img.shields.io/github/v/release/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/releases)
 [![License](https://img.shields.io/github/license/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE)
 
-The QuizApp is a progressive web app ([PWA](https://developers.google.com/web/progressive-web-apps)) built with [React](https://reactjs.org) using [OpenTDB](https://opentdb.com) API.
+QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with [React](https://reactjs.org) and using [OpenTDB](https://opentdb.com) API.
 
 ## Development
 
