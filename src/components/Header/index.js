@@ -17,8 +17,6 @@ const Header = () => {
   });
 
   const installApp = () => {
-    console.log('Init Func ==>', promptEvent);
-
     promptEvent.prompt();
     promptEvent.userChoice.then(result => {
       if (result.outcome === 'accepted') {
@@ -32,22 +30,19 @@ const Header = () => {
 
   return (
     <Menu stackable inverted size="massive">
-      <Menu.Item>
-        <h1 style={{ color: '#2185D0' }}>The QuizApp</h1>
+      <Menu.Item header>
+        <h1 style={{ color: '#2185D0' }}>QuizApp</h1>
       </Menu.Item>
       {promptEvent && !isAppInstalled && (
-        <Menu.Menu position="right">
-          <Menu.Item>
-            <Button
-              color="teal"
-              content="Install App"
-              size="big"
-              icon="app store"
-              labelPosition="left"
-              onClick={installApp}
-            />
-          </Menu.Item>
-        </Menu.Menu>
+        <Menu.Item position="right">
+          <Button
+            color="teal"
+            icon="cloud download"
+            labelPosition="left"
+            content="Install App"
+            onClick={installApp}
+          />
+        </Menu.Item>
       )}
     </Menu>
   );
