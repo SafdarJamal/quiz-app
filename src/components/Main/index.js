@@ -10,7 +10,8 @@ import {
   Message
 } from 'semantic-ui-react';
 
-import codeImg from '../../images/code.png';
+import mindImg from '../../images/mind.svg';
+
 import {
   CATEGORIES,
   NUM_OF_QUESTIONS,
@@ -117,7 +118,7 @@ const Main = ({ startQuiz }) => {
       <Segment>
         <Item.Group divided>
           <Item>
-            <Item.Image src={codeImg} />
+            <Item.Image src={mindImg} />
             <Item.Content>
               <Item.Header>
                 <h1>Open Trivia Questions</h1>
