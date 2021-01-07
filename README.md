@@ -3,7 +3,13 @@
 [![GitHub Release (latest by date)](https://img.shields.io/github/v/release/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/releases)
 [![License](https://img.shields.io/github/license/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE)
 
-QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with [React](https://reactjs.org) and using [OpenTDB](https://opentdb.com) API.
+QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with React and using OpenTDB API.
+
+## Tech Stack
+
+- [React](http://reactjs.org)
+- [Semantic UI](https://semantic-ui.com)
+- [Open Trivia Database API](https://opentdb.com/api_config.php)
 
 ## Development
 
@@ -41,7 +47,7 @@ In this project, you can run the following scripts:
 
 ## Credits
 
-This project is built and maintained by [Safdar Jamal](https://safdarjamal.github.io).
+QuizApp is built and maintained by [Safdar Jamal](https://safdarjamal.github.io).
 
 ## License
 
