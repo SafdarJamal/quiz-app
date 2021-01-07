@@ -39,6 +39,10 @@ In this project, you can run the following scripts:
 | npm run build | Builds the app for production to the `build` folder.                    |
 | npm run eject | This command will remove the single build dependency from your project. |
 
+## Credits
+
+This project is built and maintained by [Safdar Jamal](https://safdarjamal.github.io).
+
 ## License
 
 Code released under the [MIT license](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE).
