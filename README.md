@@ -1,4 +1,4 @@
-# QuizApp
+# [QuizApp](https://safdarjamal.github.io/quiz-app/)
 
 [![GitHub Release (latest by date)](https://img.shields.io/github/v/release/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/releases)
 [![License](https://img.shields.io/github/license/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE)
@@ -41,4 +41,4 @@ In this project, you can run the following scripts:
 
 ## License
 
-Code released under the [MIT License](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE).
+Code released under the [MIT license](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE).
