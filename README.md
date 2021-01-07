@@ -1,9 +1,21 @@
-# [QuizApp](https://safdarjamal.github.io/quiz-app/)
+<h1 align="center">
+  <a href="https://safdarjamal.github.io/quiz-app/">
+    QuizApp
+  </a>
+</h1>
 
-[![GitHub Release (latest by date)](https://img.shields.io/github/v/release/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/releases)
-[![License](https://img.shields.io/github/license/SafdarJamal/quiz-app)](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE)
+<p align="center">
+  <a href="https://github.com/SafdarJamal/quiz-app/releases">
+    <img src="https://img.shields.io/github/v/release/SafdarJamal/quiz-app" alt="GitHub Release (latest by date)" />
+  </a>
+  <a href="https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/SafdarJamal/quiz-app" alt="License" />
+  </a>
+</p>
 
-QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with React and using OpenTDB API.
+<p align="center">
+  QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with React and using OpenTDB API.
+</p>
 
 ## Tech Stack
 
