@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
-const QA = ({ questionsAndAnswers }) => {
+const QNA = ({ questionsAndAnswers }) => {
   return (
     <Table celled striped>
       <Table.Header>
@@ -29,8 +29,8 @@ const QA = ({ questionsAndAnswers }) => {
   );
 };
 
-QA.propTypes = {
+QNA.propTypes = {
   questionsAndAnswers: PropTypes.array.isRequired
 };
 
-export default QA;
+export default QNA;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
 
 import Stats from './Stats';
-import QA from './QA';
+import QNA from './QNA';
 
 const Result = ({
   totalQuestions,
@@ -28,8 +28,8 @@ const Result = ({
           onClick={handleTabClick}
         />
         <Menu.Item
-          name="Q / A"
-          active={activeTab === 'Q / A'}
+          name="QNA"
+          active={activeTab === 'QNA'}
           onClick={handleTabClick}
         />
       </Menu>
@@ -42,9 +42,7 @@ const Result = ({
           backToHome={backToHome}
         />
       )}
-      {activeTab === 'Q / A' && (
-        <QA questionsAndAnswers={questionsAndAnswers} />
-      )}
+      {activeTab === 'QNA' && <QNA questionsAndAnswers={questionsAndAnswers} />}
       <br />
     </Container>
   );
