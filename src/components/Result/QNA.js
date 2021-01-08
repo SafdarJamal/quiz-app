@@ -4,7 +4,7 @@ import { Table } from 'semantic-ui-react';
 
 const QNA = ({ questionsAndAnswers }) => {
   return (
-    <Table celled striped>
+    <Table celled striped selectable size="large">
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>No.</Table.HeaderCell>
