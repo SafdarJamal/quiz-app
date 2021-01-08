@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Container,
@@ -44,9 +44,8 @@ const Main = ({ startQuiz }) => {
     allFieldsSelected = true;
   }
 
-  useEffect(() => {
-    if (!allFieldsSelected) return;
-    if (!processing) return;
+  const getData = () => {
+    setProcessing(true);
 
     if (error) setError(null);
 
@@ -92,24 +91,13 @@ const Main = ({ startQuiz }) => {
         setTimeout(() => {
           if (!navigator.onLine) {
             setOffline(true);
-            console.log('Connection problem: ', error.message);
           } else {
             setProcessing(false);
             setError(error);
-            console.log('API problem: ', error.message);
           }
         }, 1000)
       );
-
-    // eslint-disable-next-line
-  }, [
-    category,
-    countdownTime,
-    difficulty,
-    numOfQuestions,
-    processing,
-    questionsType
-  ]);
+  };
 
   if (offline) return <Offline />;
 
@@ -139,6 +127,7 @@ const Main = ({ startQuiz }) => {
                   options={CATEGORIES}
                   value={category}
                   onChange={(e, { value }) => setCategory(value)}
+                  disabled={processing}
                 />
                 <br />
                 <Dropdown
@@ -149,6 +138,7 @@ const Main = ({ startQuiz }) => {
                   options={NUM_OF_QUESTIONS}
                   value={numOfQuestions}
                   onChange={(e, { value }) => setNumOfQuestions(value)}
+                  disabled={processing}
                 />
                 <br />
                 <Dropdown
@@ -159,6 +149,7 @@ const Main = ({ startQuiz }) => {
                   options={DIFFICULTY}
                   value={difficulty}
                   onChange={(e, { value }) => setDifficulty(value)}
+                  disabled={processing}
                 />
                 <br />
                 <Dropdown
@@ -169,6 +160,7 @@ const Main = ({ startQuiz }) => {
                   options={QUESTIONS_TYPE}
                   value={questionsType}
                   onChange={(e, { value }) => setQuestionsType(value)}
+                  disabled={processing}
                 />
                 <br />
                 <Dropdown
@@ -179,6 +171,7 @@ const Main = ({ startQuiz }) => {
                   options={COUNTDOWN_TIME}
                   value={countdownTime}
                   onChange={(e, { value }) => setCountdownTime(value)}
+                  disabled={processing}
                 />
               </Item.Meta>
               <Divider />
@@ -189,7 +182,7 @@ const Main = ({ startQuiz }) => {
                   icon="play"
                   labelPosition="left"
                   content={processing ? 'Processing...' : 'Start Quiz'}
-                  onClick={() => setProcessing(true)}
+                  onClick={getData}
                   disabled={!allFieldsSelected || processing}
                 />
               </Item.Extra>
