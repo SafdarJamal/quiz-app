@@ -45,7 +45,7 @@ const ShareButton = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button color="facebook" size="big">
+              <Button color="facebook" size="big" style={{ marginBottom: 8 }}>
                 <Icon name="facebook" />
                 Facebook
               </Button>
@@ -55,7 +55,7 @@ const ShareButton = () => {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <Button color="twitter" size="big">
+              <Button color="twitter" size="big" style={{ marginBottom: 8 }}>
                 <Icon name="twitter" />
                 Twitter
               </Button>
