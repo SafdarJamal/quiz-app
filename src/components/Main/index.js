@@ -44,7 +44,7 @@ const Main = ({ startQuiz }) => {
     allFieldsSelected = true;
   }
 
-  const getData = () => {
+  const fetchData = () => {
     setProcessing(true);
 
     if (error) setError(null);
@@ -182,7 +182,7 @@ const Main = ({ startQuiz }) => {
                   icon="play"
                   labelPosition="left"
                   content={processing ? 'Processing...' : 'Start Quiz'}
-                  onClick={getData}
+                  onClick={fetchData}
                   disabled={!allFieldsSelected || processing}
                 />
               </Item.Extra>
