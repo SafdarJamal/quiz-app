@@ -6,6 +6,7 @@
     "name": "Safdar Jamal",
     "url": "https://safdarjamal.github.io"
   },
+  "homepage": "https://safdarjamal.github.io/quiz-app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
