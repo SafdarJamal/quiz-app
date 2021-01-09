@@ -20,7 +20,7 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
         clearInterval(timer);
 
         Swal.fire({
-          title: 'YOUR TIME IS UP',
+          title: `Your Time's Up`,
           icon: 'info',
           timer: 5000,
           willClose: () => timeOver(totalTime - timerTime)
