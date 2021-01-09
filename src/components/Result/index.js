@@ -8,7 +8,7 @@ import QNA from './QNA';
 const Result = ({
   totalQuestions,
   correctAnswers,
-  takenTime,
+  timeTaken,
   questionsAndAnswers,
   retakeQuiz,
   backToHome
@@ -37,7 +37,7 @@ const Result = ({
         <Stats
           totalQuestions={totalQuestions}
           correctAnswers={correctAnswers}
-          takenTime={takenTime}
+          timeTaken={timeTaken}
           retakeQuiz={retakeQuiz}
           backToHome={backToHome}
         />
@@ -51,7 +51,7 @@ const Result = ({
 Result.propTypes = {
   totalQuestions: PropTypes.number.isRequired,
   correctAnswers: PropTypes.number.isRequired,
-  takenTime: PropTypes.number.isRequired,
+  timeTaken: PropTypes.number.isRequired,
   questionsAndAnswers: PropTypes.array.isRequired,
   retakeQuiz: PropTypes.func.isRequired,
   backToHome: PropTypes.func.isRequired

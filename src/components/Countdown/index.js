@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 import { timeConverter } from '../../utils';
 
-const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
+const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
   const totalTime = countdownTime * 1000;
   const [timerTime, setTimerTime] = useState(totalTime);
   const { hours, minutes, seconds } = timeConverter(timerTime);
@@ -30,7 +30,7 @@ const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
 
     return () => {
       clearInterval(timer);
-      setTakenTime(totalTime - timerTime + 1000);
+      setTimeTaken(totalTime - timerTime + 1000);
     };
 
     // eslint-disable-next-line
@@ -60,7 +60,7 @@ const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
 Countdown.propTypes = {
   countdownTime: PropTypes.number.isRequired,
   timeOver: PropTypes.func.isRequired,
-  setTakenTime: PropTypes.func.isRequired
+  setTimeTaken: PropTypes.func.isRequired
 };
 
 export default Countdown;

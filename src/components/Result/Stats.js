@@ -8,13 +8,13 @@ import { calculateScore, calculateGrade, timeConverter } from '../../utils';
 const Stats = ({
   totalQuestions,
   correctAnswers,
-  takenTime,
+  timeTaken,
   retakeQuiz,
   backToHome
 }) => {
   const score = calculateScore(totalQuestions, correctAnswers);
   const { grade, remarks } = calculateGrade(score);
-  const { hours, minutes, seconds } = timeConverter(takenTime);
+  const { hours, minutes, seconds } = timeConverter(timeTaken);
 
   return (
     <Segment>
@@ -37,7 +37,8 @@ const Stats = ({
         Passing Score: 60%
       </Header>
       <Header as="h3" textAlign="center" block>
-        Taken Time: {`${hours} : ${minutes} : ${seconds}`}
+        Time Taken:{' '}
+        {`${Number(hours)}h ${Number(minutes)}m ${Number(seconds)}s`}
       </Header>
       <div style={{ marginTop: 35 }}>
         <Button
@@ -67,7 +68,7 @@ const Stats = ({
 Stats.propTypes = {
   totalQuestions: PropTypes.number.isRequired,
   correctAnswers: PropTypes.number.isRequired,
-  takenTime: PropTypes.number.isRequired,
+  timeTaken: PropTypes.number.isRequired,
   retakeQuiz: PropTypes.func.isRequired,
   backToHome: PropTypes.func.isRequired
 };
