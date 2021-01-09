@@ -28,10 +28,18 @@ const Main = ({ startQuiz }) => {
   const [numOfQuestions, setNumOfQuestions] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
   const [questionsType, setQuestionsType] = useState(null);
-  const [countdownTime, setCountdownTime] = useState(null);
+  const [countdownTime, setCountdownTime] = useState({
+    hours: null,
+    minutes: null,
+    seconds: null
+  });
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
   const [offline, setOffline] = useState(false);
+
+  const handleTimeChange = (e, { name, value }) => {
+    setCountdownTime({ ...countdownTime, [name]: value });
+  };
 
   let allFieldsSelected = false;
   if (
@@ -39,7 +47,7 @@ const Main = ({ startQuiz }) => {
     numOfQuestions &&
     difficulty &&
     questionsType &&
-    countdownTime
+    (countdownTime.hours || countdownTime.minutes || countdownTime.seconds)
   ) {
     allFieldsSelected = true;
   }
@@ -84,7 +92,10 @@ const Main = ({ startQuiz }) => {
           });
 
           setProcessing(false);
-          startQuiz(results, countdownTime);
+          startQuiz(
+            results,
+            countdownTime.hours + countdownTime.minutes + countdownTime.seconds
+          );
         }, 1000)
       )
       .catch(error =>
@@ -164,13 +175,33 @@ const Main = ({ startQuiz }) => {
                 />
                 <br />
                 <Dropdown
-                  fluid
+                  search
                   selection
-                  name="time"
-                  placeholder="Select Countdown Time (In Minutes)"
-                  options={COUNTDOWN_TIME}
-                  value={countdownTime}
-                  onChange={(e, { value }) => setCountdownTime(value)}
+                  name="hours"
+                  placeholder="Select Hours"
+                  options={COUNTDOWN_TIME.hours}
+                  value={countdownTime.hours}
+                  onChange={handleTimeChange}
+                  disabled={processing}
+                />
+                <Dropdown
+                  search
+                  selection
+                  name="minutes"
+                  placeholder="Select Minutes"
+                  options={COUNTDOWN_TIME.minutes}
+                  value={countdownTime.minutes}
+                  onChange={handleTimeChange}
+                  disabled={processing}
+                />
+                <Dropdown
+                  search
+                  selection
+                  name="seconds"
+                  placeholder="Select Seconds"
+                  options={COUNTDOWN_TIME.seconds}
+                  value={countdownTime.seconds}
+                  onChange={handleTimeChange}
                   disabled={processing}
                 />
               </Item.Meta>

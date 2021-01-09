@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { timeConverter } from '../../utils';
 
 const Countdown = ({ countdownTime, timeOver, setTakenTime }) => {
-  const totalTime = countdownTime * 60000;
+  const totalTime = countdownTime * 1000;
   const [timerTime, setTimerTime] = useState(totalTime);
   const { hours, minutes, seconds } = timeConverter(timerTime);
 
