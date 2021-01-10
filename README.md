@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with React and using OpenTDB API.
+  QuizApp is a free and open-source quiz application that lets you play fully customize quizzes right in the browser.
 </p>
 
 ## Tech Stack

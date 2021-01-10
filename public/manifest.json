@@ -1,7 +1,7 @@
 {
   "short_name": "QuizApp",
   "name": "QuizApp",
-  "description": "QuizApp is a free and open-source quiz application built as a progressive web app (PWA) with React and using OpenTDB API.",
+  "description": "QuizApp is a free and open-source quiz application that lets you play fully customize quizzes right in the browser.",
   "icons": [
     {
       "src": "android-chrome-192x192.png",
