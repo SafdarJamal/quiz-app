@@ -9,7 +9,7 @@
   "homepage": "https://safdarjamal.github.io/quiz-app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
-    "@testing-library/react": "^11.2.2",
+    "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
     "he": "^1.2.0",
     "prop-types": "^15.7.2",
@@ -18,7 +18,7 @@
     "react-scripts": "4.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
-    "sweetalert2": "^10.12.7"
+    "sweetalert2": "^10.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
