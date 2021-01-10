@@ -1,79 +1,66 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
 
-import { timeConverter } from '../../utils/timeConverter';
+import { timeConverter } from '../../utils';
 
-class Countdown extends Component {
-  constructor(props) {
-    super(props);
+const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
+  const totalTime = countdownTime * 1000;
+  const [timerTime, setTimerTime] = useState(totalTime);
+  const { hours, minutes, seconds } = timeConverter(timerTime);
 
-    const countdownTime = props.countdownTime * 60000;
-
-    this.state = {
-      timerStart: 0,
-      timerTime: countdownTime,
-      totalTime: countdownTime
-    };
-  }
-
-  startTimer() {
-    this.timer = setInterval(() => {
-      const newTime = this.state.timerTime - 1000;
+  useEffect(() => {
+    const timer = setInterval(() => {
+      const newTime = timerTime - 1000;
 
       if (newTime >= 0) {
-        this.setState({
-          timerTime: newTime
-        });
+        setTimerTime(newTime);
       } else {
-        clearInterval(this.timer);
+        clearInterval(timer);
+
         Swal.fire({
-          title: 'YOUR TIME IS UP',
-          type: 'info',
+          title: `Your Time's Up`,
+          icon: 'info',
           timer: 5000,
-          onClose: () => {
-            this.props.timesUp();
-          }
+          willClose: () => timeOver(totalTime - timerTime)
         });
       }
     }, 1000);
-  }
 
-  componentDidMount() {
-    this.startTimer();
-  }
+    return () => {
+      clearInterval(timer);
+      setTimeTaken(totalTime - timerTime + 1000);
+    };
 
-  componentWillUnmount() {
-    clearInterval(this.timer);
+    // eslint-disable-next-line
+  }, [timerTime]);
 
-    const { timerTime, totalTime } = this.state;
-    this.props.timeAmount(timerTime, totalTime);
-  }
+  return (
+    <Button.Group size="massive" basic floated="right">
+      <Popup
+        content="Hours"
+        trigger={<Button active>{hours}</Button>}
+        position="bottom left"
+      />
+      <Popup
+        content="Minutes"
+        trigger={<Button active>{minutes}</Button>}
+        position="bottom left"
+      />
+      <Popup
+        content="Seconds"
+        trigger={<Button active>{seconds}</Button>}
+        position="bottom left"
+      />
+    </Button.Group>
+  );
+};
 
-  render() {
-    const { timerTime } = this.state;
-    const { hours, minutes, seconds } = timeConverter(timerTime);
-
-    return (
-      <Button.Group size="massive" basic floated="right">
-        <Popup
-          content="Hours"
-          trigger={<Button active>{hours}</Button>}
-          position="bottom left"
-        />
-        <Popup
-          content="Minutes"
-          trigger={<Button active>{minutes}</Button>}
-          position="bottom left"
-        />
-        <Popup
-          content="Seconds"
-          trigger={<Button active>{seconds}</Button>}
-          position="bottom left"
-        />
-      </Button.Group>
-    );
-  }
-}
+Countdown.propTypes = {
+  countdownTime: PropTypes.number.isRequired,
+  timeOver: PropTypes.func.isRequired,
+  setTimeTaken: PropTypes.func.isRequired
+};
 
 export default Countdown;

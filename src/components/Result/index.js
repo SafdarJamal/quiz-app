@@ -1,66 +1,60 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
 
 import Stats from './Stats';
-import QA from './QA';
+import QNA from './QNA';
 
-class Result extends Component {
-  constructor(props) {
-    super(props);
+const Result = ({
+  totalQuestions,
+  correctAnswers,
+  timeTaken,
+  questionsAndAnswers,
+  replayQuiz,
+  resetQuiz
+}) => {
+  const [activeTab, setActiveTab] = useState('Stats');
 
-    this.state = {
-      activeTab: 'Stats'
-    };
+  const handleTabClick = (e, { name }) => {
+    setActiveTab(name);
+  };
 
-    this.handleTabClick = this.handleTabClick.bind(this);
-  }
+  return (
+    <Container>
+      <Menu fluid widths={2}>
+        <Menu.Item
+          name="Stats"
+          active={activeTab === 'Stats'}
+          onClick={handleTabClick}
+        />
+        <Menu.Item
+          name="QNA"
+          active={activeTab === 'QNA'}
+          onClick={handleTabClick}
+        />
+      </Menu>
+      {activeTab === 'Stats' && (
+        <Stats
+          totalQuestions={totalQuestions}
+          correctAnswers={correctAnswers}
+          timeTaken={timeTaken}
+          replayQuiz={replayQuiz}
+          resetQuiz={resetQuiz}
+        />
+      )}
+      {activeTab === 'QNA' && <QNA questionsAndAnswers={questionsAndAnswers} />}
+      <br />
+    </Container>
+  );
+};
 
-  handleTabClick(e, { name }) {
-    this.setState({ activeTab: name });
-  }
-
-  render() {
-    const { activeTab } = this.state;
-    const {
-      totalQuestions,
-      correctAnswers,
-      timeTakesToComplete,
-      questionsAndAnswers,
-      retakeQuiz,
-      backToHome
-    } = this.props;
-
-    return (
-      <Container>
-        <Menu fluid widths={2}>
-          <Menu.Item
-            name="Stats"
-            active={activeTab === 'Stats'}
-            onClick={this.handleTabClick}
-          />
-          <Menu.Item
-            name="Q / A"
-            active={activeTab === 'Q / A'}
-            onClick={this.handleTabClick}
-          />
-        </Menu>
-
-        {activeTab === 'Stats' && (
-          <Stats
-            totalQuestions={totalQuestions}
-            correctAnswers={correctAnswers}
-            timeTakesToComplete={timeTakesToComplete}
-            retakeQuiz={retakeQuiz}
-            backToHome={backToHome}
-          />
-        )}
-        {activeTab === 'Q / A' && (
-          <QA questionsAndAnswers={questionsAndAnswers} />
-        )}
-        <br />
-      </Container>
-    );
-  }
-}
+Result.propTypes = {
+  totalQuestions: PropTypes.number.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  timeTaken: PropTypes.number.isRequired,
+  questionsAndAnswers: PropTypes.array.isRequired,
+  replayQuiz: PropTypes.func.isRequired,
+  resetQuiz: PropTypes.func.isRequired
+};
 
 export default Result;

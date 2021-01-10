@@ -1,31 +1,38 @@
 {
   "name": "quiz-app",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "private": true,
   "author": {
     "name": "Safdar Jamal",
     "url": "https://safdarjamal.github.io"
   },
-  "homepage": "https://safdarjamal.github.io/quiz-app",
+  "homepage": "https://safdarjamal.github.io/quiz-app/",
   "dependencies": {
+    "@testing-library/jest-dom": "^5.11.8",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.0",
     "he": "^1.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "^3.3.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "4.0.1",
     "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^0.88.2",
-    "sweetalert2": "^8.19.0"
+    "semantic-ui-react": "^2.0.1",
+    "sweetalert2": "^10.13.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --passWithNoTests",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
@@ -40,6 +47,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^3.1.0"
   }
 }

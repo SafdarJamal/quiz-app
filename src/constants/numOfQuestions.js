@@ -1,8 +1,7 @@
 const NUM_OF_QUESTIONS = [];
 
 for (let i = 1; i <= 50; i++) {
-  const object = { key: i, text: `${i}`, value: i };
-  NUM_OF_QUESTIONS.push(object);
+  NUM_OF_QUESTIONS.push({ key: i, text: i, value: i });
 }
 
 export default NUM_OF_QUESTIONS;

@@ -1,18 +1,32 @@
-# The QuizApp
-
-The QuizApp is a progressive web app ([PWA](https://developers.google.com/web/progressive-web-apps)) built with [React](https://reactjs.org) using [OpenTDB](https://opentdb.com) API.
+<h1 align="center">
+  <a href="https://safdarjamal.github.io/quiz-app/">
+    QuizApp
+  </a>
+</h1>
 
 <p align="center">
-  <img src="./screenshot.png" alt='QuizApp in Action'>
+  <a href="https://github.com/SafdarJamal/quiz-app/actions?query=workflow%3A%22Node.js+CI%22">
+    <img src="https://github.com/SafdarJamal/quiz-app/workflows/Node.js%20CI/badge.svg" alt="Node.js CI" />
+  </a>
+  <a href="https://github.com/SafdarJamal/quiz-app/releases">
+    <img src="https://img.shields.io/github/v/release/SafdarJamal/quiz-app" alt="GitHub Release (latest by date)" />
+  </a>
+  <a href="https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/SafdarJamal/quiz-app" alt="License" />
+  </a>
 </p>
 
-## Demo
+<p align="center">
+  QuizApp is a free and open-source quiz application that lets you play fully customize quizzes right in the browser.
+</p>
 
-- [master](https://safdarjamal.github.io/quiz-app) (Latest)
-- [v4.0](https://quizapp-v4.surge.sh) (Create Q/A dashboard)
-- [v3.0](https://quizapp-v3.surge.sh) (Play fully customize quiz and its now a PWA)
-- [v2.0](https://quizapp-v2.surge.sh) (Add countdown timer and some UI enhancement)
-- [v1.0](https://quizapp-v1.surge.sh) (Basic 10 questions quiz)
+![quiz-app](https://user-images.githubusercontent.com/48409548/104132046-a39e5b80-539c-11eb-9df3-28d52e499a6c.png)
+
+## Built with
+
+- [React](http://reactjs.org)
+- [Semantic UI](https://semantic-ui.com)
+- [Open Trivia Database API](https://opentdb.com/api_config.php)
 
 ## Development
 
@@ -29,13 +43,17 @@ Install dependencies:
 npm install
 ```
 
-Finally, you need to start a local web server. Run:
+Now, you can start a local web server by running:
 
 ```
 npm start
 ```
 
-#### npm scripts
+And then open http://localhost:3000 to view it in the browser.
+
+#### Available Scripts
+
+In this project, you can run the following scripts:
 
 | Script        | Description                                                             |
 | ------------- | ----------------------------------------------------------------------- |
@@ -44,6 +62,10 @@ npm start
 | npm run build | Builds the app for production to the `build` folder.                    |
 | npm run eject | This command will remove the single build dependency from your project. |
 
+## Credits
+
+QuizApp is built and maintained by [Safdar Jamal](https://safdarjamal.github.io).
+
 ## License
 
-Code released under the [MIT License](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE).
+Code released under the [MIT license](https://github.com/SafdarJamal/quiz-app/blob/master/LICENSE).

@@ -1,24 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Segment, Header, Button } from 'semantic-ui-react';
+
 import ShareButton from '../ShareButton';
+import { calculateScore, calculateGrade, timeConverter } from '../../utils';
 
-import { calculateGrade } from '../../utils/calculateGrade';
-import { timeConverter } from '../../utils/timeConverter';
-
-const Stats = props => {
-  const {
-    totalQuestions,
-    correctAnswers,
-    timeTakesToComplete,
-    retakeQuiz,
-    backToHome
-  } = props;
-
-  const score = Number(((correctAnswers * 100) / totalQuestions).toFixed(2));
+const Stats = ({
+  totalQuestions,
+  correctAnswers,
+  timeTaken,
+  replayQuiz,
+  resetQuiz
+}) => {
+  const score = calculateScore(totalQuestions, correctAnswers);
   const { grade, remarks } = calculateGrade(score);
-  const { hours, minutes, seconds } = timeConverter(
-    timeTakesToComplete.totalTime - timeTakesToComplete.timerTime
-  );
+  const { hours, minutes, seconds } = timeConverter(timeTaken);
 
   return (
     <Segment>
@@ -41,13 +37,14 @@ const Stats = props => {
         Passing Score: 60%
       </Header>
       <Header as="h3" textAlign="center" block>
-        Time Takes: {`${hours} : ${minutes} : ${seconds}`}
+        Time Taken:{' '}
+        {`${Number(hours)}h ${Number(minutes)}m ${Number(seconds)}s`}
       </Header>
       <div style={{ marginTop: 35 }}>
         <Button
           primary
-          content="Retake Quiz"
-          onClick={retakeQuiz}
+          content="Play Again"
+          onClick={replayQuiz}
           size="big"
           icon="redo"
           labelPosition="left"
@@ -56,7 +53,7 @@ const Stats = props => {
         <Button
           color="teal"
           content="Back to Home"
-          onClick={backToHome}
+          onClick={resetQuiz}
           size="big"
           icon="home"
           labelPosition="left"
@@ -66,6 +63,14 @@ const Stats = props => {
       </div>
     </Segment>
   );
+};
+
+Stats.propTypes = {
+  totalQuestions: PropTypes.number.isRequired,
+  correctAnswers: PropTypes.number.isRequired,
+  timeTaken: PropTypes.number.isRequired,
+  replayQuiz: PropTypes.func.isRequired,
+  resetQuiz: PropTypes.func.isRequired
 };
 
 export default Stats;

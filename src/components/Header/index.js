@@ -1,79 +1,51 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
 
-class Header extends Component {
-  constructor(props) {
-    super(props);
+const Header = () => {
+  const [promptEvent, setPromptEvent] = useState(null);
+  const [appAccepted, setAppAccepted] = useState(false);
 
-    this.state = {
-      promptEvent: null,
-      appAccepted: false
-    };
+  let isAppInstalled = false;
 
-    window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault();
-      this.setState({ promptEvent: e });
-    });
-
-    this.installApp = this.installApp.bind(this);
+  if (window.matchMedia('(display-mode: standalone)').matches || appAccepted) {
+    isAppInstalled = true;
   }
 
-  installApp() {
-    const { promptEvent } = this.state;
-    // console.log('Init Func ==>', promptEvent);
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    setPromptEvent(e);
+  });
 
+  const installApp = () => {
     promptEvent.prompt();
     promptEvent.userChoice.then(result => {
       if (result.outcome === 'accepted') {
-        // console.log('User accepted the A2HS prompt');
-        this.setState({ appAccepted: true });
+        setAppAccepted(true);
+        console.log('User accepted the A2HS prompt');
       } else {
-        // console.log('User dismissed the A2HS prompt');
+        console.log('User dismissed the A2HS prompt');
       }
     });
-  }
+  };
 
-  render() {
-    const { promptEvent, appAccepted } = this.state;
-    let isAppInstalled = false;
-
-    if (
-      window.matchMedia('(display-mode: standalone)').matches ||
-      appAccepted
-    ) {
-      isAppInstalled = true;
-    }
-
-    return (
-      <Menu stackable inverted size="massive">
-        <Menu.Item>
-          <h1
-            style={{
-              color: '#2185D0',
-              cursor: 'pointer'
-            }}
-          >
-            The QuizApp
-          </h1>
+  return (
+    <Menu stackable inverted size="massive">
+      <Menu.Item header>
+        <h1 style={{ color: '#2185D0' }}>QuizApp</h1>
+      </Menu.Item>
+      {promptEvent && !isAppInstalled && (
+        <Menu.Item position="right">
+          <Button
+            color="teal"
+            icon="cloud download"
+            labelPosition="left"
+            content="Install App"
+            onClick={installApp}
+          />
         </Menu.Item>
-
-        {promptEvent && !isAppInstalled && (
-          <Menu.Menu position="right">
-            <Menu.Item>
-              <Button
-                color="teal"
-                content="Install App"
-                size="big"
-                icon="app store"
-                labelPosition="left"
-                onClick={this.installApp}
-              />
-            </Menu.Item>
-          </Menu.Menu>
-        )}
-      </Menu>
-    );
-  }
-}
+      )}
+    </Menu>
+  );
+};
 
 export default Header;
