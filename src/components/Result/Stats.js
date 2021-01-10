@@ -9,8 +9,8 @@ const Stats = ({
   totalQuestions,
   correctAnswers,
   timeTaken,
-  retakeQuiz,
-  backToHome
+  replayQuiz,
+  resetQuiz
 }) => {
   const score = calculateScore(totalQuestions, correctAnswers);
   const { grade, remarks } = calculateGrade(score);
@@ -43,8 +43,8 @@ const Stats = ({
       <div style={{ marginTop: 35 }}>
         <Button
           primary
-          content="Retake Quiz"
-          onClick={retakeQuiz}
+          content="Play Again"
+          onClick={replayQuiz}
           size="big"
           icon="redo"
           labelPosition="left"
@@ -53,7 +53,7 @@ const Stats = ({
         <Button
           color="teal"
           content="Back to Home"
-          onClick={backToHome}
+          onClick={resetQuiz}
           size="big"
           icon="home"
           labelPosition="left"
@@ -69,8 +69,8 @@ Stats.propTypes = {
   totalQuestions: PropTypes.number.isRequired,
   correctAnswers: PropTypes.number.isRequired,
   timeTaken: PropTypes.number.isRequired,
-  retakeQuiz: PropTypes.func.isRequired,
-  backToHome: PropTypes.func.isRequired
+  replayQuiz: PropTypes.func.isRequired,
+  resetQuiz: PropTypes.func.isRequired
 };
 
 export default Stats;
