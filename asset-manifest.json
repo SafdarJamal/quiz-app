@@ -1,17 +1,27 @@
 {
   "files": {
-    "main.js": "/quiz-app/static/js/main.cb0ad2e1.chunk.js",
-    "main.js.map": "/quiz-app/static/js/main.cb0ad2e1.chunk.js.map",
-    "runtime~main.js": "/quiz-app/static/js/runtime~main.93b32ace.js",
-    "runtime~main.js.map": "/quiz-app/static/js/runtime~main.93b32ace.js.map",
-    "static/css/2.ef5dd8d1.chunk.css": "/quiz-app/static/css/2.ef5dd8d1.chunk.css",
-    "static/js/2.f7b67d3f.chunk.js": "/quiz-app/static/js/2.f7b67d3f.chunk.js",
-    "static/js/2.f7b67d3f.chunk.js.map": "/quiz-app/static/js/2.f7b67d3f.chunk.js.map",
+    "main.css": "/quiz-app/static/css/main.e37292e3.chunk.css",
+    "main.js": "/quiz-app/static/js/main.c3d25cdb.chunk.js",
+    "main.js.map": "/quiz-app/static/js/main.c3d25cdb.chunk.js.map",
+    "runtime-main.js": "/quiz-app/static/js/runtime-main.1379ff22.js",
+    "runtime-main.js.map": "/quiz-app/static/js/runtime-main.1379ff22.js.map",
+    "static/css/2.156ae412.chunk.css": "/quiz-app/static/css/2.156ae412.chunk.css",
+    "static/js/2.e550bbac.chunk.js": "/quiz-app/static/js/2.e550bbac.chunk.js",
+    "static/js/2.e550bbac.chunk.js.map": "/quiz-app/static/js/2.e550bbac.chunk.js.map",
     "index.html": "/quiz-app/index.html",
-    "precache-manifest.d4c5d11a8546b78987548bfafdc8ddb5.js": "/quiz-app/precache-manifest.d4c5d11a8546b78987548bfafdc8ddb5.js",
     "service-worker.js": "/quiz-app/service-worker.js",
-    "static/css/2.ef5dd8d1.chunk.css.map": "/quiz-app/static/css/2.ef5dd8d1.chunk.css.map",
-    "static/media/semantic.min.css": "/quiz-app/static/media/outline-icons.ef60a4f6.woff",
-    "static/media/code.png": "/quiz-app/static/media/code.60b1b385.png"
-  }
+    "service-worker.js.map": "/quiz-app/service-worker.js.map",
+    "static/css/2.156ae412.chunk.css.map": "/quiz-app/static/css/2.156ae412.chunk.css.map",
+    "static/css/main.e37292e3.chunk.css.map": "/quiz-app/static/css/main.e37292e3.chunk.css.map",
+    "static/js/2.e550bbac.chunk.js.LICENSE.txt": "/quiz-app/static/js/2.e550bbac.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/quiz-app/static/media/outline-icons.ddae9b1b.woff",
+    "static/media/mind.525a3ae0.svg": "/quiz-app/static/media/mind.525a3ae0.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1379ff22.js",
+    "static/css/2.156ae412.chunk.css",
+    "static/js/2.e550bbac.chunk.js",
+    "static/css/main.e37292e3.chunk.css",
+    "static/js/main.c3d25cdb.chunk.js"
+  ]
 }
