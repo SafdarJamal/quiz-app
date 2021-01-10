@@ -120,7 +120,7 @@ const Main = ({ startQuiz }) => {
             <Item.Image src={mindImg} />
             <Item.Content>
               <Item.Header>
-                <h1>Open Trivia Questions</h1>
+                <h1>The Ultimate Trivia Quiz</h1>
               </Item.Header>
               {error && (
                 <Message error onDismiss={() => setError(null)}>
@@ -212,7 +212,7 @@ const Main = ({ startQuiz }) => {
                   size="big"
                   icon="play"
                   labelPosition="left"
-                  content={processing ? 'Processing...' : 'Start Quiz'}
+                  content={processing ? 'Processing...' : 'Play Now'}
                   onClick={fetchData}
                   disabled={!allFieldsSelected || processing}
                 />
