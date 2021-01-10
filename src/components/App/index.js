@@ -38,7 +38,7 @@ const App = () => {
     }, 2000);
   };
 
-  const retakeQuiz = () => {
+  const replayQuiz = () => {
     setLoading(true);
 
     const shuffledData = shuffle(data);
@@ -56,7 +56,7 @@ const App = () => {
     }, 1000);
   };
 
-  const backToHome = () => {
+  const resetQuiz = () => {
     setLoading(true);
 
     setTimeout(() => {
@@ -79,11 +79,7 @@ const App = () => {
         <Quiz data={data} countdownTime={countdownTime} endQuiz={endQuiz} />
       )}
       {!loading && isQuizCompleted && (
-        <Result
-          {...resultData}
-          retakeQuiz={retakeQuiz}
-          backToHome={backToHome}
-        />
+        <Result {...resultData} replayQuiz={replayQuiz} resetQuiz={resetQuiz} />
       )}
     </Layout>
   );
