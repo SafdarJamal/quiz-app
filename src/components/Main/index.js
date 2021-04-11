@@ -29,9 +29,9 @@ const Main = ({ startQuiz }) => {
   const [difficulty, setDifficulty] = useState('0');
   const [questionsType, setQuestionsType] = useState('0');
   const [countdownTime, setCountdownTime] = useState({
-    hours: null,
-    minutes: null,
-    seconds: null,
+    hours: 0,
+    minutes: 300,
+    seconds: 0,
   });
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
