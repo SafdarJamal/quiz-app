@@ -7,7 +7,7 @@ import {
   Dropdown,
   Divider,
   Button,
-  Message
+  Message,
 } from 'semantic-ui-react';
 
 import mindImg from '../../images/mind.svg';
@@ -17,21 +17,21 @@ import {
   NUM_OF_QUESTIONS,
   DIFFICULTY,
   QUESTIONS_TYPE,
-  COUNTDOWN_TIME
+  COUNTDOWN_TIME,
 } from '../../constants';
 import { shuffle } from '../../utils';
 
 import Offline from '../Offline';
 
 const Main = ({ startQuiz }) => {
-  const [category, setCategory] = useState(null);
+  const [category, setCategory] = useState('0');
   const [numOfQuestions, setNumOfQuestions] = useState(null);
   const [difficulty, setDifficulty] = useState(null);
   const [questionsType, setQuestionsType] = useState(null);
   const [countdownTime, setCountdownTime] = useState({
     hours: null,
     minutes: null,
-    seconds: null
+    seconds: null,
   });
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
@@ -87,7 +87,7 @@ const Main = ({ startQuiz }) => {
           results.forEach(element => {
             element.options = shuffle([
               element.correct_answer,
-              ...element.incorrect_answers
+              ...element.incorrect_answers,
             ]);
           });
 
@@ -227,7 +227,7 @@ const Main = ({ startQuiz }) => {
 };
 
 Main.propTypes = {
-  startQuiz: PropTypes.func.isRequired
+  startQuiz: PropTypes.func.isRequired,
 };
 
 export default Main;
