@@ -26,7 +26,7 @@ import Offline from '../Offline';
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState('0');
   const [numOfQuestions, setNumOfQuestions] = useState(10);
-  const [difficulty, setDifficulty] = useState(null);
+  const [difficulty, setDifficulty] = useState('0');
   const [questionsType, setQuestionsType] = useState(null);
   const [countdownTime, setCountdownTime] = useState({
     hours: null,
