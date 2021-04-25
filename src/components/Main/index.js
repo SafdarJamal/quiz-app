@@ -135,6 +135,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="category"
                   placeholder="Select Quiz Category"
+                  header="Select Quiz Category"
                   options={CATEGORIES}
                   value={category}
                   onChange={(e, { value }) => setCategory(value)}
@@ -146,6 +147,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="numOfQ"
                   placeholder="Select No. of Questions"
+                  header="Select No. of Questions"
                   options={NUM_OF_QUESTIONS}
                   value={numOfQuestions}
                   onChange={(e, { value }) => setNumOfQuestions(value)}
@@ -157,6 +159,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="difficulty"
                   placeholder="Select Difficulty Level"
+                  header="Select Difficulty Level"
                   options={DIFFICULTY}
                   value={difficulty}
                   onChange={(e, { value }) => setDifficulty(value)}
@@ -168,6 +171,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="type"
                   placeholder="Select Questions Type"
+                  header="Select Questions Type"
                   options={QUESTIONS_TYPE}
                   value={questionsType}
                   onChange={(e, { value }) => setQuestionsType(value)}
@@ -179,6 +183,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="hours"
                   placeholder="Select Hours"
+                  header="Select Hours"
                   options={COUNTDOWN_TIME.hours}
                   value={countdownTime.hours}
                   onChange={handleTimeChange}
@@ -189,6 +194,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="minutes"
                   placeholder="Select Minutes"
+                  header="Select Minutes"
                   options={COUNTDOWN_TIME.minutes}
                   value={countdownTime.minutes}
                   onChange={handleTimeChange}
@@ -199,6 +205,7 @@ const Main = ({ startQuiz }) => {
                   selection
                   name="seconds"
                   placeholder="Select Seconds"
+                  header="Select Seconds"
                   options={COUNTDOWN_TIME.seconds}
                   value={countdownTime.seconds}
                   onChange={handleTimeChange}
