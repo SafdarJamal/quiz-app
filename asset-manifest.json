@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/quiz-app/static/css/main.e37292e3.chunk.css",
-    "main.js": "/quiz-app/static/js/main.c3d25cdb.chunk.js",
-    "main.js.map": "/quiz-app/static/js/main.c3d25cdb.chunk.js.map",
-    "runtime-main.js": "/quiz-app/static/js/runtime-main.1379ff22.js",
-    "runtime-main.js.map": "/quiz-app/static/js/runtime-main.1379ff22.js.map",
-    "static/css/2.156ae412.chunk.css": "/quiz-app/static/css/2.156ae412.chunk.css",
-    "static/js/2.e550bbac.chunk.js": "/quiz-app/static/js/2.e550bbac.chunk.js",
-    "static/js/2.e550bbac.chunk.js.map": "/quiz-app/static/js/2.e550bbac.chunk.js.map",
+    "main.js": "/quiz-app/static/js/main.351bdedd.chunk.js",
+    "main.js.map": "/quiz-app/static/js/main.351bdedd.chunk.js.map",
+    "runtime-main.js": "/quiz-app/static/js/runtime-main.29e86ed2.js",
+    "runtime-main.js.map": "/quiz-app/static/js/runtime-main.29e86ed2.js.map",
+    "static/css/2.89a5353b.chunk.css": "/quiz-app/static/css/2.89a5353b.chunk.css",
+    "static/js/2.7d5256fc.chunk.js": "/quiz-app/static/js/2.7d5256fc.chunk.js",
+    "static/js/2.7d5256fc.chunk.js.map": "/quiz-app/static/js/2.7d5256fc.chunk.js.map",
     "index.html": "/quiz-app/index.html",
     "service-worker.js": "/quiz-app/service-worker.js",
     "service-worker.js.map": "/quiz-app/service-worker.js.map",
-    "static/css/2.156ae412.chunk.css.map": "/quiz-app/static/css/2.156ae412.chunk.css.map",
+    "static/css/2.89a5353b.chunk.css.map": "/quiz-app/static/css/2.89a5353b.chunk.css.map",
     "static/css/main.e37292e3.chunk.css.map": "/quiz-app/static/css/main.e37292e3.chunk.css.map",
-    "static/js/2.e550bbac.chunk.js.LICENSE.txt": "/quiz-app/static/js/2.e550bbac.chunk.js.LICENSE.txt",
+    "static/js/2.7d5256fc.chunk.js.LICENSE.txt": "/quiz-app/static/js/2.7d5256fc.chunk.js.LICENSE.txt",
     "static/media/index.css": "/quiz-app/static/media/outline-icons.ddae9b1b.woff",
     "static/media/mind.525a3ae0.svg": "/quiz-app/static/media/mind.525a3ae0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1379ff22.js",
-    "static/css/2.156ae412.chunk.css",
-    "static/js/2.e550bbac.chunk.js",
+    "static/js/runtime-main.29e86ed2.js",
+    "static/css/2.89a5353b.chunk.css",
+    "static/js/2.7d5256fc.chunk.js",
     "static/css/main.e37292e3.chunk.css",
-    "static/js/main.c3d25cdb.chunk.js"
+    "static/js/main.351bdedd.chunk.js"
   ]
 }
