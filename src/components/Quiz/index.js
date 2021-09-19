@@ -17,6 +17,7 @@ import Countdown from '../Countdown';
 import { getLetter } from '../../utils';
 
 const Quiz = ({ data, countdownTime, endQuiz }) => {
+
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);

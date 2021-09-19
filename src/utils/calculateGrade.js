@@ -1,4 +1,9 @@
 const calculateGrade = score => {
+
+  if ( score === null || score === undefined || typeof score !== 'number' ) {
+    return null;
+  }
+
   const percentage = parseInt(score);
 
   let grade = null;
