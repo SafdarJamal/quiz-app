@@ -1,6 +1,5 @@
 const calculateGrade = score => {
-
-  if ( score === null || score === undefined || typeof score !== 'number' ) {
+  if (score === null || score === undefined || typeof score !== 'number') {
     return null;
   }
 
@@ -45,7 +44,7 @@ const calculateGrade = score => {
 
   return {
     grade,
-    remarks
+    remarks,
   };
 };
 
