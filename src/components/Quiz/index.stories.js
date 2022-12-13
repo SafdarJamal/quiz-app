@@ -8,6 +8,8 @@ import data from './mock.json';
 export default {
   component: QuizComponent,
   title: 'Components/Quiz',
-} 
+};
 
-export const Quiz = () => <QuizComponent countdownTime={1000} data={data} endQuiz={()=>{}}/>;
+export const Quiz = () => (
+  <QuizComponent countdownTime={1000} data={data} endQuiz={() => {}} />
+);
