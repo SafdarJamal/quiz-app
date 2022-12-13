@@ -2,23 +2,23 @@ const DIFFICULTY = [
   {
     key: '0',
     text: 'Any Difficulty',
-    value: '0'
+    value: '0',
   },
   {
     key: 'easy',
     text: 'Easy',
-    value: 'easy'
+    value: 'easy',
   },
   {
     key: 'medium',
     text: 'Medium',
-    value: 'medium'
+    value: 'medium',
   },
   {
     key: 'hard',
     text: 'Hard',
-    value: 'hard'
-  }
+    value: 'hard',
+  },
 ];
 
 export default DIFFICULTY;
