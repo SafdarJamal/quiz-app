@@ -23,7 +23,7 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
           title: `Your Time's Up`,
           icon: 'info',
           timer: 5000,
-          willClose: () => timeOver(totalTime - timerTime)
+          willClose: () => timeOver(totalTime - timerTime),
         });
       }
     }, 1000);
@@ -60,7 +60,7 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
 Countdown.propTypes = {
   countdownTime: PropTypes.number.isRequired,
   timeOver: PropTypes.func.isRequired,
-  setTimeTaken: PropTypes.func.isRequired
+  setTimeTaken: PropTypes.func.isRequired,
 };
 
 export default Countdown;

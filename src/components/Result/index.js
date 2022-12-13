@@ -11,7 +11,7 @@ const Result = ({
   timeTaken,
   questionsAndAnswers,
   replayQuiz,
-  resetQuiz
+  resetQuiz,
 }) => {
   const [activeTab, setActiveTab] = useState('Stats');
 
@@ -54,7 +54,7 @@ Result.propTypes = {
   timeTaken: PropTypes.number.isRequired,
   questionsAndAnswers: PropTypes.array.isRequired,
   replayQuiz: PropTypes.func.isRequired,
-  resetQuiz: PropTypes.func.isRequired
+  resetQuiz: PropTypes.func.isRequired,
 };
 
 export default Result;

@@ -10,7 +10,7 @@ const Stats = ({
   correctAnswers,
   timeTaken,
   replayQuiz,
-  resetQuiz
+  resetQuiz,
 }) => {
   const score = calculateScore(totalQuestions, correctAnswers);
   const { grade, remarks } = calculateGrade(score);
@@ -70,7 +70,7 @@ Stats.propTypes = {
   correctAnswers: PropTypes.number.isRequired,
   timeTaken: PropTypes.number.isRequired,
   replayQuiz: PropTypes.func.isRequired,
-  resetQuiz: PropTypes.func.isRequired
+  resetQuiz: PropTypes.func.isRequired,
 };
 
 export default Stats;
