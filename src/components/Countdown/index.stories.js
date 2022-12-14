@@ -1,7 +1,4 @@
-// Button.stories.js | Button.stories.jsx
-
 import React from 'react';
-
 import Countdown from './index';
 
 export default {

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import ShareButton from './index';
 
 export default {
