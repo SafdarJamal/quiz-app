@@ -1,11 +1,15 @@
 import React from 'react';
-import Countdown from './index';
+import CountdownComponent from './index';
 
 export default {
   title: 'Components/Countdown',
-  component: Countdown,
+  component: CountdownComponent,
 };
 
-export const CountdownTimer = () => (
-  <Countdown countdownTime={1000} setTimeTaken={() => {}} />
+export const Countdown = () => (
+  <CountdownComponent
+    countdownTime={120}
+    timeOver={() => {}}
+    setTimeTaken={() => {}}
+  />
 );
