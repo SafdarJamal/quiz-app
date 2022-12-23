@@ -1,9 +1,9 @@
 import React from 'react';
-import ShareBTN from './index';
+import ShareButtonComponent from './index';
 
 export default {
   title: 'Components/ShareButton',
-  component: ShareBTN,
+  component: ShareButtonComponent,
 };
 
-export const ShareButton = () => <ShareBTN />;
+export const ShareButton = () => <ShareButtonComponent />;
