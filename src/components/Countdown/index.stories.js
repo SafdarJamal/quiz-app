@@ -2,8 +2,8 @@ import React from 'react';
 import Countdown from './index';
 
 export default {
-  component: Countdown,
   title: 'Components/Countdown',
+  component: Countdown,
 };
 
 export const CountdownTimer = () => (

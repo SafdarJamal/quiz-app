@@ -2,8 +2,8 @@ import React from 'react';
 import LoaderComponent from './index';
 
 export default {
-  component: LoaderComponent,
   title: 'Components/Loader',
+  component: LoaderComponent,
 };
 
 export const Loader = () => <LoaderComponent />;

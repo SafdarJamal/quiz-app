@@ -3,8 +3,8 @@ import QuizComponent from './index';
 import data from './mock.json';
 
 export default {
-  component: QuizComponent,
   title: 'Components/Quiz',
+  component: QuizComponent,
 };
 
 export const Quiz = () => (
