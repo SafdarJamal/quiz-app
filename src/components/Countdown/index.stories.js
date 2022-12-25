@@ -6,10 +6,11 @@ export default {
   component: CountdownComponent,
 };
 
-export const Countdown = () => (
-  <CountdownComponent
-    countdownTime={120}
-    timeOver={() => {}}
-    setTimeTaken={() => {}}
-  />
-);
+const Template = args => <CountdownComponent {...args} />;
+export const Countdown = Template.bind({});
+
+Countdown.args = {
+  countdownTime: 120,
+  timeOver: () => {},
+  setTimeTaken: () => {},
+};
