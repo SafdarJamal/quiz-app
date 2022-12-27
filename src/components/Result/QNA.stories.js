@@ -6,15 +6,16 @@ export default {
   component: QNAComponent,
 };
 
-export const QNA = () => (
-  <QNAComponent
-    questionsAndAnswers={[
-      {
-        question: 'he.decode(data[questionIndex].question)',
-        user_answer: 'userSlectedAns',
-        correct_answer: 'he.decode(data[questionIndex].correct_answer)',
-        point: 1,
-      },
-    ]}
-  />
-);
+const Template = args => <QNAComponent {...args} />;
+export const QNA = Template.bind({});
+
+QNA.args = {
+  questionsAndAnswers: [
+    {
+      question: 'he.decode(data[questionIndex].question)',
+      user_answer: 'userSlectedAns',
+      correct_answer: 'he.decode(data[questionIndex].correct_answer)',
+      point: 1,
+    },
+  ],
+};
