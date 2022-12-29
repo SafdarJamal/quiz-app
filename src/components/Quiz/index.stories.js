@@ -7,6 +7,11 @@ export default {
   component: QuizComponent,
 };
 
-export const Quiz = () => (
-  <QuizComponent countdownTime={1000} data={data} endQuiz={() => {}} />
-);
+const Template = args => <QuizComponent {...args} />;
+export const Quiz = Template.bind({});
+
+Quiz.args = {
+  data,
+  countdownTime: 120,
+  endQuiz: () => {},
+};
