@@ -6,4 +6,9 @@ export default {
   component: MainComponent,
 };
 
-export const Main = () => <MainComponent startQuiz={() => {}} />;
+const Template = args => <MainComponent {...args} />;
+export const Main = Template.bind({});
+
+Main.args = {
+  startQuiz: () => {},
+};
