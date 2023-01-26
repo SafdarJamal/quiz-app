@@ -130,6 +130,7 @@ const Main = ({ startQuiz }) => {
               )}
               <Divider />
               <Item.Meta>
+                <p>Select quiz category</p>
                 <Dropdown
                   fluid
                   selection
@@ -142,6 +143,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>Select no. of questions</p>
                 <Dropdown
                   fluid
                   selection
@@ -154,6 +156,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>Select difficulty level</p>
                 <Dropdown
                   fluid
                   selection
@@ -166,6 +169,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>Select questions type</p>
                 <Dropdown
                   fluid
                   selection
@@ -178,6 +182,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>Select time</p>
                 <Dropdown
                   search
                   selection
