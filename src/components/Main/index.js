@@ -12,20 +12,13 @@ import {
 
 import mindImg from "../../images/mind.svg";
 
-import {
-  CATEGORIES,
-  NUM_OF_QUESTIONS,
-  DIFFICULTY,
-  COUNTDOWN_TIME,
-} from "../../constants";
+import { CATEGORIES, COUNTDOWN_TIME } from "../../constants";
 import { shuffle } from "../../utils";
 
 import mockData from "../Quiz/Az900Questions";
 
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState("0");
-  const [numOfQuestions, setNumOfQuestions] = useState(5);
-  const [difficulty, setDifficulty] = useState("0");
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
     minutes: 120,
@@ -41,8 +34,6 @@ const Main = ({ startQuiz }) => {
   let allFieldsSelected = false;
   if (
     category &&
-    numOfQuestions &&
-    difficulty &&
     (countdownTime.hours || countdownTime.minutes || countdownTime.seconds)
   ) {
     allFieldsSelected = true;
@@ -53,6 +44,7 @@ const Main = ({ startQuiz }) => {
 
     setTimeout(() => {
       const results = mockData;
+
       results.forEach((element) => {
         element.options = shuffle([
           element.correct_answer,
@@ -60,9 +52,13 @@ const Main = ({ startQuiz }) => {
         ]);
       });
 
+      const questions = results.filter(
+        (questionCategory) => questionCategory.category === category
+      );
+
       setProcessing(false);
       startQuiz(
-        results,
+        questions,
         countdownTime.hours + countdownTime.minutes + countdownTime.seconds
       );
     }, 1000);
@@ -76,7 +72,7 @@ const Main = ({ startQuiz }) => {
             <Item.Image src={mindImg} />
             <Item.Content>
               <Item.Header>
-                <h1>The Ultimate Trivia Quiz</h1>
+                <h1>Mock AZ-900 Quiz</h1>
               </Item.Header>
               {error && (
                 <Message error onDismiss={() => setError(null)}>
@@ -95,30 +91,6 @@ const Main = ({ startQuiz }) => {
                   options={CATEGORIES}
                   value={category}
                   onChange={(e, { value }) => setCategory(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="numOfQ"
-                  placeholder="Select No. of Questions"
-                  header="Select No. of Questions"
-                  options={NUM_OF_QUESTIONS}
-                  value={numOfQuestions}
-                  onChange={(e, { value }) => setNumOfQuestions(value)}
-                  disabled={processing}
-                />
-                <br />
-                <Dropdown
-                  fluid
-                  selection
-                  name="difficulty"
-                  placeholder="Select Difficulty Level"
-                  header="Select Difficulty Level"
-                  options={DIFFICULTY}
-                  value={difficulty}
-                  onChange={(e, { value }) => setDifficulty(value)}
                   disabled={processing}
                 />
                 <br />
