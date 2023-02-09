@@ -1,6 +1,5 @@
-const calculateGrade = score => {
-
-  if ( score === null || score === undefined || typeof score !== 'number' ) {
+const calculateGrade = (score) => {
+  if (score === null || score === undefined || typeof score !== "number") {
     return null;
   }
 
@@ -10,42 +9,42 @@ const calculateGrade = score => {
   let remarks = null;
 
   if (percentage >= 97) {
-    grade = 'A+';
+    grade = "A+";
   } else if (percentage >= 93 && percentage <= 96) {
-    grade = 'A';
+    grade = "A";
   } else if (percentage >= 90 && percentage <= 92) {
-    grade = 'A-';
+    grade = "A-";
   } else if (percentage >= 87 && percentage <= 89) {
-    grade = 'B+';
+    grade = "B+";
   } else if (percentage >= 83 && percentage <= 86) {
-    grade = 'B';
+    grade = "B";
   } else if (percentage >= 80 && percentage <= 82) {
-    grade = 'B-';
+    grade = "B-";
   } else if (percentage >= 77 && percentage <= 79) {
-    grade = 'C+';
+    grade = "C+";
   } else if (percentage >= 73 && percentage <= 76) {
-    grade = 'C';
+    grade = "C";
   } else if (percentage >= 70 && percentage <= 72) {
-    grade = 'C-';
+    grade = "C-";
   } else if (percentage >= 67 && percentage <= 69) {
-    grade = 'D+';
+    grade = "D+";
   } else if (percentage >= 63 && percentage <= 66) {
-    grade = 'D';
+    grade = "D";
   } else if (percentage >= 60 && percentage <= 62) {
-    grade = 'D-';
+    grade = "D-";
   } else if (percentage < 60) {
-    grade = 'F';
+    grade = "F";
   }
 
-  if (score >= 60) {
-    remarks = 'Congratulations, YOU PASSED!';
+  if (score >= 80) {
+    remarks = "Congratulations, YOU PASSED!";
   } else {
-    remarks = 'Sorry, YOU FAILED!';
+    remarks = "Try again next time!";
   }
 
   return {
     grade,
-    remarks
+    remarks,
   };
 };
 
