@@ -1,6 +1,6 @@
 const mockData = [
   {
-      "category": "Geography",
+      "category": 1, // Describe Cloud Concepts
       "type": "multiple",
       "difficulty": "hard",
       "question": "What is the name of one of the Neo-Aramaic languages spoken by the Jewish population from Northwestern Iraq?",
@@ -18,7 +18,7 @@ const mockData = [
       ]
   },
   {
-      "category": "Entertainment: Video Games",
+      "category": 2, // Describe Azure Architecture and Services
       "type": "multiple",
       "difficulty": "medium",
       "question": "What was the first interactive movie video game?",
@@ -36,7 +36,7 @@ const mockData = [
       ]
   },
   {
-      "category": "Entertainment: Video Games",
+      "category": 3, // Describe Azure Management and Governance
       "type": "multiple",
       "difficulty": "medium",
       "question": "In Need For Speed: Most Wanted (2005), how many people are there to defeat on the blacklist?",
@@ -53,42 +53,6 @@ const mockData = [
           "15"
       ]
   },
-  {
-      "category": "Entertainment: Video Games",
-      "type": "multiple",
-      "difficulty": "hard",
-      "question": "What is the 4th boss in the 1997 video game &quot;Crash Bandicoot 2: Cortex Strikes Back&quot;?",
-      "correct_answer": "Dr. N. Gin",
-      "incorrect_answers": [
-          "Dr. Neo Cortex",
-          "Komodo Brothers",
-          "Tiny Tiger"
-      ],
-      "options": [
-          "Dr. Neo Cortex",
-          "Tiny Tiger",
-          "Komodo Brothers",
-          "Dr. N. Gin"
-      ]
-  },
-  {
-      "category": "Entertainment: Cartoon & Animations",
-      "type": "multiple",
-      "difficulty": "easy",
-      "question": "In The Simpsons, which war did Seymour Skinner serve in the USA Army as a Green Beret?",
-      "correct_answer": "Vietnam War",
-      "incorrect_answers": [
-          "World War 2",
-          "World War 1",
-          "Cold War"
-      ],
-      "options": [
-          "Vietnam War",
-          "World War 2",
-          "Cold War",
-          "World War 1"
-      ]
-  }
 ]
 
 export default mockData;
