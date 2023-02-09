@@ -23,6 +23,8 @@ import { shuffle } from "../../utils";
 
 import Offline from "../Offline";
 
+import mockData from "../Quiz/AzQuestions";
+
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState("0");
   const [numOfQuestions, setNumOfQuestions] = useState(5);
@@ -55,59 +57,21 @@ const Main = ({ startQuiz }) => {
   const fetchData = () => {
     setProcessing(true);
 
-    if (error) setError(null);
+    setTimeout(() => {
+      const results = mockData;
+      results.forEach((element) => {
+        element.options = shuffle([
+          element.correct_answer,
+          ...element.incorrect_answers,
+        ]);
+      });
 
-    const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
-
-    fetch(API)
-      .then((respone) => respone.json())
-      .then((data) =>
-        setTimeout(() => {
-          const { response_code, results } = data;
-
-          if (response_code === 1) {
-            const message = (
-              <p>
-                The API doesn't have enough questions for your query. (Ex.
-                Asking for 50 Questions in a Category that only has 20.)
-                <br />
-                <br />
-                Please change the <strong>No. of Questions</strong>,{" "}
-                <strong>Difficulty Level</strong>, or{" "}
-                <strong>Type of Questions</strong>.
-              </p>
-            );
-
-            setProcessing(false);
-            setError({ message });
-
-            return;
-          }
-
-          results.forEach((element) => {
-            element.options = shuffle([
-              element.correct_answer,
-              ...element.incorrect_answers,
-            ]);
-          });
-
-          setProcessing(false);
-          startQuiz(
-            results,
-            countdownTime.hours + countdownTime.minutes + countdownTime.seconds
-          );
-        }, 1000)
-      )
-      .catch((error) =>
-        setTimeout(() => {
-          if (!navigator.onLine) {
-            setOffline(true);
-          } else {
-            setProcessing(false);
-            setError(error);
-          }
-        }, 1000)
+      setProcessing(false);
+      startQuiz(
+        results,
+        countdownTime.hours + countdownTime.minutes + countdownTime.seconds
       );
+    }, 1000);
   };
 
   if (offline) return <Offline />;
