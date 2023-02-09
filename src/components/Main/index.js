@@ -16,20 +16,20 @@ import {
   CATEGORIES,
   NUM_OF_QUESTIONS,
   DIFFICULTY,
-  QUESTIONS_TYPE,
+  // QUESTIONS_TYPE,
   COUNTDOWN_TIME,
 } from "../../constants";
 import { shuffle } from "../../utils";
 
-import Offline from "../Offline";
+// import Offline from "../Offline";
 
-import mockData from "../Quiz/AzQuestions";
+import mockData from "../Quiz/Az900Questions";
 
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState("0");
   const [numOfQuestions, setNumOfQuestions] = useState(5);
   const [difficulty, setDifficulty] = useState("0");
-  const [questionsType, setQuestionsType] = useState("0");
+  // const [questionsType, setQuestionsType] = useState("0");
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
     minutes: 120,
@@ -37,7 +37,7 @@ const Main = ({ startQuiz }) => {
   });
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
-  const [offline, setOffline] = useState(false);
+  // const [offline, setOffline] = useState(false);
 
   const handleTimeChange = (e, { name, value }) => {
     setCountdownTime({ ...countdownTime, [name]: value });
@@ -48,7 +48,7 @@ const Main = ({ startQuiz }) => {
     category &&
     numOfQuestions &&
     difficulty &&
-    questionsType &&
+    // questionsType &&
     (countdownTime.hours || countdownTime.minutes || countdownTime.seconds)
   ) {
     allFieldsSelected = true;
@@ -74,7 +74,7 @@ const Main = ({ startQuiz }) => {
     }, 1000);
   };
 
-  if (offline) return <Offline />;
+  // if (offline) return <Offline />;
 
   return (
     <Container>
