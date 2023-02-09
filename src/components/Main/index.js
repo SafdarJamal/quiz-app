@@ -147,9 +147,7 @@ const Main = ({ startQuiz }) => {
                 />
                 <br /> */}
 
-                {/* REMOVED TIME SELECTION FROM MAIN MENU */}
-
-                {/* <Dropdown
+                <Dropdown
                   search
                   selection
                   name="hours"
@@ -181,7 +179,7 @@ const Main = ({ startQuiz }) => {
                   value={countdownTime.seconds}
                   onChange={handleTimeChange}
                   disabled={processing}
-                /> */}
+                />
               </Item.Meta>
               <Divider />
               <Item.Extra>
