@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import {
   Container,
@@ -15,7 +15,9 @@ import mindImg from "../../images/mind.svg";
 import { CATEGORIES, COUNTDOWN_TIME } from "../../constants";
 import { shuffle } from "../../utils";
 
-import mockData from "../Quiz/Az900Questions";
+import cloudConceptQuestions from "../Quiz/cloudComputingQuestions";
+import architectureAndServicesQuestions from "../Quiz/architectureServicesQuestions";
+import managementAndGovernanceQuestions from "../Quiz/managementGovernanceQuestions";
 
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState("0");
@@ -26,6 +28,7 @@ const Main = ({ startQuiz }) => {
   });
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState(null);
+  const [result, setResult] = useState([]);
 
   const handleTimeChange = (e, { name, value }) => {
     setCountdownTime({ ...countdownTime, [name]: value });
@@ -39,26 +42,30 @@ const Main = ({ startQuiz }) => {
     allFieldsSelected = true;
   }
 
+  useEffect(() => {
+    if (category === 1) {
+      setResult(cloudConceptQuestions);
+    } else if (category === 2) {
+      setResult(architectureAndServicesQuestions);
+    } else if (category === 3) {
+      setResult(managementAndGovernanceQuestions);
+    }
+  }, [category]);
+
   const fetchData = () => {
     setProcessing(true);
 
     setTimeout(() => {
-      const results = mockData;
-
-      results.forEach((element) => {
+      result.forEach((element) => {
         element.options = shuffle([
           element.correct_answer,
           ...element.incorrect_answers,
         ]);
       });
 
-      const questions = results.filter(
-        (questionCategory) => questionCategory.category === category
-      );
-
       setProcessing(false);
       startQuiz(
-        questions,
+        result,
         countdownTime.hours + countdownTime.minutes + countdownTime.seconds
       );
     }, 1000);

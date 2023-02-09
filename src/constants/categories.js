@@ -2,17 +2,17 @@ const CATEGORIES = [
   {
     key: 1,
     text: "Describe Cloud Concepts",
-    value: 9,
+    value: 1,
   },
   {
     key: 2,
     text: "Describe Azure Architecture and Services",
-    value: 10,
+    value: 2,
   },
   {
     key: 3,
     text: "Describe Azure Management and Governance",
-    value: 11,
+    value: 3,
   },
 ];
 
