@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 import {
   Container,
   Segment,
@@ -8,9 +8,9 @@ import {
   Divider,
   Button,
   Message,
-} from 'semantic-ui-react';
+} from "semantic-ui-react";
 
-import mindImg from '../../images/mind.svg';
+import mindImg from "../../images/mind.svg";
 
 import {
   CATEGORIES,
@@ -18,16 +18,16 @@ import {
   DIFFICULTY,
   QUESTIONS_TYPE,
   COUNTDOWN_TIME,
-} from '../../constants';
-import { shuffle } from '../../utils';
+} from "../../constants";
+import { shuffle } from "../../utils";
 
-import Offline from '../Offline';
+import Offline from "../Offline";
 
 const Main = ({ startQuiz }) => {
-  const [category, setCategory] = useState('0');
+  const [category, setCategory] = useState("0");
   const [numOfQuestions, setNumOfQuestions] = useState(5);
-  const [difficulty, setDifficulty] = useState('0');
-  const [questionsType, setQuestionsType] = useState('0');
+  const [difficulty, setDifficulty] = useState("0");
+  const [questionsType, setQuestionsType] = useState("0");
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
     minutes: 120,
@@ -60,8 +60,8 @@ const Main = ({ startQuiz }) => {
     const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
 
     fetch(API)
-      .then(respone => respone.json())
-      .then(data =>
+      .then((respone) => respone.json())
+      .then((data) =>
         setTimeout(() => {
           const { response_code, results } = data;
 
@@ -72,8 +72,8 @@ const Main = ({ startQuiz }) => {
                 Asking for 50 Questions in a Category that only has 20.)
                 <br />
                 <br />
-                Please change the <strong>No. of Questions</strong>,{' '}
-                <strong>Difficulty Level</strong>, or{' '}
+                Please change the <strong>No. of Questions</strong>,{" "}
+                <strong>Difficulty Level</strong>, or{" "}
                 <strong>Type of Questions</strong>.
               </p>
             );
@@ -84,7 +84,7 @@ const Main = ({ startQuiz }) => {
             return;
           }
 
-          results.forEach(element => {
+          results.forEach((element) => {
             element.options = shuffle([
               element.correct_answer,
               ...element.incorrect_answers,
@@ -98,7 +98,7 @@ const Main = ({ startQuiz }) => {
           );
         }, 1000)
       )
-      .catch(error =>
+      .catch((error) =>
         setTimeout(() => {
           if (!navigator.onLine) {
             setOffline(true);
@@ -166,7 +166,11 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <Dropdown
+
+                {/* REMOVED SELECT QUESTION TYPE */}
+                {/* ALL QUESTIONS WILL BE MULTIPLE CHOICE */}
+
+                {/* <Dropdown
                   fluid
                   selection
                   name="type"
@@ -177,8 +181,11 @@ const Main = ({ startQuiz }) => {
                   onChange={(e, { value }) => setQuestionsType(value)}
                   disabled={processing}
                 />
-                <br />
-                <Dropdown
+                <br /> */}
+
+                {/* REMOVED TIME SELECTION FROM MAIN MENU */}
+
+                {/* <Dropdown
                   search
                   selection
                   name="hours"
@@ -210,7 +217,7 @@ const Main = ({ startQuiz }) => {
                   value={countdownTime.seconds}
                   onChange={handleTimeChange}
                   disabled={processing}
-                />
+                /> */}
               </Item.Meta>
               <Divider />
               <Item.Extra>
@@ -219,7 +226,7 @@ const Main = ({ startQuiz }) => {
                   size="big"
                   icon="play"
                   labelPosition="left"
-                  content={processing ? 'Processing...' : 'Play Now'}
+                  content={processing ? "Processing..." : "Play Now"}
                   onClick={fetchData}
                   disabled={!allFieldsSelected || processing}
                 />
