@@ -130,7 +130,7 @@ const Main = ({ startQuiz }) => {
               )}
               <Divider />
               <Item.Meta>
-                <p>Select quiz category</p>
+                <p>In which category do you want to play the quiz?</p>
                 <Dropdown
                   fluid
                   selection
