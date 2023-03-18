@@ -182,7 +182,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Select time</p>
+                <p>Please select the countdown time for your quiz.</p>
                 <Dropdown
                   search
                   selection
