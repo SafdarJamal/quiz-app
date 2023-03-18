@@ -156,7 +156,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Select difficulty level</p>
+                <p>How difficult do you want your quiz to be?</p>
                 <Dropdown
                   fluid
                   selection
