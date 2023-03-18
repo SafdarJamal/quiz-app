@@ -143,7 +143,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Select no. of questions</p>
+                <p>How many questions do you want in your quiz?</p>
                 <Dropdown
                   fluid
                   selection
