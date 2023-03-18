@@ -169,7 +169,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Select questions type</p>
+                <p>Which type of questions do you want in your quiz?</p>
                 <Dropdown
                   fluid
                   selection
