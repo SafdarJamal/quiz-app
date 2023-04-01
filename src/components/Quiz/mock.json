@@ -1,56 +1,131 @@
 [
   {
-    "category": "Geography",
+    "category": "Science: Computers",
+    "type": "boolean",
+    "difficulty": "medium",
+    "question": "The HTML5 standard was published in 2014.",
+    "correct_answer": "True",
+    "incorrect_answers": ["False"],
+    "options": ["False", "True"]
+  },
+  {
+    "category": "Science: Computers",
     "type": "multiple",
-    "difficulty": "hard",
-    "question": "What is the name of one of the Neo-Aramaic languages spoken by the Jewish population from Northwestern Iraq?",
-    "correct_answer": "Lishana Deni",
+    "difficulty": "easy",
+    "question": "Which company was established on April 1st, 1976 by Steve Jobs, Steve Wozniak and Ronald Wayne?",
+    "correct_answer": "Apple",
+    "incorrect_answers": ["Microsoft", "Atari", "Commodore"],
+    "options": ["Commodore", "Apple", "Atari", "Microsoft"]
+  },
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What amount of bits commonly equals one byte?",
+    "correct_answer": "8",
+    "incorrect_answers": ["1", "2", "64"],
+    "options": ["64", "1", "8", "2"]
+  },
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "medium",
+    "question": "Which of the following languages is used as a scripting language in the Unity 3D game engine?",
+    "correct_answer": "C#",
+    "incorrect_answers": ["Java", "C++", "Objective-C"],
+    "options": ["Java", "Objective-C", "C#", "C++"]
+  },
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "medium",
+    "question": "All of the following programs are classified as raster graphics editors EXCEPT:",
+    "correct_answer": "Inkscape",
+    "incorrect_answers": ["Paint.NET", "GIMP", "Adobe Photoshop"],
+    "options": ["Adobe Photoshop", "GIMP", "Paint.NET", "Inkscape"]
+  },
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "How many kilobytes in one gigabyte (in decimal)?",
+    "correct_answer": "1000000",
+    "incorrect_answers": ["1024", "1000", "1048576"],
+    "options": ["1048576", "1000000", "1024", "1000"]
+  },
+
+  {
+    "category": "Science: Computers",
+    "type": "boolean",
+    "difficulty": "medium",
+    "question": "AMD created the first consumer 64-bit processor.",
+    "correct_answer": "True",
+    "incorrect_answers": ["False"],
+    "options": ["True", "False"]
+  },
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "On Twitter, what was the original character limit for a Tweet?",
+    "correct_answer": "140",
+    "incorrect_answers": ["120", "160", "100"],
+    "options": ["120", "100", "140", "160"]
+  },
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "medium",
+    "question": "In CSS, which of these values CANNOT be used with the &quot;position&quot; property?",
+    "correct_answer": "center",
+    "incorrect_answers": ["static", "absolute", "relative"],
+    "options": ["static", "relative", "center", "absolute"]
+  },
+
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "easy",
+    "question": "What does LTS stand for in the software market?",
+    "correct_answer": "Long Term Support",
     "incorrect_answers": [
-      "Hulaul&aacute;",
-      "Lishan Didan",
-      "Chaldean Neo-Aramaic"
+      "Long Taco Service",
+      "Ludicrous Transfer Speed",
+      "Ludicrous Turbo Speed"
     ],
     "options": [
-      "Hulaul&aacute;",
-      "Lishan Didan",
-      "Lishana Deni",
-      "Chaldean Neo-Aramaic"
+      "Ludicrous Turbo Speed",
+      "Long Term Support",
+      "Ludicrous Transfer Speed",
+      "Long Taco Service"
+    ]
+  },
+
+  {
+    "category": "Science: Computers",
+    "type": "multiple",
+    "difficulty": "medium",
+    "question": "What does RAID stand for?",
+    "correct_answer": "Redundant Array of Independent Disks",
+    "incorrect_answers": [
+      "Rapid Access for Indexed Devices",
+      "Range of Applications with Identical Designs",
+      "Randomized Abstract Identification Description"
+    ],
+    "options": [
+      "Redundant Array of Independent Disks",
+      "Rapid Access for Indexed Devices",
+      "Range of Applications with Identical Designs",
+      "Randomized Abstract Identification Description"
     ]
   },
   {
-    "category": "Entertainment: Video Games",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "What was the first interactive movie video game?",
-    "correct_answer": "Astron Belt",
-    "incorrect_answers": ["Dragon&#039;s Lair", "Cube Quest", "M.A.C.H. 3"],
-    "options": ["Cube Quest", "M.A.C.H. 3", "Astron Belt", "Dragon&#039;s Lair"]
-  },
-  {
-    "category": "Entertainment: Video Games",
-    "type": "multiple",
-    "difficulty": "medium",
-    "question": "In Need For Speed: Most Wanted (2005), how many people are there to defeat on the blacklist?",
-    "correct_answer": "15",
-    "incorrect_answers": ["5", "10", "20"],
-    "options": ["10", "20", "5", "15"]
-  },
-  {
-    "category": "Entertainment: Video Games",
-    "type": "multiple",
-    "difficulty": "hard",
-    "question": "What is the 4th boss in the 1997 video game &quot;Crash Bandicoot 2: Cortex Strikes Back&quot;?",
-    "correct_answer": "Dr. N. Gin",
-    "incorrect_answers": ["Dr. Neo Cortex", "Komodo Brothers", "Tiny Tiger"],
-    "options": ["Dr. Neo Cortex", "Tiny Tiger", "Komodo Brothers", "Dr. N. Gin"]
-  },
-  {
-    "category": "Entertainment: Cartoon & Animations",
+    "category": "Science: Computers",
     "type": "multiple",
     "difficulty": "easy",
-    "question": "In The Simpsons, which war did Seymour Skinner serve in the USA Army as a Green Beret?",
-    "correct_answer": "Vietnam War",
-    "incorrect_answers": ["World War 2", "World War 1", "Cold War"],
-    "options": ["Vietnam War", "World War 2", "Cold War", "World War 1"]
+    "question": "How long is an IPv6 address?",
+    "correct_answer": "128 bits",
+    "incorrect_answers": ["32 bits", "64 bits", "128 bytes"],
+    "options": ["128 bits", "64 bits", "128 bytes", "32 bits"]
   }
 ]
