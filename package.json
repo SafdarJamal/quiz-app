@@ -27,8 +27,8 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "storybook dev -p 6006 -s public",
+    "build-storybook": "storybook build -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -63,11 +63,10 @@
     "@storybook/addon-essentials": "^7.0.20",
     "@storybook/addon-interactions": "^7.0.20",
     "@storybook/addon-links": "^7.0.20",
-    "@storybook/builder-webpack5": "^7.0.20",
-    "@storybook/manager-webpack5": "^6.5.16",
     "@storybook/node-logger": "^7.0.20",
     "@storybook/preset-create-react-app": "^7.0.20",
     "@storybook/react": "^7.0.20",
+    "@storybook/react-webpack5": "^7.0.20",
     "@storybook/testing-library": "^0.1.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "gh-pages": "^5.0.0",
