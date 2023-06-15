@@ -1,4 +1,3 @@
-import React from 'react';
 import OfflineComponent from './index';
 
 export default {
@@ -6,4 +5,4 @@ export default {
   component: OfflineComponent,
 };
 
-export const Offline = <OfflineComponent />;
+export const Offline = {};
