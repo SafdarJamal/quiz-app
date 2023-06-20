@@ -1,4 +1,3 @@
-import React from 'react';
 import QNAComponent from './QNA';
 import data from './mockData.json';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import ShareButtonComponent from './index';
 
 export default {
@@ -6,4 +5,4 @@ export default {
   component: ShareButtonComponent,
 };
 
-export const ShareButton = () => <ShareButtonComponent />;
+export const ShareButton = {};

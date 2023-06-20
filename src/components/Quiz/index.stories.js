@@ -1,4 +1,3 @@
-import React from 'react';
 import QuizComponent from './index';
 import data from './mock.json';
 
