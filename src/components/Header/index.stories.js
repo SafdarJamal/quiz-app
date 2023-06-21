@@ -1,4 +1,3 @@
-import React from 'react';
 import HeaderComponent from './index';
 
 export default {
@@ -6,4 +5,4 @@ export default {
   component: HeaderComponent,
 };
 
-export const Header = <HeaderComponent />;
+export const Header = {};

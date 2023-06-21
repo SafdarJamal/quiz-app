@@ -1,4 +1,3 @@
-import React from 'react';
 import ResultComponent from './index';
 import data from './mockData.json';
 

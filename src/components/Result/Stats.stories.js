@@ -1,4 +1,3 @@
-import React from 'react';
 import StatsComponent from './Stats';
 
 export default {
