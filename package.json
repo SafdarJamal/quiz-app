@@ -27,7 +27,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "storybook": "storybook dev",
+    "storybook": "storybook dev -p 9009 ",
     "build-storybook": "storybook build"
   },
   "eslintConfig": {
