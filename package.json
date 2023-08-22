@@ -74,6 +74,6 @@
     "eslint-plugin-storybook": "^0.6.12",
     "gh-pages": "^6.0.0",
     "storybook": "^7.0.26",
-    "webpack": "^5.88.1"
+    "webpack": "^5.88.2"
   }
 }
