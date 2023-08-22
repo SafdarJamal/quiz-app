@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Container,
@@ -22,6 +22,10 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [questionIndex]);
 
   const handleItemClick = (e, { name }) => {
     setUserSlectedAns(name);
