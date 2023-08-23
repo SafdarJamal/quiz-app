@@ -24,7 +24,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [timeTaken, setTimeTaken] = useState(null);
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (questionIndex > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [questionIndex]);
 
   const handleItemClick = (e, { name }) => {
