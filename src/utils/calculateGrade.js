@@ -36,10 +36,16 @@ const calculateGrade = score => {
     grade = 'F';
   }
 
-  if (score >= 60) {
-    remarks = 'Congratulations, YOU PASSED!';
-  } else {
-    remarks = 'Sorry, YOU FAILED!';
+  if (score >= 90) {
+    remarks = "Outstanding! You've mastered this quiz. Well done!";
+  } else if (score >= 80 && score <= 89) {
+    remarks = "Great job! You've excelled in this quiz.";
+  } else if (score >= 70 && score <= 79) {
+    remarks = "Good effort! You've passed the quiz.";
+  } else if (score >= 60 && score <= 69) {
+    remarks = "You've passed, but there's potential for improvement.";
+  } else if (score < 60) {
+    remarks = "Learning is a journey. Keep going, and you'll get there.";
   }
 
   return {
