@@ -29,15 +29,15 @@ const Header = () => {
   };
 
   return (
-    <Menu stackable inverted size="massive">
+    <Menu stackable inverted>
       <Menu.Item header>
-        <h1 style={{ color: '#2185D0' }}>QuizApp</h1>
+        <h1>QuizApp</h1>
       </Menu.Item>
       {promptEvent && !isAppInstalled && (
         <Menu.Item position="right">
           <Button
             color="teal"
-            icon="cloud download"
+            icon="download"
             labelPosition="left"
             content="Install App"
             onClick={installApp}
