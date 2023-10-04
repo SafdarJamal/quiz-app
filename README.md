@@ -20,11 +20,11 @@
   QuizApp is a free and open-source quiz application that lets you play fully customized quizzes right in the browser.
 </p>
 
-![quiz-app](https://user-images.githubusercontent.com/48409548/104132046-a39e5b80-539c-11eb-9df3-28d52e499a6c.png)
+![QuizApp](https://github.com/SafdarJamal/quiz-app/assets/48409548/22e9696d-bab4-4aa5-a028-4a4f9ce71777)
 
 ## Built with
 
-- [React](http://reactjs.org)
+- [React](http://react.dev)
 - [Semantic UI](https://semantic-ui.com)
 - [Open Trivia Database API](https://opentdb.com/api_config.php)
 

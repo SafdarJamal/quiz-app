@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import {
   Container,
@@ -9,7 +9,7 @@ import {
   Icon,
   Message,
   Menu,
-  Header
+  Header,
 } from 'semantic-ui-react';
 import he from 'he';
 
@@ -17,12 +17,15 @@ import Countdown from '../Countdown';
 import { getLetter } from '../../utils';
 
 const Quiz = ({ data, countdownTime, endQuiz }) => {
-
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
+
+  useEffect(() => {
+    if (questionIndex > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [questionIndex]);
 
   const handleItemClick = (e, { name }) => {
     setUserSlectedAns(name);
@@ -39,7 +42,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       question: he.decode(data[questionIndex].question),
       user_answer: userSlectedAns,
       correct_answer: he.decode(data[questionIndex].correct_answer),
-      point
+      point,
     });
 
     if (questionIndex === data.length - 1) {
@@ -47,7 +50,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
         totalQuestions: data.length,
         correctAnswers: correctAnswers + point,
         timeTaken,
-        questionsAndAnswers: qna
+        questionsAndAnswers: qna,
       });
     }
 
@@ -62,7 +65,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
       totalQuestions: data.length,
       correctAnswers,
       timeTaken,
-      questionsAndAnswers
+      questionsAndAnswers,
     });
   };
 
@@ -141,7 +144,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
 Quiz.propTypes = {
   data: PropTypes.array.isRequired,
   countdownTime: PropTypes.number.isRequired,
-  endQuiz: PropTypes.func.isRequired
+  endQuiz: PropTypes.func.isRequired,
 };
 
 export default Quiz;

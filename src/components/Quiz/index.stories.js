@@ -1,13 +1,16 @@
-// Button.stories.js | Button.stories.jsx
-
-import React from 'react';
-
 import QuizComponent from './index';
 import data from './mock.json';
 
 export default {
-  component: QuizComponent,
   title: 'Components/Quiz',
-} 
+  component: QuizComponent,
+};
 
-export const Quiz = () => <QuizComponent countdownTime={1000} data={data} endQuiz={()=>{}}/>;
+const Template = args => <QuizComponent {...args} />;
+export const Quiz = Template.bind({});
+
+Quiz.args = {
+  data,
+  countdownTime: 120,
+  endQuiz: () => {},
+};

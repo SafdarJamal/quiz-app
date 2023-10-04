@@ -1,10 +1,8 @@
-import React from 'react';
-
-import ShareButton from './index';
+import ShareButtonComponent from './index';
 
 export default {
-  component: ShareButton,
   title: 'Components/ShareButton',
-} 
+  component: ShareButtonComponent,
+};
 
-export const Share = () => <ShareButton/>;
+export const ShareButton = {};

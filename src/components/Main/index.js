@@ -26,7 +26,7 @@ import Offline from '../Offline';
 const Main = ({ startQuiz }) => {
   const [category, setCategory] = useState('0');
   const [numOfQuestions, setNumOfQuestions] = useState(5);
-  const [difficulty, setDifficulty] = useState('0');
+  const [difficulty, setDifficulty] = useState('easy');
   const [questionsType, setQuestionsType] = useState('0');
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
@@ -130,6 +130,7 @@ const Main = ({ startQuiz }) => {
               )}
               <Divider />
               <Item.Meta>
+                <p>In which category do you want to play the quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -142,6 +143,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>How many questions do you want in your quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -154,6 +156,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>How difficult do you want your quiz to be?</p>
                 <Dropdown
                   fluid
                   selection
@@ -166,6 +169,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>Which type of questions do you want in your quiz?</p>
                 <Dropdown
                   fluid
                   selection
@@ -178,6 +182,7 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
+                <p>Please select the countdown time for your quiz.</p>
                 <Dropdown
                   search
                   selection

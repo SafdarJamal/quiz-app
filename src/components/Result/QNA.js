@@ -30,7 +30,7 @@ const QNA = ({ questionsAndAnswers }) => {
 };
 
 QNA.propTypes = {
-  questionsAndAnswers: PropTypes.array.isRequired
+  questionsAndAnswers: PropTypes.array.isRequired,
 };
 
 export default QNA;

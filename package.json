@@ -1,6 +1,6 @@
 {
   "name": "quiz-app",
-  "version": "5.1.0",
+  "version": "6.0.0",
   "private": true,
   "author": {
     "name": "Safdar Jamal",
@@ -8,32 +8,33 @@
   },
   "homepage": "https://safdarjamal.github.io/quiz-app/",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
     "he": "^1.2.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "^4.0.3",
-    "semantic-ui-css": "^2.4.1",
-    "semantic-ui-react": "^2.0.3",
-    "sweetalert2": "^10.16.6"
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "semantic-ui-css": "^2.5.0",
+    "semantic-ui-react": "^2.1.4",
+    "sweetalert2": "^11.7.31"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --passWithNoTests",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "storybook": "storybook dev -p 9009 ",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ],
     "overrides": [
       {
@@ -59,12 +60,20 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.3.8",
-    "@storybook/addon-essentials": "^6.3.8",
-    "@storybook/addon-links": "^6.3.8",
-    "@storybook/node-logger": "^6.3.8",
-    "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.8",
-    "gh-pages": "^3.1.0"
+    "@storybook/addon-actions": "^7.4.5",
+    "@storybook/addon-essentials": "^7.4.5",
+    "@storybook/addon-interactions": "^7.4.5",
+    "@storybook/addon-links": "^7.4.5",
+    "@storybook/blocks": "^7.4.5",
+    "@storybook/node-logger": "^7.4.5",
+    "@storybook/preset-create-react-app": "^7.4.5",
+    "@storybook/react": "^7.4.5",
+    "@storybook/react-webpack5": "^7.4.5",
+    "@storybook/testing-library": "^0.2.2",
+    "babel-plugin-named-exports-order": "^0.0.2",
+    "eslint-plugin-storybook": "^0.6.14",
+    "gh-pages": "^6.0.0",
+    "storybook": "^7.4.5",
+    "webpack": "^5.88.2"
   }
 }

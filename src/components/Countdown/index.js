@@ -20,10 +20,12 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
         clearInterval(timer);
 
         Swal.fire({
-          title: `Your Time's Up`,
           icon: 'info',
+          title: `Oops! Time's up.`,
+          text: 'See how you did!',
+          confirmButtonText: 'Check Results',
           timer: 5000,
-          willClose: () => timeOver(totalTime - timerTime)
+          willClose: () => timeOver(totalTime - timerTime),
         });
       }
     }, 1000);
@@ -60,7 +62,7 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
 Countdown.propTypes = {
   countdownTime: PropTypes.number.isRequired,
   timeOver: PropTypes.func.isRequired,
-  setTimeTaken: PropTypes.func.isRequired
+  setTimeTaken: PropTypes.func.isRequired,
 };
 
 export default Countdown;

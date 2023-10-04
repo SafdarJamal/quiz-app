@@ -1,7 +1,7 @@
 const COUNTDOWN_TIME = {
   hours: [],
   minutes: [],
-  seconds: []
+  seconds: [],
 };
 
 for (let i = 0; i < 100; i++) {
