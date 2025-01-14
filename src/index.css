@@ -1,1 +1,337 @@
-@import url(../node_modules/semantic-ui-css/semantic.min.css);
+@import '~semantic-ui-css/semantic.min.css';
+
+/* Default Light Mode Styles */
+body {
+    background-color: white; /* Λευκό φόντο */
+    color: black; /* Μαύρο κείμενο */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.app {
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #2c2c2c; /* Σκούρο γκρι */
+    color: #e0e0e0; /* Απαλό λευκό */
+}
+
+.app.dark-mode {
+    background-color: #2c2c2c; 
+    color: #e0e0e0;
+}
+
+/* Quiz Wrapper */
+.quiz-wrapper {
+    background-color: #ffffff; /* Light Mode */
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .quiz-wrapper {
+    background-color: rgba(58, 58, 58, 0.95); /* Dark Mode με διαφάνεια */
+    color: #e0e0e0;
+    border: 1px solid #444444;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Ειδικό Styling για το Segment */
+.ui.segment {
+    background-color: transparent !important; /* Αφαιρεί το λευκό */
+    color: inherit !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .ui.segment {
+    background-color: #3a3a3a !important; /* Εφαρμογή dark mode */
+    color: #e0e0e0 !important;
+    border: 1px solid #444444 !important;
+}
+
+/* Inputs, Selects, Textareas */
+input, select, textarea {
+    background-color: white;
+    color: black;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+    background-color: #3a3a3a; /* Σκούρο γκρι */
+    color: #e0e0e0; /* Λευκό */
+    border: 1px solid #555555;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #007bff; /* Highlight */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Glow */
+}
+
+body.dark-mode input:focus,
+body.dark-mode select:focus,
+body.dark-mode textarea:focus {
+    border-color: #5590ff;
+    box-shadow: 0 0 5px rgba(85, 144, 255, 0.5);
+}
+
+/* Dropdown Styling */
+body.dark-mode .ui.dropdown {
+    background-color: #3a3a3a; /* Σκούρο γκρι */
+    color: #e0e0e0; /* Λευκό κείμενο */
+    border: 1px solid #555555;
+}
+
+body.dark-mode .ui.dropdown .menu {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .ui.dropdown .menu .item {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+}
+
+body.dark-mode .ui.dropdown .menu .item:hover {
+    background-color: #555555;
+}
+
+/* Button Styling */
+button {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode button {
+    background-color: #3a3a3a;
+    color: #e0e0e0;
+    border: 1px solid #555555;
+}
+
+body.dark-mode button:hover {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    border: 1px solid #888888;
+}
+
+/* Question Boxes */
+.question-box {
+    background-color: #ffffff; /* Light Mode */
+    color: black;
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .question-box {
+    background-color: #3a3a3a; /* Σκούρο γκρι */
+    color: #e0e0e0;
+    border: 1px solid #555555;
+}
+
+/* Options (Answers) */
+.option {
+    background-color: white; /* Light Mode */
+    color: black; /* Μαύρο κείμενο */
+    padding: 15px; /* Αύξηση padding */
+    margin: 10px 0; /* Διάστημα μεταξύ των επιλογών */
+    border: 1px solid #ccc; /* Γκρίζο περίγραμμα */
+    border-radius: 8px; /* Στρογγυλεμένες γωνίες */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Εφέ ομαλής μετάβασης */
+    cursor: pointer; /* Δείκτης pointer */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ελαφριά σκίαση */
+}
+
+/* Dark Mode Styling for Options */
+body.dark-mode .option {
+    background-color: #3a3a3a; /* Σκούρο γκρι */
+    color: #e0e0e0; /* Απαλό λευκό κείμενο */
+    border: 1px solid #555555; /* Subtle περίγραμμα */
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1); /* Λευκή σκίαση */
+}
+
+/* Hover Effect for Options */
+.option:hover {
+    background-color: #f0f0f0; /* Ελαφρώς πιο φωτεινό για hover στο light mode */
+    border-color: #bbb;
+}
+
+body.dark-mode .option:hover {
+    background-color: #555555; /* Ελαφρώς πιο φωτεινό για hover στο dark mode */
+    color: #ffffff; /* Καθαρό λευκό κείμενο */
+    border-color: #666666; /* Πιο φωτεινό περίγραμμα */
+}
+
+/* Active or Selected Option Styling */
+.option.selected {
+    background-color: #007bff; /* Μπλε για επιλεγμένη επιλογή */
+    color: white; /* Λευκό κείμενο */
+    border: 1px solid #0056b3; /* Σκούρο μπλε περίγραμμα */
+}
+
+body.dark-mode .option.selected {
+    background-color: #0056b3; /* Σκούρο μπλε για επιλεγμένη στο dark mode */
+    color: #ffffff; /* Λευκό κείμενο */
+    border: 1px solid #003f7f; /* Ακόμα πιο σκούρο μπλε περίγραμμα */
+}
+
+/* Dark Mode Styling for Semantic UI Menu Items */
+body.dark-mode .ui.menu .item {
+    background-color: #3a3a3a !important; /* Σκούρο φόντο */
+    color: #e0e0e0 !important; /* Ανοιχτό κείμενο */
+    border: 1px solid #555555 !important; /* Σκούρο περίγραμμα */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode .ui.menu .item:hover {
+    background-color: #555555 !important; /* Πιο φωτεινό σκούρο στο hover */
+    color: #ffffff !important; /* Λευκό κείμενο */
+}
+
+
+/* Dark Mode Styling for Question Box (Message Component) */
+body.dark-mode .ui.message {
+    background-color: #3a3a3a !important; /* Σκούρο φόντο */
+    color: #e0e0e0 !important; /* Ανοιχτό κείμενο */
+    border: 1px solid #444444 !important; /* Περίγραμμα */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important; /* Σκίαση */
+}
+
+
+/* Dark Mode Styling for the Instruction Text */
+body.dark-mode .quiz-wrapper h3 {
+    color: #e0e0e0 !important; /* Λευκό κείμενο */
+}
+
+body.dark-mode h3 {
+    color: #e0e0e0 !important;
+}
+
+
+
+/* Dark Mode Styling for the Question Header */
+body.dark-mode .ui.header {
+    background-color: #3a3a3a !important; /* Σκούρο φόντο */
+    color: #e0e0e0 !important; /* Λευκό κείμενο */
+    border: 1px solid #444444 !important; /* Σκούρο περίγραμμα */
+    padding: 10px; /* Ελαφρώς περισσότερο padding */
+    border-radius: 5px; /* Στρογγυλεμένες γωνίες */
+}
+
+/* Timer Container Styles */
+.timer-container {
+    font-size: 2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  body.dark-mode .timer-container {
+    color: #e0e0e0; /* Light text for dark mode */
+  }
+  
+  body .timer-container {
+    color: #000000; /* Dark text for light mode */
+  }
+
+  
+/* Default Instruction Text Style */
+.instruction-text {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #000000; /* Default black for light mode */
+    transition: color 0.3s ease;
+  }
+  
+  /* Dark Mode */
+  body.dark-mode .instruction-text {
+    color: #e0e0e0; /* White text for dark mode */
+  }
+  
+
+ /* Header Styling for Default (Light Mode) */
+h1 {
+    color: #000000; /* Black text for light mode */
+    transition: color 0.3s ease; /* Smooth transition */
+  }
+  
+  body.dark-mode h1 {
+    color: #e0e0e0 !important; /* Force white text for dark mode */
+    transition: color 0.3s ease;
+  }
+  
+  
+/* QNA Table Styling for Dark Mode */
+body.dark-mode .qna-table {
+    background-color: #3a3a3a; /* Dark background for the table */
+    color: #e0e0e0; /* Light text color for the content */
+    border: 1px solid #555555; /* Subtle border for the table */
+  }
+  
+  /* Table Header Styling */
+  body.dark-mode .qna-table th {
+    background-color: #444444; /* Slightly darker background for the header */
+    color: #e0e0e0; /* Light text for the header */
+    border: 1px solid #555555;
+    padding: 10px;
+  }
+  
+  /* Table Row Styling */
+  body.dark-mode .qna-table tr {
+    border-bottom: 1px solid #555555; /* Subtle row divider */
+  }
+  
+  /* Table Cell Styling */
+  body.dark-mode .qna-table td {
+    background-color: #3a3a3a; /* Match table background */
+    color: #e0e0e0; /* Light text color */
+    border: 1px solid #555555;
+    padding: 10px;
+  }
+  
+  /* Hover Effect for Rows */
+  body.dark-mode .qna-table tr:hover {
+    background-color: #555555; /* Slightly brighter on hover */
+    color: #ffffff; /* Pure white text on hover */
+  }
+  
+
+/* QuizApp Header Styling */
+
+/* Default Light Mode Styling for Header */
+.app-header {
+    color: #ffffff; /* White text for light mode */
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Dark Mode Styling for Header */
+body.dark-mode .app-header {
+    color: #e0e0e0; /* Dimmer white for dark mode */
+    transition: color 0.3s ease;
+}
+
+/* Existing Header Styling for Default (Light Mode) */
+h1 {
+    color: #000000; /* Black text for light mode */
+    transition: color 0.3s ease; /* Smooth transition */
+}
+  
+body.dark-mode h1 {
+    color: #e0e0e0 !important; /* Force white text for dark mode */
+    transition: color 0.3s ease;
+}
+
+

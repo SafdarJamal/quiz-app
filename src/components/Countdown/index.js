@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Button, Popup } from 'semantic-ui-react';
 import Swal from 'sweetalert2';
+import '../../index.css';
 
 import { timeConverter } from '../../utils';
 
-const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
+const Countdown = ({ countdownTime, timeOver, setTimeTaken, darkMode }) => {
   const totalTime = countdownTime * 1000;
   const [timerTime, setTimerTime] = useState(totalTime);
   const { hours, minutes, seconds } = timeConverter(timerTime);
@@ -39,23 +39,16 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
   }, [timerTime]);
 
   return (
-    <Button.Group size="massive" basic floated="right">
-      <Popup
-        content="Hours"
-        trigger={<Button active>{hours}</Button>}
-        position="bottom left"
-      />
-      <Popup
-        content="Minutes"
-        trigger={<Button active>{minutes}</Button>}
-        position="bottom left"
-      />
-      <Popup
-        content="Seconds"
-        trigger={<Button active>{seconds}</Button>}
-        position="bottom left"
-      />
-    </Button.Group>
+    <div
+      className={`timer-container ${darkMode ? 'dark-mode' : ''}`}
+      style={{
+        color: darkMode ? '#e0e0e0' : '#000000',
+        fontSize: '2rem', // Adjust as needed
+        textAlign: 'center',
+      }}
+    >
+      <span>{hours}</span> : <span>{minutes}</span> : <span>{seconds}</span>
+    </div>
   );
 };
 
@@ -63,6 +56,7 @@ Countdown.propTypes = {
   countdownTime: PropTypes.number.isRequired,
   timeOver: PropTypes.func.isRequired,
   setTimeTaken: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
 };
 
 export default Countdown;
