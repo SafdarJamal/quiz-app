@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
+import '../../index.css';
 
 import Stats from './Stats';
 import QNA from './QNA';

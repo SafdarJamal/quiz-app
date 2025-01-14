@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import '../../index.css';
+
 import {
   Container,
   Segment,
@@ -16,10 +18,10 @@ import he from 'he';
 import Countdown from '../Countdown';
 import { getLetter } from '../../utils';
 
-const Quiz = ({ data, countdownTime, endQuiz }) => {
+const Quiz = ({ data, countdownTime, endQuiz, darkMode }) => {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [userSlectedAns, setUserSlectedAns] = useState(null);
+  const [userSelectedAns, setUserSelectedAns] = useState(null); // Διόρθωση ονόματος
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
 
@@ -28,19 +30,19 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   }, [questionIndex]);
 
   const handleItemClick = (e, { name }) => {
-    setUserSlectedAns(name);
+    setUserSelectedAns(name);
   };
 
   const handleNext = () => {
     let point = 0;
-    if (userSlectedAns === he.decode(data[questionIndex].correct_answer)) {
+    if (userSelectedAns === he.decode(data[questionIndex].correct_answer)) {
       point = 1;
     }
 
     const qna = questionsAndAnswers;
     qna.push({
       question: he.decode(data[questionIndex].question),
-      user_answer: userSlectedAns,
+      user_answer: userSelectedAns,
       correct_answer: he.decode(data[questionIndex].correct_answer),
       point,
     });
@@ -56,11 +58,11 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
 
     setCorrectAnswers(correctAnswers + point);
     setQuestionIndex(questionIndex + 1);
-    setUserSlectedAns(null);
+    setUserSelectedAns(null);
     setQuestionsAndAnswers(qna);
   };
 
-  const timeOver = timeTaken => {
+  const timeOver = (timeTaken) => {
     return endQuiz({
       totalQuestions: data.length,
       correctAnswers,
@@ -87,6 +89,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     countdownTime={countdownTime}
                     timeOver={timeOver}
                     setTimeTaken={setTimeTaken}
+                    darkMode={darkMode} // Προσθήκη darkMode
                   />
                 </Item.Extra>
                 <br />
@@ -108,7 +111,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                         <Menu.Item
                           key={decodedOption}
                           name={decodedOption}
-                          active={userSlectedAns === decodedOption}
+                          active={userSelectedAns === decodedOption}
                           onClick={handleItemClick}
                         >
                           <b style={{ marginRight: '8px' }}>{letter}</b>
@@ -128,7 +131,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     size="big"
                     icon="right chevron"
                     labelPosition="right"
-                    disabled={!userSlectedAns}
+                    disabled={!userSelectedAns}
                   />
                 </Item.Extra>
               </Item.Content>
@@ -145,6 +148,7 @@ Quiz.propTypes = {
   data: PropTypes.array.isRequired,
   countdownTime: PropTypes.number.isRequired,
   endQuiz: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool,
 };
 
 export default Quiz;

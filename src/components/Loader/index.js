@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Message, Icon } from 'semantic-ui-react';
+import '../../index.css';
 
 const Loader = ({ title, message }) => (
   <Container>

@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import '../../index.css';
 
 import Header from '../Header';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, toggleDarkMode, darkMode }) => {
   return (
     <Fragment>
-      <Header />
+      <Header toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
       <main>{children}</main>
     </Fragment>
   );
@@ -14,6 +15,9 @@ const Layout = ({ children }) => {
 
 Layout.propTypes = {
   children: PropTypes.node,
+  toggleDarkMode: PropTypes.func,
+  darkMode: PropTypes.bool,
 };
 
 export default Layout;
+

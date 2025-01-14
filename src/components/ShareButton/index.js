@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import { Button, Icon, Modal } from 'semantic-ui-react';
+import '../../index.css';
 
 const ShareButton = () => {
   const handleClick = () => {

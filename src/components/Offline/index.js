@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Segment, Header, Icon } from 'semantic-ui-react';
+import '../../index.css';
 
 const Offline = () => {
   window.addEventListener('online', () => window.location.reload());

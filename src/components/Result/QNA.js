@@ -2,9 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
 
-const QNA = ({ questionsAndAnswers }) => {
+const QNA = ({ questionsAndAnswers, darkMode }) => {
   return (
-    <Table celled striped selectable size="large">
+    <Table
+      celled
+      striped
+      selectable
+      size="large"
+      className={darkMode ? 'qna-table dark-mode' : 'qna-table'}
+    >
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>No.</Table.HeaderCell>
@@ -31,6 +37,7 @@ const QNA = ({ questionsAndAnswers }) => {
 
 QNA.propTypes = {
   questionsAndAnswers: PropTypes.array.isRequired,
+  darkMode: PropTypes.bool.isRequired, // Added darkMode as a required prop
 };
 
 export default QNA;

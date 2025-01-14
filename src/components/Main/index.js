@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import '../../index.css';
+
 import {
   Container,
   Segment,
@@ -23,7 +25,7 @@ import { shuffle } from '../../utils';
 
 import Offline from '../Offline';
 
-const Main = ({ startQuiz }) => {
+const Main = ({ startQuiz, darkMode }) => {
   const [category, setCategory] = useState('0');
   const [numOfQuestions, setNumOfQuestions] = useState(5);
   const [difficulty, setDifficulty] = useState('easy');
@@ -60,8 +62,8 @@ const Main = ({ startQuiz }) => {
     const API = `https://opentdb.com/api.php?amount=${numOfQuestions}&category=${category}&difficulty=${difficulty}&type=${questionsType}`;
 
     fetch(API)
-      .then(respone => respone.json())
-      .then(data =>
+      .then((response) => response.json())
+      .then((data) =>
         setTimeout(() => {
           const { response_code, results } = data;
 
@@ -84,7 +86,7 @@ const Main = ({ startQuiz }) => {
             return;
           }
 
-          results.forEach(element => {
+          results.forEach((element) => {
             element.options = shuffle([
               element.correct_answer,
               ...element.incorrect_answers,
@@ -98,7 +100,7 @@ const Main = ({ startQuiz }) => {
           );
         }, 1000)
       )
-      .catch(error =>
+      .catch((error) =>
         setTimeout(() => {
           if (!navigator.onLine) {
             setOffline(true);
@@ -113,14 +115,22 @@ const Main = ({ startQuiz }) => {
   if (offline) return <Offline />;
 
   return (
-    <Container>
+    <Container className="quiz-wrapper">
       <Segment>
         <Item.Group divided>
           <Item>
             <Item.Image src={mindImg} />
             <Item.Content>
               <Item.Header>
-                <h1>The Ultimate Trivia Quiz</h1>
+                {/* Dynamically apply color based on darkMode */}
+                <h1
+                  style={{
+                    color: darkMode ? '#e0e0e0' : '#000000',
+                    transition: 'color 0.3s ease',
+                  }}
+                >
+                  The Ultimate Trivia Quiz
+                </h1>
               </Item.Header>
               {error && (
                 <Message error onDismiss={() => setError(null)}>
@@ -130,7 +140,11 @@ const Main = ({ startQuiz }) => {
               )}
               <Divider />
               <Item.Meta>
-                <p>In which category do you want to play the quiz?</p>
+                <p
+                  className={`instruction-text ${darkMode ? 'dark-mode' : ''}`}
+                >
+                  In which category do you want to play the quiz?
+                </p>
                 <Dropdown
                   fluid
                   selection
@@ -143,7 +157,11 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>How many questions do you want in your quiz?</p>
+                <p
+                  className={`instruction-text ${darkMode ? 'dark-mode' : ''}`}
+                >
+                  How many questions do you want in your quiz?
+                </p>
                 <Dropdown
                   fluid
                   selection
@@ -156,7 +174,11 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>How difficult do you want your quiz to be?</p>
+                <p
+                  className={`instruction-text ${darkMode ? 'dark-mode' : ''}`}
+                >
+                  How difficult do you want your quiz to be?
+                </p>
                 <Dropdown
                   fluid
                   selection
@@ -169,7 +191,11 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Which type of questions do you want in your quiz?</p>
+                <p
+                  className={`instruction-text ${darkMode ? 'dark-mode' : ''}`}
+                >
+                  Which type of questions do you want in your quiz?
+                </p>
                 <Dropdown
                   fluid
                   selection
@@ -182,7 +208,11 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Please select the countdown time for your quiz.</p>
+                <p
+                  className={`instruction-text ${darkMode ? 'dark-mode' : ''}`}
+                >
+                  Please select the countdown time for your quiz.
+                </p>
                 <Dropdown
                   search
                   selection
@@ -240,6 +270,7 @@ const Main = ({ startQuiz }) => {
 
 Main.propTypes = {
   startQuiz: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
 };
 
 export default Main;
