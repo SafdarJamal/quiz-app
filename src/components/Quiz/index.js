@@ -10,6 +10,7 @@ import {
   Message,
   Menu,
   Header,
+  Label
 } from 'semantic-ui-react';
 import he from 'he';
 
@@ -22,6 +23,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
   const [userSlectedAns, setUserSlectedAns] = useState(null);
   const [questionsAndAnswers, setQuestionsAndAnswers] = useState([]);
   const [timeTaken, setTimeTaken] = useState(null);
+  const [totalCorrectAnswers,setTotalCorrectAnswers]=useState(0)
 
   useEffect(() => {
     if (questionIndex > 0) window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -35,6 +37,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     let point = 0;
     if (userSlectedAns === he.decode(data[questionIndex].correct_answer)) {
       point = 1;
+      setTotalCorrectAnswers((prev) => prev + 1);
     }
 
     const qna = questionsAndAnswers;
@@ -88,6 +91,9 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     timeOver={timeOver}
                     setTimeTaken={setTimeTaken}
                   />
+                  <Label color="teal" size="large" style={{ marginTop: '10px' }}>
+                    {`Correct: ${totalCorrectAnswers} / ${data.length}`}
+                  </Label>
                 </Item.Extra>
                 <br />
                 <Item.Meta>
