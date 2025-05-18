@@ -19,6 +19,8 @@ import {
   QUESTIONS_TYPE,
   COUNTDOWN_TIME,
 } from '../../constants';
+import QUESTION_MODE from '../../constants/questionMode';
+import JUDGING_MODE from '../../constants/judgingMode';
 import { shuffle } from '../../utils';
 
 import Offline from '../Offline';
@@ -28,6 +30,8 @@ const Main = ({ startQuiz }) => {
   const [numOfQuestions, setNumOfQuestions] = useState(5);
   const [difficulty, setDifficulty] = useState('easy');
   const [questionsType, setQuestionsType] = useState('0');
+  const [questionMode, setQuestionMode] = useState('mixed');
+  const [judgingMode, setJudgingMode] = useState('strict');
   const [countdownTime, setCountdownTime] = useState({
     hours: 0,
     minutes: 120,
@@ -47,6 +51,8 @@ const Main = ({ startQuiz }) => {
     numOfQuestions &&
     difficulty &&
     questionsType &&
+    questionMode &&
+    judgingMode &&
     (countdownTime.hours || countdownTime.minutes || countdownTime.seconds)
   ) {
     allFieldsSelected = true;
@@ -94,7 +100,9 @@ const Main = ({ startQuiz }) => {
           setProcessing(false);
           startQuiz(
             results,
-            countdownTime.hours + countdownTime.minutes + countdownTime.seconds
+            countdownTime.hours + countdownTime.minutes + countdownTime.seconds,
+            questionMode,
+            judgingMode
           );
         }, 1000)
       )
@@ -182,7 +190,33 @@ const Main = ({ startQuiz }) => {
                   disabled={processing}
                 />
                 <br />
-                <p>Please select the countdown time for your quiz.</p>
+                <p>Select question display mode:</p>
+                <Dropdown
+                  fluid
+                  selection
+                  name="questionMode"
+                  placeholder="Select Question Mode"
+                  header="Select Question Mode"
+                  options={QUESTION_MODE}
+                  value={questionMode}
+                  onChange={(e, { value }) => setQuestionMode(value)}
+                  disabled={processing}
+                />
+                <br />
+                <p>Select answer checking mode:</p>
+                <Dropdown
+                  fluid
+                  selection
+                  name="judgingMode"
+                  placeholder="Select Judging Mode"
+                  header="Select Judging Mode"
+                  options={JUDGING_MODE}
+                  value={judgingMode}
+                  onChange={(e, { value }) => setJudgingMode(value)}
+                  disabled={processing}
+                />
+                <br />
+                <p>Please select the countdown time for your quiz:</p>
                 <Dropdown
                   search
                   selection
@@ -216,24 +250,21 @@ const Main = ({ startQuiz }) => {
                   onChange={handleTimeChange}
                   disabled={processing}
                 />
-              </Item.Meta>
-              <Divider />
-              <Item.Extra>
+                <Divider />
                 <Button
                   primary
-                  size="big"
-                  icon="play"
-                  labelPosition="left"
-                  content={processing ? 'Processing...' : 'Play Now'}
-                  onClick={fetchData}
+                  fluid
+                  loading={processing}
                   disabled={!allFieldsSelected || processing}
-                />
-              </Item.Extra>
+                  onClick={fetchData}
+                >
+                  Start Quiz
+                </Button>
+              </Item.Meta>
             </Item.Content>
           </Item>
         </Item.Group>
       </Segment>
-      <br />
     </Container>
   );
 };
