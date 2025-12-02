@@ -14,6 +14,7 @@ import {
 import he from 'he';
 
 import Countdown from '../Countdown';
+import { useTheme } from '../ThemeProvider';
 import { getLetter } from '../../utils';
 
 const Quiz = ({ data, countdownTime, endQuiz }) => {
@@ -69,6 +70,8 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     });
   };
 
+  const { theme } = useTheme();
+
   return (
     <Item.Header>
       <Container>
@@ -77,7 +80,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
             <Item>
               <Item.Content>
                 <Item.Extra>
-                  <Header as="h1" block floated="left">
+                  <Header as="h1" block floated="left" inverted={theme === 'dark'}>
                     <Icon name="info circle" />
                     <Header.Content>
                       {`Question No.${questionIndex + 1} of ${data.length}`}
@@ -91,7 +94,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                 </Item.Extra>
                 <br />
                 <Item.Meta>
-                  <Message size="huge" floating>
+                  <Message size="huge" floating inverted={theme === 'dark'}>
                     <b>{`Q. ${he.decode(data[questionIndex].question)}`}</b>
                   </Message>
                   <br />
@@ -99,7 +102,7 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                     <h3>Please choose one of the following answers:</h3>
                   </Item.Description>
                   <Divider />
-                  <Menu vertical fluid size="massive">
+                  <Menu vertical fluid size="massive" inverted={theme === 'dark'}>
                     {data[questionIndex].options.map((option, i) => {
                       const letter = getLetter(i);
                       const decodedOption = he.decode(option);

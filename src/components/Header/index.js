@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Menu, Button } from 'semantic-ui-react';
+import { useTheme } from '../ThemeProvider';
 
 const Header = () => {
   const [promptEvent, setPromptEvent] = useState(null);
@@ -28,8 +29,10 @@ const Header = () => {
     });
   };
 
+  const { theme, toggleTheme } = useTheme();
+
   return (
-    <Menu stackable inverted>
+    <Menu stackable inverted={theme === 'dark'}>
       <Menu.Item header>
         <h1>QuizApp</h1>
       </Menu.Item>
@@ -44,6 +47,17 @@ const Header = () => {
           />
         </Menu.Item>
       )}
+
+      <Menu.Item position="right">
+        <Button
+          toggle
+          basic={theme !== 'dark'}
+          color={theme === 'dark' ? 'grey' : 'yellow'}
+          icon={theme === 'dark' ? 'sun' : 'moon'}
+          onClick={toggleTheme}
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        />
+      </Menu.Item>
     </Menu>
   );
 };

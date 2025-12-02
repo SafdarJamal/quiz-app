@@ -1,1 +1,167 @@
 @import url(../node_modules/semantic-ui-css/semantic.min.css);
+
+/* Theme variables */
+:root {
+	--bg-color: #ffffff;
+	--surface-color: #ffffff;
+	--text-color: #1f2937; /* gray-800 */
+	--muted-color: #6b7280; /* gray-500 */
+	--primary-color: #21ab9d; /* teal */
+	--card-bg: #ffffff;
+	--button-bg: var(--primary-color);
+	--button-text: #ffffff;
+	--option-active-bg: #21ab9d;
+	--option-active-text: #ffffff;
+	--option-hover-bg: rgba(33,171,157,0.1);
+	--option-hover-text: #0f172a;
+}
+
+/* Dark theme variables */
+[data-theme='dark'] {
+	--bg-color: #0f172a; /* slate-900 */
+	--surface-color: #0b1220; /* slightly lighter */
+	--text-color: #e6edf3; /* near white */
+	--muted-color: #94a3b8; /* slate-400 */
+	--primary-color: #21ab9d; /* keep teal */
+	--card-bg: #071022;
+	--button-bg: #1f2937;
+	--button-text: #e6edf3;
+	--option-active-bg: #163e3a; /* darker teal */
+	--option-active-text: #e6edf3;
+	--option-hover-bg: rgba(255,255,255,0.04);
+	--option-hover-text: #e6edf3;
+}
+
+/* global */
+html, body, #root {
+	height: 100%;
+}
+body {
+	background-color: var(--bg-color) !important;
+	color: var(--text-color) !important;
+	transition: background-color 200ms ease, color 200ms ease;
+}
+
+main {
+	padding: 1.25rem;
+}
+
+/* General semantic UI overrides to match theme variables */
+.ui.menu,
+.ui.menu .item,
+.ui.menu .header,
+.ui.menu .item .button {
+	background: transparent !important;
+	color: var(--text-color) !important;
+}
+
+/* Menu item hover & active states for both light and dark */
+.ui.menu .item:hover {
+	background: var(--option-hover-bg) !important;
+	color: var(--option-hover-text) !important;
+}
+
+.ui.menu .item.active {
+	background: var(--option-active-bg) !important;
+	color: var(--option-active-text) !important;
+}
+
+/* Support Menu.Inverted in semantic UI for dark theme */
+.ui.inverted.menu .item.active {
+	background: var(--option-active-bg) !important;
+	color: var(--option-active-text) !important;
+}
+
+.ui.inverted.menu {
+	background: var(--surface-color) !important;
+	color: var(--text-color) !important;
+}
+
+.ui.segment,
+.ui.container,
+.ui.segment .content,
+.ui.card,
+.ui.grid > .row > .column {
+	background: var(--card-bg) !important;
+	color: var(--text-color) !important;
+}
+
+/* Table styles */
+.ui.table thead th {
+	background: var(--surface-color) !important;
+	color: var(--text-color) !important;
+}
+.ui.table tbody td {
+	background: var(--card-bg) !important;
+	color: var(--text-color) !important;
+}
+
+/* support striped tables - alternate rows in dark mode */
+.ui.table.striped tbody tr:nth-child(odd) td {
+	background: var(--surface-color) !important;
+}
+.ui.table.striped tbody tr:nth-child(even) td {
+	background: var(--card-bg) !important;
+}
+
+.ui.header h1,
+.ui.header h2,
+.ui.header h3,
+h1, h2, h3, p {
+	color: var(--text-color) !important;
+}
+
+/* header block override - adjust background and text color for both themes */
+.ui.header.block,
+.ui.header.block .content {
+	background: var(--card-bg) !important;
+	color: var(--text-color) !important;
+	padding: 0.85rem 1rem !important;
+	border-radius: 4px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.04) inset;
+}
+
+/* ensure heading elements inside block headers inherit proper color */
+.ui.header.block h1,
+.ui.header.block h2,
+.ui.header.block h3 {
+	color: var(--text-color) !important;
+}
+
+/* floating message should respect theme */
+.ui.message.floating {
+	background: var(--card-bg) !important;
+	color: var(--text-color) !important;
+	border: 1px solid rgba(255,255,255,0.03) !important;
+}
+
+.ui.button,
+.ui.buttons .ui.button {
+	background-color: var(--button-bg) !important;
+	color: var(--button-text) !important;
+	border: 1px solid rgba(0,0,0,0.08) !important;
+}
+
+.ui.button.basic {
+	background: transparent !important;
+	color: var(--text-color) !important;
+	border-color: rgba(255,255,255,0.06) !important;
+}
+
+/* Muted text helper */
+.muted {
+	color: var(--muted-color) !important;
+}
+
+/* add nice transition to colors */
+* {
+	transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease;
+}
+
+/* small responsive layout tweaks if needed */
+@media (max-width: 600px) {
+	main {
+		padding: .5rem;
+	}
+}
+
