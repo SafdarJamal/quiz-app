@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Popup } from 'semantic-ui-react';
+import { useTheme } from '../ThemeProvider';
 import Swal from 'sweetalert2';
 
 import { timeConverter } from '../../utils';
@@ -38,22 +39,27 @@ const Countdown = ({ countdownTime, timeOver, setTimeTaken }) => {
     // eslint-disable-next-line
   }, [timerTime]);
 
+  const { theme } = useTheme();
+
   return (
     <Button.Group size="massive" basic floated="right">
       <Popup
         content="Hours"
-        trigger={<Button active>{hours}</Button>}
+        trigger={<Button active className="countdown-button">{hours}</Button>}
         position="bottom left"
+        inverted={theme === 'dark'}
       />
       <Popup
         content="Minutes"
-        trigger={<Button active>{minutes}</Button>}
+        trigger={<Button active className="countdown-button">{minutes}</Button>}
         position="bottom left"
+        inverted={theme === 'dark'}
       />
       <Popup
         content="Seconds"
-        trigger={<Button active>{seconds}</Button>}
+        trigger={<Button active className="countdown-button">{seconds}</Button>}
         position="bottom left"
+        inverted={theme === 'dark'}
       />
     </Button.Group>
   );

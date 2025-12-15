@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'semantic-ui-react';
+import { useTheme } from '../ThemeProvider';
 
 const QNA = ({ questionsAndAnswers }) => {
+  const { theme } = useTheme();
   return (
-    <Table celled striped selectable size="large">
+    <Table
+      celled
+      striped
+      selectable
+      size="large"
+      inverted={theme === 'dark'}
+    >
       <Table.Header>
         <Table.Row>
           <Table.HeaderCell>No.</Table.HeaderCell>

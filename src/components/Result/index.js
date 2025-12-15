@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Menu } from 'semantic-ui-react';
+import { useTheme } from '../ThemeProvider';
 
 import Stats from './Stats';
 import QNA from './QNA';
@@ -14,6 +15,7 @@ const Result = ({
   resetQuiz,
 }) => {
   const [activeTab, setActiveTab] = useState('Stats');
+  const { theme } = useTheme();
 
   const handleTabClick = (e, { name }) => {
     setActiveTab(name);
@@ -21,7 +23,7 @@ const Result = ({
 
   return (
     <Container>
-      <Menu fluid widths={2}>
+      <Menu fluid widths={2} inverted={theme === 'dark'}>
         <Menu.Item
           name="Stats"
           active={activeTab === 'Stats'}
