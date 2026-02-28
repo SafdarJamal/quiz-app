@@ -1,1 +1,142 @@
 @import url(../node_modules/semantic-ui-css/semantic.min.css);
+
+/* --- DARK MODE STYLES --- */
+body.dark-mode {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}
+
+/* This targets the white boxes on the screen */
+body.dark-mode .ui.segment {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border: 1px solid #333 !important;
+}
+
+/* Fix the header text inside the boxes to be white */
+body.dark-mode .ui.header {
+  color: #ffffff !important;
+}
+
+/* Fix the large question boxes */
+body.dark-mode .ui.message {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+}
+
+/* Fix dropdown menus so they are readable in dark mode */
+body.dark-mode .ui.selection.dropdown {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+}
+
+/* Fix text in the quiz answer list */
+body.dark-mode .ui.vertical.menu .item {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+}
+
+/* Fix specific text elements like paragraphs, headings, and meta text so they turn white */
+
+body.dark-mode .ui.segment p,
+body.dark-mode .ui.segment h1,
+body.dark-mode .ui.segment h2,
+body.dark-mode .ui.segment h3,
+body.dark-mode .ui.item .meta,
+body.dark-mode .ui.item .description,
+body.dark-mode .ui.item .content {
+  color: #ffffff !important;
+}
+
+/* Fix the dropdown selection items list (the options that pop up when you click) */
+body.dark-mode .ui.selection.dropdown .menu .item {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+  border-top: 1px solid #444 !important;
+}
+
+/* Change the hovered option in the dropdown so it's visible */
+body.dark-mode .ui.selection.dropdown .menu .item:hover {
+  background-color: #444444 !important;
+}
+
+/* Fix the "Question No. X of Y" block so it's dark */
+body.dark-mode .ui.header.block {
+  background-color: #333333 !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* Fix the clock/countdown timer buttons in top right */
+body.dark-mode .ui.basic.buttons .button {
+  color: #ffffff !important;
+  box-shadow: 0 0 0 1px #888 inset !important;
+}
+
+/* Fix the top Tabs on the Results screen ("Stats" and "QNA") */
+body.dark-mode .ui.menu .item {
+  color: #aaaaaa !important;
+}
+
+/* Fix the ACTIVE tab on the Results screen so it looks selected in dark mode */
+body.dark-mode .ui.menu .active.item {
+  background-color: #444444 !important;
+  color: #ffffff !important;
+}
+/* Fix the background and header of the Share Modal in dark mode */
+body.dark-mode .ui.modal > .header,
+body.dark-mode .ui.modal > .content {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid #444 !important;
+}
+
+/* Fix the borders on the Quiz options and the active selected item */
+body.dark-mode .ui.vertical.menu,
+body.dark-mode .ui.vertical.menu .item {
+  border-color: #444444 !important;
+}
+
+/* Fix the thick bright border/background on the ACTIVE (selected) option */
+body.dark-mode .ui.vertical.menu .active.item {
+  background-color: #333333 !important;
+  border-right: 3px solid yellow !important; /* Optional: Make the right edge a cool yellow to match the sun icon */
+}
+
+/* Optional: Add a subtle hover effect so options react when you mouse over them in dark mode */
+body.dark-mode .ui.vertical.menu .item:hover {
+  background-color: #2c2c2c !important;
+}
+/* --- QNA TABLE DARK MODE STYLES --- */
+
+/* Base table background and text color */
+body.dark-mode .ui.table {
+  background-color: #1e1e1e !important;
+  color: #ffffff !important;
+  border: 1px solid #444 !important;
+}
+
+/* Table Header row */
+body.dark-mode .ui.table thead th {
+  background-color: #2c2c2c !important;
+  color: #ffffff !important;
+  border-color: #444 !important;
+}
+
+/* Border colors for table cells */
+body.dark-mode .ui.table tbody tr td {
+  border-color: #333 !important;
+}
+
+/* Fix "striped" table alternating row colors */
+body.dark-mode .ui.striped.table > tbody > tr:nth-child(2n),
+body.dark-mode .ui.striped.table > tbody > tr:nth-child(2n) td {
+  background-color: #252525 !important;
+}
+
+/* Fix "selectable" table row hover effect */
+body.dark-mode .ui.selectable.table tbody tr:hover,
+body.dark-mode .ui.selectable.table tbody tr:hover td {
+  background-color: #3a3a3a !important;
+  color: #ffffff !important;
+}

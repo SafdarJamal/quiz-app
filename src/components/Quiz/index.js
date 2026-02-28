@@ -69,6 +69,20 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
     });
   };
 
+  //voice feature
+  const handleVoicePlay = () => {
+    const questionText = he.decode(data[questionIndex].question);
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel()
+
+      const utterance = new SpeechSynthesisUtterance(questionText);
+      window.speechSynthesis.speak(utterance);
+    }
+    else {
+      window.alert("Your browser does not support speech synthesis");
+    }
+  };
+
   return (
     <Item.Header>
       <Container>
@@ -92,8 +106,19 @@ const Quiz = ({ data, countdownTime, endQuiz }) => {
                 <br />
                 <Item.Meta>
                   <Message size="huge" floating>
-                    <b>{`Q. ${he.decode(data[questionIndex].question)}`}</b>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <b>{`Q. ${he.decode(data[questionIndex].question)}`}</b>
+
+                      <Button
+                        icon="volume up"
+                        circular
+                        color="blue"
+                        onClick={handleVoicePlay}
+                        title="Read Question out loud"
+                      />
+                    </div>
                   </Message>
+
                   <br />
                   <Item.Description>
                     <h3>Please choose one of the following answers:</h3>
